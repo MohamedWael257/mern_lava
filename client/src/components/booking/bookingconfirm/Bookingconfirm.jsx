@@ -37,7 +37,7 @@ const Bookingconfirm = () => {
         await axios.post(`${process.env.BASE_API_URL_HOST}/booking/booking`, {
             bookingamount: totprice, bookingdate: serverTimestamp, uid: uid, bookingitem: booking
         })
-            .then(res => toast.success(res.message, {
+            .then(res => toast.success(res.data.message, {
                 position: "top-right",
             }))
             .catch(err => toast.error(err.message))
