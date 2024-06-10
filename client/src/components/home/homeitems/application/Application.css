@@ -1,0 +1,71 @@
+.app {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    background-color: #f6f6f6;
+    padding: 4rem 10rem;
+}
+
+.app .left {
+    position: relative;
+}
+
+
+.app .left::after {
+    content: "";
+    position: absolute;
+    top: 110px;
+    left: 60px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    z-index: 1;
+    background-color: #2DB7FF;
+}
+
+.app .left img {
+    /* width: 600px; */
+    height: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+.app .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app .right>* {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.app .right h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.app .right p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.app .right button {
+    background-color: #2DB7FF;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    width: 230px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.app .right button span {
+    color: white;
+}
+
+.app .right button img {
+    width: 50px;
+    height: 50px;
+}

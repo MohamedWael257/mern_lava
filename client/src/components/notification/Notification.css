@@ -1,0 +1,16 @@
+.notification {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.notification .card {
+    width: 95%;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: 15px;
+    background-color: #a8a8a8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}

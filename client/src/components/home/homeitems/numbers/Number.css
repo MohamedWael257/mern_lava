@@ -1,0 +1,44 @@
+.numbers {
+    position: relative;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)), url(../../../../assets/img/number/Background.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 350px;
+}
+
+.numbers .container {
+    width: 80%;
+    margin: auto;
+}
+
+.items {
+    overflow: hidden;
+    padding-top: 130px;
+}
+
+.item {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.item .icon {
+    color: #6195ff;
+    margin-bottom: 15px;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 30px;
+    color: #fff;
+}
+
+.item-text {
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}

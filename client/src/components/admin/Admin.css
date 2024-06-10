@@ -1,0 +1,40 @@
+.admin {
+    background-color: #f6f6f6;
+    color: #06090d;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 10px;
+}
+
+.admin .navbar {
+    min-height: 80vh;
+}
+
+.admin .content {
+    padding: 0 1rem;
+}
+
+@media screen and (max-width: 1400px) {
+    .admin .content {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .admin {
+        display: block;
+    }
+
+    .admin .navbar {
+        min-height: auto;
+        width: 100%;
+    }
+
+    .admin .content {
+        width: 95% !important;
+        margin: auto;
+    }
+
+}

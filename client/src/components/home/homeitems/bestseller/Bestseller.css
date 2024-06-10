@@ -1,0 +1,66 @@
+.best-seller {
+    /* width: 80%; */
+    /* margin: 0 auto; */
+    background-color: #edf5f9;
+    padding: 2rem 4rem;
+    background: linear-gradient(90deg,
+            rgba(237, 245, 249, .9) 0%,
+            rgba(237, 245, 249, .9) 2%,
+            rgba(237, 245, 249, .9)100%),
+        url(../../../../assets/img/shape/03.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.best-seller>h3 {
+    text-align: center;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #05bbfe;
+}
+
+.best-seller .products {
+    margin: 1.5rem auto;
+    width: 80%;
+
+}
+
+.best-seller .products .product-card {
+    background-color: white;
+    height: 350px;
+}
+
+.best-seller .products .product-card .card-img {
+    width: 80%;
+    margin: 0 auto;
+    height: 200px;
+    /* border-top-right-radius: 18px; */
+    border-top-left-radius: 18px;
+}
+
+.best-seller .products .product-card .card-title {
+    color: #263787;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.best-seller .products .product-card .card-price {
+    font-size: 1.2rem;
+}
+
+.best-seller button {
+    text-align: center;
+    display: block;
+    padding: 10px 35px;
+    border-radius: 12px;
+    background-color: black;
+    margin: 15px auto;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: #263787;
+    color: white;
+}

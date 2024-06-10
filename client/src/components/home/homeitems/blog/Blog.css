@@ -1,0 +1,73 @@
+.blog {
+    padding: 4rem 0rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.blog>h3 {
+    text-align: center;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #05bbfe;
+}
+
+.blog>h2 {
+    text-transform: capitalize;
+    font-size: 3.8rem;
+    font-weight: 500;
+    text-align: center;
+    color: #263787;
+}
+
+.blog>h2 span {
+    color: #05bbfe;
+}
+
+.blog .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding-top: 2em;
+}
+
+.blog .cards .card {
+    /* background-color: #05bbfe; */
+}
+
+.blog .cards .card img {
+    width: 100%;
+    border-radius: 18px;
+}
+
+.blog .cards .card .card-details {
+    display: flex;
+    justify-content: space-evenly;
+    color: #263787;
+    border-bottom: 1px solid #05bbfe;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.blog .cards .card .card-details i {
+    color: #05bbfe;
+}
+
+.blog .cards .card .card-desc {
+    color: #263787;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+
+.blog .cards .card .read-more {
+    background-color: #05bbfe;
+    color: #fff;
+    font-size: 1rem;
+    padding: 15px 25px;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 8px;
+}

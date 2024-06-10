@@ -1,0 +1,153 @@
+.process-area {
+    background: #edf5f9;
+    padding: 120px 0;
+}
+
+.process-area .container {
+    max-width: 1185px;
+    margin: 0 auto;
+}
+
+.site-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.site-title-tagline {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2db7ff;
+    position: relative;
+}
+
+.site-title {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 50px;
+    color: #263787;
+    margin-bottom: 0;
+}
+
+.site-title span {
+    color: #2db7ff;
+}
+
+.process-area .cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.process-area .cards .card {
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.process-area .cards .card:nth-child(1)::before,
+.process-area .cards .card:nth-child(2)::before {
+    content: url(../../../../assets/img/shape/05.png);
+    position: absolute;
+    right: -56px;
+    top: 34px;
+}
+
+.process-single {
+    position: relative
+}
+
+.process-single .icon {
+    height: 120px;
+    width: 120px;
+    line-height: 120px;
+    display: inline-block;
+    position: relative;
+    background: #2db7ff;
+    border-radius: 50%;
+    font-size: 65px;
+    color: #fff;
+    margin-bottom: 30px;
+    z-index: 1
+}
+
+.process-single .icon::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    top: -10px;
+    bottom: -10px;
+    border: 3px solid #2db7ff;
+    border-radius: 50%
+}
+
+.process-single .icon::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #263787;
+    transform: scale(0, 0);
+    border-radius: 50%;
+    transition: all .5s ease-in-out;
+    z-index: -1;
+}
+
+.process-single:hover .icon::after {
+    transform: scale(1, 1);
+}
+
+.process-single span {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    background: #2db7ff;
+    border-radius: 10px;
+    color: #fff;
+    left: -5px;
+    top: -31px;
+    font-weight: 600;
+}
+
+.process-single h4 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #263787;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.process-single::before {
+    content: url(../img/shape/05.png);
+    position: absolute;
+    right: -153px;
+    top: 34px;
+}
+
+.process-single p {
+    margin-top: 10px;
+}
+
+@media only screen and (min-width: 768px) and (max-width:991px) {
+    .process-single::before {
+        display: none
+    }
+}
+
+@media(max-width: 767px) {
+    .process-single::before {
+        display: none
+    }
+}
+
+.process-area .col-lg-3:last-child .process-single::before {
+    display: none
+}

@@ -1,0 +1,113 @@
+.checkout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 55px;
+    padding: 2rem 6rem;
+}
+
+.checkout .payment .payment-widget {
+    padding: 30px;
+    border-radius: 10px;
+    background: #f2f5f8;
+    margin-bottom: 30px;
+
+}
+
+.checkout .payment .payment-widget .payment-widget-title {
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    position: relative;
+    color: #263787;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.checkout .payment .payment-widget .payment-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.checkout .payment .payment-widget .form-group label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #263787;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .375rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.checkout .payment .payment-widget .form-group input.form-control {
+    padding: 10px 18px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.confirm.cart-summary {
+    background: #f2f5f8;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    height: fit-content;
+}
+
+.confirm.cart-summary li {
+    margin-bottom: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm.cart-summary h4 {
+    color: #263787;
+    margin: 0;
+    font-weight: 600;
+    font-family: barlow, sans-serif;
+    line-height: 1.2;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.confirm.cart-summary li strong {
+    color: #263787;
+}
+
+.confirm.cart-summary .cart-total {
+    padding-top: 10px;
+    border-top: 1px solid #263787;
+}
+
+.confirm.cart-summary .theme-btn {
+    font-size: 16px;
+    color: #fff;
+    padding: 13px 22px;
+    transition: all .5s;
+    text-transform: capitalize;
+    position: relative;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+    border: none;
+    background: #2db7ff;
+    box-shadow: 0 3px 24px rgb(0 0 0/10%);
+    z-index: 1;
+}

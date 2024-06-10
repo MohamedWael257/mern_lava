@@ -1,0 +1,24 @@
+.cta-wrapper {
+    background-image: url(../../../../assets/img/cta/01.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    margin-top: -100px;
+    padding: 40px;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.cta-wrapper::before {
+    content: "";
+    position: absolute;
+    background: #2db7ff;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .85;
+    z-index: -1;
+}
