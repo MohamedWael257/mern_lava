@@ -14,16 +14,16 @@ const useLogin = () => {
         if (!success) return;
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/login`, { email, password })
             .then(res => {
-                console.log(res.data, "userRegister");
-                if (res.data.status == "ok") {
+                if (res.data.status == "Success") {
                     toast.success("Signin successfully");
                     cookies.set("TOKEN", res.data.data, {
                         path: "/",
+                        // maxAge: 15 * 24 * 60 * 1000,
+                        // httpOnly: true,
+                        // sameSite: "strict",
+                        // secure: 'production' !== 'developmnent'
                     });
-                    // window.localStorage.setItem("token", res.data.data);
-                    // window.localStorage.setItem("loggedIn", true);
                     window.location.href = "/";
-                    // navigate('/')
                     setLoading(false)
                 }
                 else {

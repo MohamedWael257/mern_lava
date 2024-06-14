@@ -29,33 +29,33 @@ const About = () => {
                 <div className="container min-h-64">
                     <div className="cards text-center grid md:grid-cols-2 lg:grid-cols-4">
                         <div className="card">
-                            <i class="feature-icon icon-car-wash text-7xl mb-4 mx-auto inline-block"></i>
-                            <div class="feature-shadow-icon">
-                                <i class="icon-car-wash "></i>
+                            <i className="feature-icon icon-car-wash text-7xl mb-4 mx-auto inline-block"></i>
+                            <div className="feature-shadow-icon">
+                                <i className="icon-car-wash "></i>
                             </div>
                             <h2 className="card-title">Quality Service</h2>
                             <p className="card-desc">Contrary to popular belief psum is top simply random.</p>
                         </div>
                         <div className="card">
-                            <i class="feature-icon icon-car-service-1 text-7xl mb-4 mx-auto inline-block"></i>
-                            <div class="feature-shadow-icon">
-                                <i class="icon-car-service-1"></i>
+                            <i className="feature-icon icon-car-service-1 text-7xl mb-4 mx-auto inline-block"></i>
+                            <div className="feature-shadow-icon">
+                                <i className="icon-car-service-1"></i>
                             </div>
                             <h2 className="card-title">Online Booking </h2>
                             <p className="card-desc">Contrary to popular belief psum is top simply random.</p>
                         </div>
                         <div className="card">
-                            <i class="feature-icon icon-car-service-2 text-7xl mb-4 mx-auto inline-block"></i>
-                            <div class="feature-shadow-icon">
-                                <i class="icon-car-service-2"></i>
+                            <i className="feature-icon icon-car-service-2 text-7xl mb-4 mx-auto inline-block"></i>
+                            <div className="feature-shadow-icon">
+                                <i className="icon-car-service-2"></i>
                             </div>
                             <h2 className="card-title">Modern Machines</h2>
                             <p className="card-desc">Contrary to popular belief psum is top simply random.</p>
                         </div>
                         <div className="card">
-                            <i class="feature-icon icon-car-service-3  text-7xl mb-4 mx-auto inline-block"></i>
-                            <div class="feature-shadow-icon">
-                                <i class="icon-car-service-3"></i>
+                            <i className="feature-icon icon-car-service-3  text-7xl mb-4 mx-auto inline-block"></i>
+                            <div className="feature-shadow-icon">
+                                <i className="icon-car-service-3"></i>
                             </div>
                             <h2 className="card-title">Affordable Pricing</h2>
                             <p className="card-desc">Contrary to popular belief psum is top simply random.</p>

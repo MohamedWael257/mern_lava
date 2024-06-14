@@ -26,128 +26,40 @@ const Portfolio = memo(() => {
             }
         }
     };
-
+    const images = [
+        { image: Image1 },
+        { image: Image2 },
+        { image: Image3 },
+        { image: Image4 },
+        { image: Image5 },
+        { image: Image6 },
+    ]
     return (
         <>
             <section className="portfolio-area pt-16 pb-16">
-                <div class="site-heading text-center">
-                    <span class="site-title-tagline">Portfolio</span>
-                    <h2 class="site-title">Explore <span>Portfolio</span></h2>
-                    <div class="heading-divider"></div>
+                <div className="site-heading text-center">
+                    <span className="site-title-tagline">Portfolio</span>
+                    <h2 className="site-title">Explore <span>Portfolio</span></h2>
+                    <div className="heading-divider"></div>
                 </div>
                 <OwlCarousel className='owl-theme' loop autoplay margin={20} responsive={options.responsive} items={4} >
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image1} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
+                    {images.map(ele =>
+                    (
+                        <div className="portfolio-item">
+                            <div className="portfolio-img">
+                                <img src={ele.image} alt="" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image2} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
+                            <div className="portfolio-content">
+                                <a className="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i className="far fa-plus"></i></a>
+                                <div className="portfolio-info">
+                                    <h5 className="portfolio-subtitle"><span>//</span> Car Wash</h5>
+                                    <a href="#">
+                                        <h4 className="portfolio-title">Full Car Wash</h4>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image3} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image4} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image5} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image6} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img">
-                            <img src={Image} alt="" />
-                        </div>
-                        <div class="portfolio-content">
-                            <a class="popup-img portfolio-link" href="assets/img/portfolio/01.jpg"><i class="far fa-plus"></i></a>
-                            <div class="portfolio-info">
-                                <h5 class="portfolio-subtitle"><span>//</span> Car Wash</h5>
-                                <a href="#">
-                                    <h4 class="portfolio-title">Full Car Wash</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </div> */}
+                        </div>))
+                    }
                 </OwlCarousel>
             </section>
 

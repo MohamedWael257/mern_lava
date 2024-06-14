@@ -62,45 +62,45 @@ const Navbar = () => {
                         :
                         <header>
                             <div className="header-top">
-                                <div class="header-top-left">
-                                    <div class="header-top-contact">
+                                <div className="header-top-left">
+                                    <div className="header-top-contact">
                                         <ul>
                                             <li>
-                                                <div class="header-top-contact-icon">
-                                                    <img className='translate-y-1' src={livechat} alt />
+                                                <div className="header-top-contact-icon">
+                                                    <img className='translate-y-1' src={livechat} alt="" />
                                                 </div>
-                                                <div class="header-top-contact-info">
+                                                <div className="header-top-contact-info">
                                                     <Link to="/profile/chat">Live Chat</Link>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="header-top-contact-icon">
-                                                    <img className='translate-y-1' src={mail} alt />
+                                                <div className="header-top-contact-icon">
+                                                    <img className='translate-y-1' src={mail} alt="" />
                                                 </div>
-                                                <div class="header-top-contact-info">
+                                                <div className="header-top-contact-info">
                                                     {/* <Link to="/cdn-cgi/l/email-protection#4f262129200f2a372e223f232a612c2022"><span
-                                                        class="__cf_email__"
+                                                        className="__cf_email__"
                                                         data-cfemail="90f9fef6ffd0f5e8f1fde0fcf5bef3fffd">[email&#160;protected]</span></Link> */}
                                                     <Link to="mailto:info@example.com">info@example.com</Link>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="header-top-contact-icon">
-                                                    <img className='translate-y-1' src={clock} alt />
+                                                <div className="header-top-contact-icon">
+                                                    <img className='translate-y-1' src={clock} alt="" />
                                                 </div>
-                                                <div class="header-top-contact-info">
+                                                <div className="header-top-contact-info">
                                                     <Link to="/">Sun - Fri (08AM - 10PM)</Link>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="header-top-right">
-                                    <div class="header-top-social">
-                                        <Link className='inline-block' to="#"><i class="fab fa-facebook-f"></i></Link>
-                                        <Link className='inline-block' to="#"><i class="fab fa-twitter"></i></Link>
-                                        <Link className='inline-block' to="#"><i class="fab fa-instagram"></i></Link>
-                                        <Link className='inline-block' to="#"><i class="fab fa-linkedin-in"></i></Link>
+                                <div className="header-top-right">
+                                    <div className="header-top-social">
+                                        <Link className='inline-block' to="#"><i className="fab fa-facebook-f"></i></Link>
+                                        <Link className='inline-block' to="#"><i className="fab fa-twitter"></i></Link>
+                                        <Link className='inline-block' to="#"><i className="fab fa-instagram"></i></Link>
+                                        <Link className='inline-block' to="#"><i className="fab fa-linkedin-in"></i></Link>
                                     </div>
                                 </div>
                             </div>

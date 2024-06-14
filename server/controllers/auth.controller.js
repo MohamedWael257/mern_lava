@@ -39,7 +39,7 @@ export const register = async (req, res) => {
             email,
             phoneNumber,
             password: encryptedPassword,
-            photoimage: `http://localhost:5000/uploads/avatar${imageName}`
+            photoimage: `http://localhost:5000/uploads/avatar/${imageName}`
         });
         await sendMail(email, 'signup', null, { username: username })
         return res.json({

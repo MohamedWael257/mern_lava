@@ -65,10 +65,9 @@ const googleAuth = async () => {
                                 fullname: `${name[0]} ${name[1]}`,
                                 provider: EMAIL_PROVIDER.Google,
                                 photoimage: profile.picture,
-                                phoneNumber: null,
+                                phoneNumber: "",
                                 password: null,
-                                address: null,
-                                gender: null,
+
                                 __v: 1
                             });
                             newUser.__v = 1
@@ -125,10 +124,9 @@ const facebookAuth = async () => {
                                 fullname: `${profile.name.givenName}${profile.name.familyName}`,
                                 provider: EMAIL_PROVIDER.Facebook,
                                 photoimage: profile.photos[0].value,
-                                phoneNumber: null,
+                                phoneNumber: "",
                                 password: null,
-                                address: null,
-                                gender: null,
+
                                 __v: 1
                             });
                             newUser.__v = 1
@@ -178,10 +176,9 @@ const githubAuth = async () => {
                                 fullname: profile.displayName,
                                 provider: EMAIL_PROVIDER.Github,
                                 photoimage: profile.photos[0].value,
-                                phoneNumber: null,
+                                phoneNumber: "",
                                 password: null,
-                                address: null,
-                                gender: null,
+
                                 __v: 1
                             });
                             newUser.__v = 1

@@ -55,80 +55,80 @@ const Checkout = () => {
                     <div className="payment-widget">
                         <h3 className='payment-widget-title'>Billing Address</h3>
                         <div className="payment-form">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" placeholder="Your First Name" />
+                                <input type="text" className="form-control" placeholder="Your First Name" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control" placeholder="Your Last Name" />
+                                <input type="text" className="form-control" placeholder="Your Last Name" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Your Email" />
+                                <input type="email" className="form-control" placeholder="Your Email" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Phone</label>
-                                <input type="text" class="form-control" placeholder="Your Phone" />
+                                <input type="text" className="form-control" placeholder="Your Phone" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Address</label>
-                                <input type="text" class="form-control" placeholder="Your Address" />
+                                <input type="text" className="form-control" placeholder="Your Address" />
                             </div>
                         </div>
                     </div>
                     <div className="payment-widget">
                         <h3 className='payment-widget-title'>Payment Info</h3>
                         <div className="payment-form">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Card Holder Name</label>
-                                <input type="text" class="form-control" placeholder="Name On Card" />
+                                <input type="text" className="form-control" placeholder="Name On Card" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Card Number</label>
-                                <input type="text" class="form-control" placeholder="Your Card Number" />
+                                <input type="text" className="form-control" placeholder="Your Card Number" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Expire Date</label>
-                                <input type="text" class="form-control" placeholder="Expire" />
+                                <input type="text" className="form-control" placeholder="Expire" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>CCV</label>
-                                <input type="text" class="form-control" placeholder="CVV" />
+                                <input type="text" className="form-control" placeholder="CVV" />
                             </div>
                         </div>
                     </div>
                     <div className="payment-widget">
                         <h3 className='payment-widget-title'>Shipping Address</h3>
                         <div className="payment-form">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" placeholder="Your First Name" />
+                                <input type="text" className="form-control" placeholder="Your First Name" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control" placeholder="Your Last Name" />
+                                <input type="text" className="form-control" placeholder="Your Last Name" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Your Email" />
+                                <input type="email" className="form-control" placeholder="Your Email" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Phone</label>
-                                <input type="text" class="form-control" placeholder="Your Phone" />
+                                <input type="text" className="form-control" placeholder="Your Phone" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Address 1</label>
-                                <input type="text" class="form-control" placeholder="Your Address" />
+                                <input type="text" className="form-control" placeholder="Your Address" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Address 2</label>
-                                <input type="text" class="form-control" placeholder="Your Address" />
+                                <input type="text" className="form-control" placeholder="Your Address" />
                             </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
+                            <div className="col-lg-12">
+                                <div className="form-group">
                                     <label>Additional Info</label>
-                                    <textarea class="form-control" cols="30" rows="5" placeholder="Additional Info"></textarea>
+                                    <textarea className="form-control" cols="30" rows="5" placeholder="Additional Info"></textarea>
                                 </div>
                             </div>
 
@@ -137,17 +137,17 @@ const Checkout = () => {
 
                 </div>
                 <div className="confirm cart-summary">
-                    <h4 class="mb-30">Cart Summary</h4>
+                    <h4 className="mb-30">Cart Summary</h4>
                     <ul>
                         <li><strong>Product Qty:</strong> <span className='text-neutral-500'>5</span></li>
                         <li><strong>Shipping Cost:</strong> <span className='text-neutral-500'>$25.00</span></li>
                         <li><strong>Discount:</strong> <span className='text-neutral-500'>$5.00</span></li>
                         <li><strong>Vat:</strong> <span className='text-neutral-500'>$20.00</span></li>
                         <li><strong>Sub Total:</strong> <span className='text-neutral-500'>$4,540.00</span></li>
-                        <li class="cart-total"><strong>Total Pay:</strong> <span className='text-[#2db7ff]'>$4,540.00</span></li>
+                        <li className="cart-total"><strong>Total Pay:</strong> <span className='text-[#2db7ff]'>$4,540.00</span></li>
                     </ul>
-                    <div class="text-end mt-6">
-                        <button class="theme-btn" onClick={payment}>Confirm Payment <i class="far fa-arrow-right"></i></button>
+                    <div className="text-end mt-6">
+                        <button className="theme-btn" onClick={payment}>Confirm Payment <i className="far fa-arrow-right"></i></button>
                     </div>
                 </div>
             </section>

@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const initialState = {
     wishlistdata: [],
 }
 export const getWishlist = createAsyncThunk('wishlist/getWishlist', async () => {
-    return fetch(`${process.env.BASE_API_URL_HOST}/wishlist/wishlistData`)
-        .then((respons) => { return respons.json() })
+    const { currentUser } = useContext(AuthContext)
+    const uid = currentUser?._id
+    return axios.get(`${process.env.BASE_API_URL_HOST}/wishlist/wishlistData`), { uid: uid }
+        .then((respons) => { return respons.data })
 });
 const wishlistslice = createSlice({
     name: "wishlist",

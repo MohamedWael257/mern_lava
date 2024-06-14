@@ -117,7 +117,7 @@ const Security = () => {
                         </div>
                         <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
                             {activeedit ?
-                                <label htmlFor='photoimage'>Choose your photoimage </label>
+                                <label className='cursor-pointer' htmlFor='photoimage'>Choose your photoimage </label>
                                 :
                                 <label>photoimage </label>
                             }
@@ -146,7 +146,9 @@ const Security = () => {
                             activeedit &&
                             <div className='edit'>
                                 <button className='save' onClick={update_user_data}>save</button>
-                                <button className='reset-pass' onClick={onresethandler}>reset pass</button>
+                                {currentUser?.provider && currentUser?.provider === "Email" &&
+                                    <button className='reset-pass' onClick={onresethandler}>reset pass</button>
+                                }
                             </div>
                         }
                     </div>

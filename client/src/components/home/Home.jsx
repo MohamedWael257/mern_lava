@@ -24,44 +24,44 @@ const Home = () => {
                 <div className="img-cards carousel-inner home">
                     <div className="carousel-item ng-star-inserted home-content active one">
                         <div className='containe'>
-                            <h6 class="title"> Keep Your Car Clean</h6>
-                            <h3 class="hero-title">
+                            <h6 className="title"> Keep Your Car Clean</h6>
+                            <h3 className="hero-title">
                                 We Provide Car <span>Washing</span> Services
                             </h3>
-                            <p class="home-desc">There are many variations of passages orem psum available but the majority have
+                            <p className="home-desc">There are many variations of passages orem psum available but the majority have
                                 suffered alteration in some form by injected humour or randomised words which
                                 don't look even making it look like readable slightly believable.
                             </p>
-                            <button id="start" class="btn btn-start">about Me !</button>
-                            <button id="learn" class="btn btn-learn"> Learn More</button>
+                            <button id="start" className="btn btn-start">about Me !</button>
+                            <button id="learn" className="btn btn-learn"> Learn More</button>
                         </div>
                     </div>
                     <div className="carousel-item ng-star-inserted home-content two">
                         <div className='containe'>
-                            < h6 class="title"> Keep Your Car Clean</h6>
-                            <h3 class="hero-title">
+                            < h6 className="title"> Keep Your Car Clean</h6>
+                            <h3 className="hero-title">
                                 We Provide Car <span>Washing</span> Services
                             </h3>
-                            <p class="home-desc">There are many variations of passages orem psum available but the majority have
+                            <p className="home-desc">There are many variations of passages orem psum available but the majority have
                                 suffered alteration in some form by injected humour or randomised words which
                                 don't look even making it look like readable slightly believable.
                             </p>
-                            <button id="start" class="btn btn-start">about Me !</button>
-                            <button id="learn" class="btn btn-learn"> Learn More</button>
+                            <button id="start" className="btn btn-start">about Me !</button>
+                            <button id="learn" className="btn btn-learn"> Learn More</button>
                         </div>
                     </div>
                     <div className="carousel-item ng-star-inserted home-content three">
                         <div className='containe'>
-                            < h6 class="title"> Keep Your Car Clean</h6>
-                            <h3 class="hero-title">
+                            < h6 className="title"> Keep Your Car Clean</h6>
+                            <h3 className="hero-title">
                                 We Provide Car <span>Washing</span> Services
                             </h3>
-                            <p class="home-desc">There are many variations of passages orem psum available but the majority have
+                            <p className="home-desc">There are many variations of passages orem psum available but the majority have
                                 suffered alteration in some form by injected humour or randomised words which
                                 don't look even making it look like readable slightly believable.
                             </p>
-                            <button id="start" class="btn btn-start">about Me !</button>
-                            <button id="learn" class="btn btn-learn"> Learn More</button>
+                            <button id="start" className="btn btn-start">about Me !</button>
+                            <button id="learn" className="btn btn-learn"> Learn More</button>
 
                         </div>
 
@@ -87,7 +87,7 @@ const Home = () => {
             {/* <Cta /> */}
             <ChooseUs />
             <Application />
-            <Testimonials />
+            {/* <Testimonials /> */}
             <Blog />
             {/* <Recommendation /> */}
 

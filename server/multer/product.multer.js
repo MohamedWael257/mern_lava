@@ -23,7 +23,7 @@ const fileFilter = (req, file, callback) => {
     }
 };
 
-const upload_avatar = multer({ storage: storage, fileFilter: fileFilter });
+const upload_product = multer({ storage: storage, fileFilter: fileFilter });
 
-export default upload_avatar;
+export default upload_product;
 

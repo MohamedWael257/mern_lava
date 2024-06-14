@@ -43,6 +43,7 @@ import { getAccessories } from './redux/slice/accessoriesslice';
 import Blog from './components/home/homeitems/blog/Blog';
 import Testimonials from './components/home/homeitems/testimonials/Testimonials';
 import { getProducts, pricerange } from './redux/slice/productsslice';
+import { getWishlist } from './redux/slice/wishlistslice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ const App = () => {
     dispatch(getorders());
     dispatch(getbooking());
     dispatch(getservices())
+    dispatch(getWishlist())
     // dispatch(getNotification())
     dispatch(getProducts())
   }, [dispatch])
