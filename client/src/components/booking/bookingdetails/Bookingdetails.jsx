@@ -10,11 +10,12 @@ import image4 from '../../../assets/img/bodystyle/car.png'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { servicesdata } from '../../../redux/slice/serviceslice'
-import { carsdata } from '../../../redux/slice/carsslice'
+import { productsdata } from '../../../redux/slice/productsslice'
 
 const Bookingdetails = () => {
     const services = useSelector(servicesdata)
-    const cars = useSelector(carsdata)
+    const products = useSelector(productsdata)
+    const cars = [...new Set(products?.filter((car) => car.category == "cars"))];
     const [bodystyle, setBodystyle] = useState(null)
     const [typebrand, setTypebrand] = useState('')
     const [typemodel, setTypemodel] = useState('')

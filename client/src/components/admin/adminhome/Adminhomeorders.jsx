@@ -7,16 +7,13 @@ import { FaCartArrowDown } from "react-icons/fa";
 import { ordershistory, earning, calcearning } from "../../../redux/slice/orderslice"
 import { useSelector, useDispatch } from "react-redux";
 import Chart from "../chart/Chart"
-import { carsdata } from "../../../redux/slice/carsslice";
-import { accessoriesdata } from "../../../redux/slice/accessoriesslice";
+import { productsdata } from "../../../redux/slice/productsslice";
 const Adminhomeorders = () => {
     const earningIcon = <AiFillDollarCircle size={30} color="#b624ff" />;
     const productIcon = <BsCart4 size={30} color="#1f93ff" />;
     const ordersIcon = <FaCartArrowDown size={30} color="orangered" />
     const dispatch = useDispatch();
-    const cars = useSelector(carsdata);
-    const accessories = useSelector(accessoriesdata)
-    const product = cars.length + accessories.length;
+    const product = useSelector(productsdata);
     const orders = useSelector(ordershistory);
     const earn = useSelector(earning)
     useEffect(() => {

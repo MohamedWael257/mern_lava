@@ -4,15 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { authuser } from '../../../../../redux/slice/authslice';
 import { useSelector } from 'react-redux';
 import { AuthContext } from '../../../../../context/AuthContext';
+import Cookies from 'universal-cookie';
+import { toast } from 'react-toastify';
 const CurrentUser = () => {
     // const currentUser = useSelector(authuser);
     const { currentUser } = useContext(AuthContext)
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()
-
+    const cookies = new Cookies()
     const logouthandel = () => {
-        localStorage.removeItem('admin')
-        navigate('/')
+        cookies.remove("TOKEN");
+        toast.success("logout succeessful...")
+        window.location.href = "../login";
     }
     return (
         <>

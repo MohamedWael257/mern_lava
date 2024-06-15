@@ -3,14 +3,15 @@ import './Profilenav.css'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 import { toast } from 'react-toastify';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaRocketchat, FaUserCircle } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { ordershistory } from '../../../redux/slice/orderslice';
 import Loader from '../../loader/Loader'
 import { bookingshistory } from '../../../redux/slice/bookingslice';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-
+import { MdOutlineChat, MdHelpOutline, MdNotificationsActive, MdOutlineDeleteOutline, MdOutlineLibraryBooks, MdOutlineLogout, MdOutlinePersonOutline } from "react-icons/md";
+import { SiWish } from "react-icons/si"
 const Profilenav = ({ setActiveside }) => {
     const cookies = new Cookies();
     const navigate = useNavigate()
@@ -72,16 +73,19 @@ const Profilenav = ({ setActiveside }) => {
                         <ul className='list'>
                             <li>
                                 <NavLink className={activelink} to='/profile/security'>
+                                    {/* <MdOutlinePersonOutline size={35} className='inline-block mr-2' /> */}
                                     Personal Info
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activelink} to='/profile/orders'>
+                                    {/* <MdOutlineLibraryBooks size={35} className='inline-block mr-2' /> */}
                                     My Orders
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activelink} to='/profile/booking'>
+                                    {/* <MdOutlineLibraryBooks size={35} className='inline-block mr-2' /> */}
                                     My Booking
                                 </NavLink>
                             </li>
@@ -92,24 +96,39 @@ const Profilenav = ({ setActiveside }) => {
                             </li> */}
                             <li>
                                 <NavLink className={activelink} to='/profile/notification'>
+                                    {/* <MdNotificationsActive size={35} className='inline-block mr-2' /> */}
                                     notification
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activeside} to='/profile/chat'>
+                                    {/* <MdOutlineChat size={35} className='inline-block mr-2' /> */}
                                     chat
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activelink} to='/profile/wishlists'>
+                                    {/* <SiWish size={35} className='inline-block mr-2' /> */}
                                     Wishlists
                                 </NavLink>
                             </li>
                             <li>
-                                <button onClick={logouthandler}>Logout</button>
+                                <button>
+                                    {/* <MdHelpOutline size={35} className='inline-block mr-2' /> */}
+                                    Help Center
+                                </button>
                             </li>
                             <li>
-                                <button onClick={deleteaccount}>delete accout</button>
+                                <button onClick={logouthandler}>
+                                    {/* <MdOutlineLogout size={35} className='inline-block mr-2' /> */}
+                                    Logout
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={deleteaccount}>
+                                    {/* <MdOutlineDeleteOutline size={35} className='inline-block mr-2' /> */}
+                                    delete accout
+                                </button>
                             </li>
                         </ul>
                     </div>

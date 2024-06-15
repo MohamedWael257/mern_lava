@@ -43,6 +43,10 @@ const productsslice = createSlice({
                     itemquantity: action.payload[key].itemquantity,
                     favourit: action.payload[key].favourit,
                     rating: action.payload[key].rating,
+                    bodyStyle: action.payload[key]?.bodyStyle,
+                    model: action.payload[key]?.model,
+                    color: action.payload[key]?.color,
+                    serviceprice: action.payload[key]?.serviceprice
                 })
             }
 

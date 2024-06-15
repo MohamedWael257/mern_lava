@@ -10,7 +10,6 @@ import { addtocart } from '../../../redux/slice/cartslice';
 import { addtofavourit, favourititem } from '../../../redux/slice/favouritslice';
 import axios from 'axios';
 import { getProducts } from '../../../redux/slice/productsslice';
-
 import { AuthContext } from "../../../context/AuthContext"
 function Productsitem({ product, category }) {
     const { currentUser } = useContext(AuthContext)

@@ -3,16 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ordershistory } from '../../../../redux/slice/orderslice';
 import axios from 'axios';
 import { AuthContext } from '../../../../context/AuthContext'
-import { carsdata } from '../../../../redux/slice/carsslice'
-import { accessoriesdata } from '../../../../redux/slice/accessoriesslice'
 import { FiHeart, FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { addtocart } from '../../../../redux/slice/cartslice';
 import { addtofavourit } from '../../../../redux/slice/favouritslice';
+import { productsdata } from '../../../../redux/slice/productsslice';
 const Recommendation = () => {
     const dispatch = useDispatch()
     const [products, setProducts] = useState([]);
-    const Cars = useSelector(carsdata)
-    const Accsseories = useSelector(accessoriesdata)
+    const productsDB = useSelector(productsdata)
     const getorders = useSelector(ordershistory)
     const { currentUser } = useContext(AuthContext)
     let orders = []
@@ -41,20 +39,14 @@ const Recommendation = () => {
     useEffect(() => {
         let arr = []
         for (const key of removeDuplicatesArray) {
-            Cars.filter(ele => {
+            productsDB.filter(ele => {
                 if (ele.title == key) {
                     arr.push(ele);
                     setProducts(arr)
                     // console.log(ele);
                 }
             })
-            Accsseories.filter(ele => {
-                if (ele.title == key) {
-                    arr.push(ele);
-                    setProducts(arr)
-                    // console.log(ele);
-                }
-            })
+
         }
     }, [])
     // const countDuplicates = (arr) => {

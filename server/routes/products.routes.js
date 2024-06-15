@@ -1,5 +1,5 @@
 import express from "express";
-import { productsData, accessoriesData, add_accessory, delete_accessory, carsData, add_car, delete_car, servicesData, add_service, delete_service, edit_accessory, edit_car, edit_service, get_product, add_product, edit_product, delete_product } from "../controllers/product.controller.js";
+import { productsData, servicesData, add_service, delete_service, edit_service, get_product, add_product, edit_product, delete_product } from "../controllers/product.controller.js";
 import upload_product from "../multer/product.multer.js";
 import upload_service from "../multer/service.multer.js";
 import { body, param, } from "express-validator";
@@ -44,15 +44,6 @@ router.get("/delete-product/:id",
     delete_product
 );
 
-router.get("/accessoriesData", accessoriesData);
-router.post("/add-accessory", add_accessory);
-router.put("/edit-accessory/:id", edit_accessory);
-router.get("/delete-accessory/:id", delete_accessory);
-
-router.get("/carsData", carsData);
-router.post("/add-car", add_car);
-router.put("/edit-car/:id", edit_car);
-router.get("/delete-car/:id", delete_car);
 
 router.get("/servicesData", servicesData);
 router.post("/add-service",

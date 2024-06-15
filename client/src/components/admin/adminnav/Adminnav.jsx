@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 // import'from "./Adminnav.module.css"
 import '../../profile/profilenav/Profilenav.css'
 import { FaUserCircle } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from '../../../context/AuthContext'
 const Adminnav = () => {
@@ -17,11 +16,11 @@ const Adminnav = () => {
             </div>
             <div className='listcontainer'>
                 <ul className='list'>
-                    <li>
+                    {/* <li>
                         <NavLink to="/admin/dashboard" className={activelink}>
                             Dashboard
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to="/admin/all-users" className={activelink}>
                             All Users
@@ -42,27 +41,6 @@ const Adminnav = () => {
                             Add Product
                         </NavLink>
                     </li>
-
-                    {/* <li>
-                        <NavLink to="/admin/all-cars" className={activelink}>
-                            All Cars
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/admin/add-car/Add" className={activelink}>
-                            Add Car
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/admin/all-accessories" className={activelink}>
-                            All Accessories
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/admin/add-accessory/Add" className={activelink}>
-                            Add Accessory
-                        </NavLink>
-                    </li> */}
                     <li>
                         <NavLink to="/admin/home-booking" className={activelink}>
                             Booking

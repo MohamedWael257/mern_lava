@@ -3,8 +3,6 @@ export default {
         name: 'Mern-Lava',
         apiURL: process.env.BASE_API_URL,
         clientURL: process.env.CLIENT_URL,
-        // dd: window.location.host.includes('localhost') ? process.env.REACT_CLIENT_URL : process.env.FLUTTER_CLIENT_URL
-        // appname: [window.location.hostname]
     },
     codes: {
         FAILD: "Faild",

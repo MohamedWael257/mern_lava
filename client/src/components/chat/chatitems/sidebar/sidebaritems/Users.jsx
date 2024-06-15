@@ -9,6 +9,7 @@ const Users = ({ users, onUserClick, selectedUser }) => {
     const sortedUsers = [...users].sort((a, b) => {
         return a.username.localeCompare(b.username);
     });
+    console.log(sortedUsers);
     return (
         <div className="overflow-y-auto h-[calc(100vh-128px)]   p-2">
             {sortedUsers.map((user) => {
