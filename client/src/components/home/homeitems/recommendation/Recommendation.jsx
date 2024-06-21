@@ -5,8 +5,8 @@ import axios from 'axios';
 import { AuthContext } from '../../../../context/AuthContext'
 import { FiHeart, FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { addtocart } from '../../../../redux/slice/cartslice';
-import { addtofavourit } from '../../../../redux/slice/favouritslice';
-import { productsdata } from '../../../../redux/slice/productsslice';
+import { getProducts, productsdata } from '../../../../redux/slice/productsslice';
+import { toast } from 'react-toastify';
 const Recommendation = () => {
     const dispatch = useDispatch()
     const [products, setProducts] = useState([]);
@@ -71,7 +71,22 @@ const Recommendation = () => {
     //         }
     //     })
     // }, [])
-
+    const add_to_wishlist = async (ele) => {
+        await axios.post(`${process.env.BASE_API_URL_HOST}/wishlist/add-wishlist`, { uid: currentUser?._id, product_ID: ele.id })
+            .then(res => toast.success(res.data.message, {
+                position: "top-left",
+            }))
+            .catch(err => { toast.error(`${ele.title} can't be added to Wishlist`) })
+        dispatch(getProducts())
+    }
+    const delete_from_wishlist = async (ele) => {
+        await axios.post(`${process.env.BASE_API_URL_HOST}/wishlist/delete-wishlist`, { uid: currentUser?._id, product_ID: ele.id })
+            .then(res => toast.success(res.data.message, {
+                position: "top-left",
+            }))
+            .catch(err => { toast.error(`${ele.title} can't be delete from Wishlist`) })
+        dispatch(getProducts())
+    }
     return (
         <>
             <div className='recommendation storingg'>
@@ -86,7 +101,12 @@ const Recommendation = () => {
                             <p className="card-price">{+ele.price * ele.itemquantity} EGB</p>
                             <div className="add-to-cart">
                                 <i onClick={() => dispatch(addtocart(ele))}><FiShoppingCart /></i>
-                                <i onClick={() => dispatch(addtofavourit(ele))}><FiHeart /></i>
+                                {
+                                    ele.favourit === true ?
+                                        <i onClick={() => delete_from_wishlist(ele)}><FiHeart color='red ' /></i>
+                                        :
+                                        <i onClick={() => add_to_wishlist(ele)}><FiHeart /></i>
+                                }
                                 <i onClick={() => navigate(`/productdetails/${ele.id}/${category}`)}><FiSearch /></i>
 
                             </div>

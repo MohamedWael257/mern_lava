@@ -3,7 +3,6 @@ import ChatHeader from './maincontnentitems/ChatHeader';
 import Chats from './maincontnentitems/Chats';
 import Input from './maincontnentitems/Input';
 import { useSelector } from 'react-redux';
-import { authuser } from '../../../../redux/slice/authslice';
 import { AuthContext } from '../../../../context/AuthContext';
 
 const MainContent = ({ selectedUser, setSelectedUser, activetype, setActivetype }) => {

@@ -27,12 +27,12 @@ const Portfolio = memo(() => {
         }
     };
     const images = [
-        { image: Image1 },
-        { image: Image2 },
-        { image: Image3 },
-        { image: Image4 },
-        { image: Image5 },
-        { image: Image6 },
+        { id: 1, image: Image1 },
+        { id: 2, image: Image2 },
+        { id: 3, image: Image3 },
+        { id: 4, image: Image4 },
+        { id: 5, image: Image5 },
+        { id: 6, image: Image6 },
     ]
     return (
         <>
@@ -45,7 +45,7 @@ const Portfolio = memo(() => {
                 <OwlCarousel className='owl-theme' loop autoplay margin={20} responsive={options.responsive} items={4} >
                     {images.map(ele =>
                     (
-                        <div className="portfolio-item">
+                        <div className="portfolio-item" key={ele.id}>
                             <div className="portfolio-img">
                                 <img src={ele.image} alt="" />
                             </div>

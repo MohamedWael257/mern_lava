@@ -8,7 +8,7 @@ import keys from "../config/keys.js";
 import { validationResult } from "express-validator";
 const { FAILD, FAILD_CODE, SUCCESS, SUCCESS_CODE } = keys.codes
 const { secret, tokenLife } = keys.jwt;
-const { clientURL } = keys.app
+const { clientURL, apiURL } = keys.app
 import { sendMail } from "../services/nodemailer.js"
 
 export const register = async (req, res) => {
@@ -39,7 +39,7 @@ export const register = async (req, res) => {
             email,
             phoneNumber,
             password: encryptedPassword,
-            photoimage: `http://localhost:5000/uploads/avatar/${imageName}`
+            photoimage: `${apiURL}/uploads/avatar/${imageName}`
         });
         await sendMail(email, 'signup', null, { username: username })
         return res.json({
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
 
             // if (user.__v === 0) {
             //     const key = Math.floor(Math.random() * 1000000 + 1)
-            //     // // const url = `http://localhost:5000/api/auth/jwt.verify/${token}`
+            //     // // const url = `${apiURL}/api/auth/jwt.verify/${token}`
             //     const url = `${clientURL}/otp?key=${key}&token=${token}`
             //     //     const transporter = nodemailer.createTransport({
             //     //         service: 'gmail',

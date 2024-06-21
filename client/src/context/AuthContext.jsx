@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useDispatch } from "react-redux";
-import { removeActiveUserHandler, setActiveUserHandler } from "../redux/slice/authslice";
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const cookies = new Cookies();
@@ -16,18 +15,15 @@ export const AuthProvider = ({ children }) => {
                 .then((res) => {
                     if (res.data.data == "token expired") {
                         setCurrentUser(null)
-                        dispatch(removeActiveUserHandler())
                         setLoading(false)
                     }
                     else {
                         setCurrentUser(res.data.data);
-                        dispatch(setActiveUserHandler(res.data.data))
                         setLoading(false)
                     }
                 });
         }
         else {
-            dispatch(removeActiveUserHandler())
             setCurrentUser(null)
             setLoading(false)
         }

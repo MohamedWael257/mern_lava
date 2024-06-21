@@ -1,16 +1,13 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import authslice from './slice/authslice';
 import cartslice from './slice/cartslice';
 import filterslice from './slice/filterslice';
 import orderslice from './slice/orderslice';
 import bookingslice from './slice/bookingslice';
-import favouritslice from './slice/favouritslice';
 import serviceslice from './slice/serviceslice';
 import notificationlice from './slice/notificationslice'
 import productsslice from './slice/productsslice';
 import wishlistslice from './slice/wishlistslice';
 const rootreducer = combineReducers({
-    auth: authslice.reducer,
     cart: cartslice.reducer,
     products: productsslice.reducer,
     service: serviceslice.reducer,
@@ -18,7 +15,6 @@ const rootreducer = combineReducers({
     order: orderslice.reducer,
     filter: filterslice.reducer,
     booking: bookingslice.reducer,
-    favourit: favouritslice.reducer,
     notification: notificationlice.reducer
 });
 const store = configureStore({

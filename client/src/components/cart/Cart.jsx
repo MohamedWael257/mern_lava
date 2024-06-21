@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, cartitem, clearcart, decrease, removefromcart, totalprice, totalquantity } from '../../redux/slice/cartslice'
-import { favourititem } from '../../redux/slice/favouritslice'
 import { PiHeartBreakFill } from "react-icons/pi";
 import Recommendation from '../home/homeitems/recommendation/Recommendation'
 
@@ -18,7 +17,6 @@ const Cart = () => {
     const cart = useSelector(cartitem)
     const totprice = useSelector(totalprice)
     const totquantity = useSelector(totalquantity)
-    const favourit = useSelector(favourititem)
 
     return (
         <>
@@ -101,23 +99,7 @@ const Cart = () => {
                     </>
                 }
             </section>
-            {/* {(favourit && favourit.length > 0) &&
-                    <section className='favourit'>
-                        <h2>Favourit Products</h2>
-                        <div className='favourit-cards'>
-                            {favourit.map((ele, index) => {
-                                return (
-                                    <div key={index} className='favourit-card'>
-                                        <img src={ele.ImageUrl} />
-                                        <p>Product : {ele.title}</p>
-                                        <p>Category : {ele.category}</p>
-                                        <IoIosHeart onClick={() => deletefromfavoruit(ele)} color='red' size={35} />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </section>
-                } */}
+
 
 
         </>

@@ -24,7 +24,7 @@ export const booking = async (req, res) => {
             bookingitem,
         });
         await booking.save();
-        const findUser = await User.find({ uid })
+        const findUser = await User.findOne({ _id: uid })
         await sendMail(findUser.email, 'booking-confirmation', null, {
             _id: booking._id,
             user: findUser.username,

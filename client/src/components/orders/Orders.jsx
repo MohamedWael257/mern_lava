@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./Orders.css"
 import { useSelector } from 'react-redux'
 import axios from 'axios'
-import { authuser } from '../../redux/slice/authslice'
 import { AuthContext } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
 import { ordershistory } from '../../redux/slice/orderslice'

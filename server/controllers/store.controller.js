@@ -30,7 +30,7 @@ export const checkout = async (req, res) => {
                 }
             );
         }
-        const findUser = await User.find({ uid })
+        const findUser = await User.findOne({ _id: uid })
         await sendMail(findUser.email, 'order-confirmation', null, {
             _id: orders._id,
             user: findUser.username,

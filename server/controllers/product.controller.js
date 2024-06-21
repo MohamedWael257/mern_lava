@@ -5,6 +5,7 @@ import keys from "../config/keys.js"
 import Seen from "../models/seen.model.js";
 import Rate from "../models/rate.model.js"
 const { FAILD, FAILD_CODE, SUCCESS, SUCCESS_CODE } = keys.codes
+const { apiURL } = keys.app
 export const productsData = async (req, res) => {
 
     try {
@@ -107,7 +108,7 @@ export const add_product = async (req, res) => {
             description,
             category,
             price,
-            ImageUrl: `http://localhost:5000/uploads/product/${imageName}`,
+            ImageUrl: `${apiURL}/uploads/product/${imageName}`,
             brand,
         });
         await newProduct.save();
@@ -165,7 +166,7 @@ export const edit_product = async (req, res) => {
                         description,
                         brand,
                         price,
-                        ImageUrl: `http://localhost:5000/uploads/product/${req.file.filename}`,
+                        ImageUrl: `${apiURL}/uploads/product/${req.file.filename}`,
                         category
                     }
                 }
@@ -233,7 +234,7 @@ export const add_service = async (req, res) => {
             description,
             serviceprice,
             serviceduration,
-            ImageUrl: `http://localhost:5000/uploads/service/${imageName}`,
+            ImageUrl: `${apiURL}/uploads/service/${imageName}`,
         });
         await newProduct.save();
         return res.json({ message: 'Service created successfully' });
@@ -286,7 +287,7 @@ export const edit_service = async (req, res) => {
                         description,
                         serviceprice,
                         serviceduration,
-                        ImageUrl: `http://localhost:5000/uploads/service/${req.file.filename}`,
+                        ImageUrl: `${apiURL}/uploads/service/${req.file.filename}`,
 
                     }
                 }

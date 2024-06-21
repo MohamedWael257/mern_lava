@@ -1,13 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
-import { authuser } from '../../../../../redux/slice/authslice';
 import { useSelector } from 'react-redux';
 import { AuthContext } from '../../../../../context/AuthContext';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 const CurrentUser = () => {
-    // const currentUser = useSelector(authuser);
     const { currentUser } = useContext(AuthContext)
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()

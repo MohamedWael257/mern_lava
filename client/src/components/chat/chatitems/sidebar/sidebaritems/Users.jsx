@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
 import { FaRegUserCircle } from 'react-icons/fa'
-import { authuser } from '../../../../../redux/slice/authslice';
 import { useSelector } from 'react-redux';
 import { AuthContext } from '../../../../../context/AuthContext';
 const Users = ({ users, onUserClick, selectedUser }) => {
-    // const currentUser = useSelector(authuser);
     const { currentUser } = useContext(AuthContext)
     const sortedUsers = [...users].sort((a, b) => {
         return a.username.localeCompare(b.username);

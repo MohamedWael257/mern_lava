@@ -2,7 +2,6 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import './Checkout.css'
 import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
-import { authuser } from '../../redux/slice/authslice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthContext'
@@ -27,8 +26,8 @@ const Checkout = () => {
             { orderdate: dateTime, orderamount: totprice, uid: currentUser?._id, orderitem: cart })
             .then(res => console.log(res))
             .catch(err => console.log(err))
-        dispatch(getorders());
-        dispatch(clearcart());
+        // dispatch(getorders());
+        // dispatch(clearcart());
         toast.success("Payment successful", {
             position: "top-right",
         });
@@ -41,7 +40,7 @@ const Checkout = () => {
         toast.info("Check Your Notification", {
             position: "bottom-right",
         });
-        navigate("/")
+        // navigate("/")
     }
     useEffect(() => {
         if (cart.length === 0) {

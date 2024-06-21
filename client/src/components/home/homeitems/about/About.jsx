@@ -25,7 +25,7 @@ const About = () => {
     // }
     return (
         <>
-            <section className="aboutref p-6" ref={aboutref}>
+            <section className="aboutref " ref={aboutref}>
                 <div className="container min-h-64">
                     <div className="cards text-center grid md:grid-cols-2 lg:grid-cols-4">
                         <div className="card">

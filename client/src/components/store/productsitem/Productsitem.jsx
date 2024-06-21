@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { addtocart } from '../../../redux/slice/cartslice';
-import { addtofavourit, favourititem } from '../../../redux/slice/favouritslice';
 import axios from 'axios';
 import { getProducts } from '../../../redux/slice/productsslice';
 import { AuthContext } from "../../../context/AuthContext"
