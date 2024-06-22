@@ -15,7 +15,7 @@ import { productsdata } from '../../../redux/slice/productsslice'
 const Bookingdetails = () => {
     const services = useSelector(servicesdata)
     const products = useSelector(productsdata)
-    const cars = [...new Set(products?.filter((car) => car.category == "cars"))];
+    const cars = [...new Set(products?.filter((car) => car.category == "Cars"))];
     const [bodystyle, setBodystyle] = useState(null)
     const [typebrand, setTypebrand] = useState('')
     const [typemodel, setTypemodel] = useState('')
