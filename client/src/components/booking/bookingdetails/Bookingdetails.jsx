@@ -15,7 +15,7 @@ import { productsdata } from '../../../redux/slice/productsslice'
 const Bookingdetails = () => {
     const services = useSelector(servicesdata)
     const products = useSelector(productsdata)
-    const cars = [...new Set(products?.filter((car) => car.category == "cars"))];
+    const cars = [...new Set(products?.filter((car) => car.category == "Cars"))];
     const [bodystyle, setBodystyle] = useState(null)
     const [typebrand, setTypebrand] = useState('')
     const [typemodel, setTypemodel] = useState('')
@@ -92,6 +92,7 @@ const Bookingdetails = () => {
         dispatch(confirmbookingdetails({ selected: selected, hour: hour }))
         navigate('/Bookingconfirm')
     }
+    console.log(hour);
     return (
         <>
             {/* <ToastContainer /> */}
@@ -151,27 +152,27 @@ const Bookingdetails = () => {
                                                     )
                                                 })}
                                             </select>
-                                            <input type="text" className='bg-transparent border-2 border-black p-3 rounded-xl text-xl' value={platenumber} placeholder='Plate Number' onChange={(e) => setPlatenumber(e.target.value)} />
+                                            <input type="text" className='bg-transparent border-2 border-black p-3 rounded-xl text-xl' value={platenumber} maxLength={3} placeholder='Plate Number' onChange={(e) => setPlatenumber(e.target.value)} />
                                             <br />
                                         </>
                                     }
-                                    {typemodel && platenumber &&
+                                    {typemodel && platenumber && platenumber.length === 3 &&
                                         <>
                                             <label htmlFor="">car Color</label>
                                             <div className="color flex">
                                                 {color && color.map((cat, index) => {
                                                     return (
-                                                        <p key={index} className={`w-10 h-10 mx-2 rounded-full cursor-pointer border-white  border-2`} style={{ backgroundColor: `${cat}` }} onClick={() => setTypecolor(cat)}></p>
+                                                        <p key={index} className={`w-10 h-10 mx-2 rounded-full cursor-pointer border-black  border-2`} style={{ backgroundColor: `${cat}` }} onClick={() => setTypecolor(cat)}></p>
                                                         // <option key={index} value={cat}>{cat}</option>
                                                     )
                                                 })}
                                             </div>
                                         </>
                                     }
-                                    {typecolor &&
-                                        <div className='bg-gray-400 w-[400px] flex justify-between items-center px-2 my-6 rounded-xl'>
-                                            <span >{totprice} EGB</span>
-                                            <button className='confirm rounded-xl text-2xl py-3 px-6 bg-sky-700' onClick={confirmservices_details}>Next</button>
+                                    {typebrand && typemodel && platenumber && platenumber.length === 3 && typecolor &&
+                                        <div className='bg-slate-400 w-[400px] flex justify-between items-center px-2 my-6 rounded-xl'>
+                                            {/* <span >{totprice} EGB</span> */}
+                                            <button className='confirm rounded-xl text-2xl py-3 px-6 text-white bg-[#007bff]' onClick={confirmservices_details}>Next</button>
                                         </div>
                                     }
                                 </div>
@@ -197,7 +198,7 @@ const Bookingdetails = () => {
                                 hoursAm.map((ele, index) => {
                                     return (
                                         <>
-                                            <p key={index} onClick={() => setHour(ele + " AM")}>{ele}AM</p>
+                                            <p className={`${hour.includes(ele) ? "text-black" : "text-white bg-[#007bff]"}`} key={index} onClick={() => setHour(ele + " AM")}>{ele}AM</p>
                                         </>
                                     )
                                 })
@@ -207,7 +208,7 @@ const Bookingdetails = () => {
                                 hoursPm.map((ele, index) => {
                                     return (
                                         <>
-                                            <p key={index} onClick={() => setHour(ele + " PM")}>{ele}PM</p>
+                                            <p className={`${hour.includes(ele) ? "text-black" : "text-white bg-[#007bff]"}`} key={index} onClick={() => setHour(ele + " PM")}>{ele}PM</p>
                                         </>
                                     )
                                 })
@@ -218,7 +219,7 @@ const Bookingdetails = () => {
                             <>
                                 <p className='my-4'>{selected + ' : ' + hour}</p>
                                 {/* <p>{selectedDate}</p> */}
-                                <button className='confirm rounded-xl text-2xl py-3 px-6 bg-sky-700' onClick={confirmbooking}>Next</button>
+                                <button className='confirm rounded-xl text-2xl py-3 px-6 text-white bg-[#007bff]' onClick={confirmbooking}>Next</button>
                             </>
                         }
                     </>

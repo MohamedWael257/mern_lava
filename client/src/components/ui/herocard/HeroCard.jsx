@@ -8,7 +8,7 @@ const HeroCard = ({ page }) => {
             <div className="container">
 
                 <div className="hero-content">
-                    <h2>{page}</h2>
+                    <h2> {page} Page</h2>
                     <div>
                         <Link to={"/"}>Home </Link>
                         //

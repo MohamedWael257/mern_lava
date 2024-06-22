@@ -39,25 +39,28 @@ const ChatHeader = ({ selectedUser, setSelectedUser, currentUser }) => {
                         <BsTelephone size={25} />
                     </Link> */}
                     {/* <BsCameraVideo size={25} /> */}
-                    <div>
-                        <div
-                            className={`cursor-pointer p-2 ${toggleMore ? "bg-slate-200  " : ""
-                                } rounded-full`}
-                            onClick={() => setToggleMore(!toggleMore)}
-                        >
-                            <FiMoreHorizontal size={25} />
-                        </div>
-                        {toggleMore && (
-                            <div className="absolute top-14 right-4 w-48 bg-white  py-2 rounded shadow border z-10">
-                                <div
-                                    className="cursor-pointer hover:bg-slate-100  py-2 px-5 text-slate-700  flex gap-2 items-center"
-                                    onClick={handleClearMessages}
-                                >
-                                    Clear messages
-                                </div>
+                    {currentUser?.email == "admin@gmail.com" &&
+                        <div>
+                            <div
+                                className={`cursor-pointer p-2 ${toggleMore ? "bg-slate-200  " : ""
+                                    } rounded-full`}
+                                onClick={() => setToggleMore(!toggleMore)}
+                            >
+                                <FiMoreHorizontal size={25} />
                             </div>
-                        )}
-                    </div>
+                            {toggleMore && (
+                                <div className="absolute top-14 right-4 w-48 bg-white  py-2 rounded shadow border z-10">
+
+                                    <div
+                                        className="cursor-pointer hover:bg-slate-100  py-2 px-5 text-slate-700  flex gap-2 items-center"
+                                        onClick={handleClearMessages}
+                                    >
+                                        Clear messages
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    }
                 </div>
             </div>
         </>

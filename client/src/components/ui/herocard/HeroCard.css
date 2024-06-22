@@ -32,9 +32,9 @@
     width: 65%;
     top: 38%;
     left: 38%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    text-align: start;
+    transform: translate(-50%, 80%);
+    /* text-align: center; */
+    /* text-align: start; */
     color: white;
 }
 

@@ -26,8 +26,8 @@ const Checkout = () => {
             { orderdate: dateTime, orderamount: totprice, uid: currentUser?._id, orderitem: cart })
             .then(res => console.log(res))
             .catch(err => console.log(err))
-        // dispatch(getorders());
-        // dispatch(clearcart());
+        dispatch(getorders());
+        dispatch(clearcart());
         toast.success("Payment successful", {
             position: "top-right",
         });
@@ -40,7 +40,7 @@ const Checkout = () => {
         toast.info("Check Your Notification", {
             position: "bottom-right",
         });
-        // navigate("/")
+        navigate("/")
     }
     useEffect(() => {
         if (cart.length === 0) {

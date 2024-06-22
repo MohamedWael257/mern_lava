@@ -3,14 +3,14 @@ import Chats from "../models/chats.model.js";
 import installTimestamp from 'install-timestamp';
 const ts = installTimestamp();
 export const add_chat = async (req, res) => {
-    const { senderId, receiverId, message } = req.body;
+    const { senderId, receiverId, message, timestamp } = req.body;
     try {
         await Chats.create({
             senderId,
             receiverId,
             message,
             // imageUrl,
-            timestamp: ts
+            timestamp: timestamp
         });
         return res.send({ status: "Payment successful" });
     }
@@ -39,7 +39,7 @@ export const clear_chat = async (req, res) => {
         // Chats.deleteMany({ senderId: { $nin: [userid, selectedid] } }, function (err, res) {
         //     console.log(err);
         // });
-        return res.send({ status: "Ok", data: "Deleted" });
+        return res.send({ status: "Ok", data: "Messages is Deleted" });
     } catch (error) {
         return res.send({ status: "Error", data: 'Failed to Clearing chats' });
     }

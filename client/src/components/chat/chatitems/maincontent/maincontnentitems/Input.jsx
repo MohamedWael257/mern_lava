@@ -13,10 +13,11 @@ const Input = ({ selectedUser, currentUser, activetype, setActivetype }) => {
         setMessage("");
         if (message.trim() !== "") {
             const serverTimestamp = new Date().toISOString();
+            console.log(serverTimestamp);
             await axios.post(`${process.env.BASE_API_URL_HOST}/chat/add-chat`, {
                 senderId: currentUser?._id,
                 receiverId: selectedUser._id,
-                message,
+                message: message,
                 timestamp: serverTimestamp
             })
                 .then(res => toast.success(res.data))

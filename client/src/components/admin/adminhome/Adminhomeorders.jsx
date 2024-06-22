@@ -33,7 +33,7 @@ const Adminhomeorders = () => {
                 <div className={`${styles.box} ${styles.card2}`}>
                     <p>Products</p>
                     <div className={styles.content}>
-                        <p>{product}</p>
+                        <p>{product.length}</p>
                         {productIcon}
                     </div>
                 </div>
