@@ -67,19 +67,33 @@ const Notification = () => {
                 {sortedNotification && sortedNotification.length > 0 ?
                     sortedNotification.map((notification) => {
                         return (
-                            <div className='card' key={notification._id}>
-                                <p>{notification.title}</p>
-                                <p>{notification.price}</p>
-                                <p>{notification.description}</p>
-                                <p>
-                                    {
-                                        notification.date &&
-                                        formatRelativeTime(Date.now() - notification.date)
-                                    }
-                                </p>
+                            <div class="notifications__item">
+                                <div class="notifications__item__avatar">
+                                    <img src={currentUser?.photoimage} />
+                                </div>
+
+                                <div class="notifications__item__content">
+                                    <span class="notifications__item__title">{notification.title}</span>
+                                    <span class="notifications__item__message">{notification.description}</span>
+                                </div>
+
+                                <div>
+                                    <div class="notifications__item__option archive js-option">
+                                        <span>{notification.price} EGB</span>
+                                    </div>
+                                    {/* <div onClick={() => deleteNotification(notification.uid)} class="notifications__item__option delete js-option"> */}
+                                    <div class="notifications__item__option delete js-option">
+                                        <span>{
+                                            notification.date &&
+                                            formatRelativeTime(Date.now() - notification.date)
+                                        }</span>
+                                    </div>
+                                </div>
                             </div>
+
                         );
                     })
+
                     :
                     <>
                         {/* <h5 className="text-black">Notification is empty !</h5> */}

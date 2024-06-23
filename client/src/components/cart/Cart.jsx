@@ -61,9 +61,9 @@ const Cart = () => {
                                 });
                             }}>Clear Cart</button> */}
                             <button className='clear' onClick={() => dispatch(clearcart())}>Clear Cart</button>
-                            <div className="price">
+                            <div className="price flex justify-between mt-3">
                                 <span>Sub ({totquantity} items):</span>
-                                <span> EGB {totprice}</span>
+                                <span > EGB {totprice}</span>
                             </div>
                             <hr />
                             <br />
@@ -86,6 +86,7 @@ const Cart = () => {
                             </div>
                         </div>
                         {/* <Recommendation /> */}
+                        {/* <Recommendation cart={cart} /> */}
                     </>
                     : <>
                         <div className="nocart bg-dark p-5 text-center ng-star-inserted">
@@ -99,7 +100,10 @@ const Cart = () => {
                     </>
                 }
             </section>
-
+            {/* {
+                cart.length > 0 &&
+                <Recommendation />
+            } */}
 
 
         </>

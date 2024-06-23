@@ -6,6 +6,7 @@ import './Bookingconfirm.css'
 import { AuthContext } from '../../../context/AuthContext'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { getNotification } from '../../../redux/slice/notificationslice'
 const Bookingconfirm = () => {
     const booking = useSelector(bookingitem)
     const totprice = useSelector(totalprice)
@@ -45,10 +46,10 @@ const Bookingconfirm = () => {
         dispatch(clearcart());
         const time = Date.now()
         await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`,
-            { uid: currentUser?._id, date: time, price: totprice, title: title ? title : 'Online Booking', description: desc ? desc : "booking" })
+            { uid: currentUser?._id, date: time, price: totprice, title: 'Online Booking', description: "Booking" })
             .then(res => console.log(res))
             .catch(err => console.log(err))
-        // dispatch(getNotification());
+        dispatch(getNotification());
         toast.info("Check Your Notification", {
             position: "bottom-right",
         });
@@ -57,48 +58,29 @@ const Bookingconfirm = () => {
 
     }
     return (
-        <section className='booking-payment flex items-center justify-center'>
-            <div className='w-[380px] h-[380px] p-5 rounded-xl'>
-                <h2>Payment Total</h2>
-                {
-                    booking && booking.length > 0 &&
-                    booking.map(ele => {
-                        return (
-                            <>
-                                <div className='flex justify-between'>
-                                    <p>Date</p>
-                                    <p>{ele.time}</p>
-                                </div>
-                                <div className='flex justify-between'>
-                                    <p>Details</p>
-                                    <p>{ele.title}</p>
-                                </div>
-                                <div className='flex justify-between'>
-                                    <p>Service Duration</p>
-                                    <p>{ele.serviceduration}</p>
-                                </div>
-                                <hr />
-                                <div className='flex justify-between'>
-                                    <p>Service Price</p>
-                                    <p>{ele.serviceprice} EGB</p>
-                                </div>
-                                <div className='flex justify-between'>
-                                    <p>Tax</p>
-                                    <p>{ele.tax} EGB</p>
-                                </div>
-                                <div className='flex justify-between'>
-                                    <p>Total</p>
-                                    <p>{ele.totprice} EGB</p>
-                                </div>
-                                <div className='flex justify-between'>
-                                    <p>Payment Method</p>
-                                    <p>cash</p>
-                                </div>
-                            </>
-                        )
-                    })
+
+        <section className='checkout'>
+            <div className="confirm cart-summary">
+                <h4 className="mb-30">Booking Summary</h4>
+                {booking && booking.length > 0 &&
+                    <ul>
+                        {booking.map(ele => {
+                            return (
+                                <>
+                                    <li><strong>Date:</strong> <span className='text-neutral-500'>{ele.time}</span></li>
+                                    <li><strong>Details:</strong> <span className='text-neutral-500'>{ele.title}</span></li>
+                                    <li><strong>Service Duration:</strong> <span className='text-neutral-500'>{ele.serviceduration} </span></li>
+                                    <li><strong>Service Price:</strong> <span className='text-neutral-500'>{ele.serviceprice} EGB</span></li>
+                                    <li><strong>Tax:</strong> <span className='text-neutral-500'>{ele.tax} EGB</span></li>
+                                    <li className="cart-total Total"><strong>Total Pay:</strong> <span className='text-[#2db7ff]'>{ele.totprice} EGB</span></li>
+                                </>
+                            )
+                        })}
+                    </ul>
                 }
-                <button onClick={payment}>Confirm Booking</button>
+                <div className="text-end mt-6">
+                    <button className="theme-btn" onClick={payment}>Confirm Payment <i className="far fa-arrow-right"></i></button>
+                </div>
             </div>
         </section>
     )

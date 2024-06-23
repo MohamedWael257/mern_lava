@@ -112,12 +112,12 @@ const Profilenav = ({ setActiveside }) => {
                                     Wishlists
                                 </NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                                 <button>
-                                    {/* <MdHelpOutline size={35} className='inline-block mr-2' /> */}
+                                    <MdHelpOutline size={35} className='inline-block mr-2' />
                                     Help Center
                                 </button>
-                            </li>
+                            </li> */}
                             <li>
                                 <button onClick={logouthandler}>
                                     {/* <MdOutlineLogout size={35} className='inline-block mr-2' /> */}

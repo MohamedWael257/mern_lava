@@ -1,38 +1,24 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Navbar.css'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import Logo from "../../assets/img/logo/03.png"
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../context/AuthContext'
 import { Adminlink } from '../../context/Onlyadmin'
 import Loader from '../loader/Loader'
-import { FaShoppingCart } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
-import { cartitem, totalquantity } from '../../redux/slice/cartslice';
-import Cookies from "universal-cookie";
 import livechat from '../../assets/img/icon/live-chat.svg'
 import mail from '../../assets/img/icon/mail.svg'
 import clock from '../../assets/img/icon/clock.svg'
 import { FiMenu } from 'react-icons/fi';
 
 const Navbar = () => {
-    const cookies = new Cookies();
     const activelink = ({ isActive }) => (isActive && `active`)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const [sidenav, setSidenav] = useState(false)
-    const [sidecart, setSidecart] = useState(false)
     const { currentUser } = useContext(AuthContext)
-    const items = useSelector(cartitem);
-    const totquantity = useSelector(totalquantity)
     const [loading, setLoading] = useState(false)
-    // console.log(currentUser);
-    // const [activeside, setActiveside] = useState(true)
     const showsidenav = () => {
         setSidenav(!sidenav);
     }
-
     const headerref = useRef()
     const [active, setActive] = useState(false)
     const [activeheader, setActiveheader] = useState(false)
@@ -117,27 +103,6 @@ const Navbar = () => {
                                         <NavLink className={activelink} to="/booking">online booking</NavLink>
                                         <NavLink className={activelink} to="/store">store</NavLink>
                                         <NavLink className={activelink} to='/cart'>cart</NavLink>
-
-                                        {
-                                            items && items.length > 0 &&
-                                            < div className={`${sidecart ? "sidecart active" : "sidecart"}`}>
-                                                <button onClick={() => setSidecart(false)}>X</button>
-                                                {
-                                                    items.map((ele, index) => {
-                                                        return (
-                                                            <div key={index}>
-                                                                <p>{ele.title}</p>
-                                                                <p >{ele.itemquantity}</p>
-                                                                <button onClick={() => dispatch(addtocart(ele))}>+</button>
-                                                                <button onClick={() => dispatch(decrease(ele))}>-</button>
-
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                                <Link to='/cart' onClick={() => setSidecart(false)}>View All Cart</Link>
-                                            </div>
-                                        }
                                         <div className="dropdown" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
                                             <button className='dropdown-btn' onClick={() => setActive(!active)}>
                                                 <span>pages</span>

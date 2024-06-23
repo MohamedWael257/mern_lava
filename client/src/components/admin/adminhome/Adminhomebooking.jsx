@@ -22,7 +22,7 @@ const Adminhomebooking = () => {
     })
     return (
         <div className={styles.container}>
-            <h2>Admin Home</h2>
+            <h2 className="font-semibold text-2xl text-[#1f93ff] text-center mt-2 mb-4">Statistics About Booking</h2>
             <div className={styles.infobox}>
                 <div className={`${styles.box} ${styles.card1}`}>
                     <p>Earning</p>

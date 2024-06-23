@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
-import styles from './Slider.module.css'
 import About from './homeitems/about/About'
 import OurServices from './homeitems/our-services/OurServices'
 import ChooseUs from './homeitems/chooseus/ChooseUs'

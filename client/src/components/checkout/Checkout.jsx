@@ -20,10 +20,14 @@ const Checkout = () => {
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
+    var shipping_cost = cart.length * 35
+    var discount = totprice * cart.length * 0.05
+    var vat = cart.length * 20
+    var cart_total = totprice + shipping_cost + vat - discount
     const payment = async (e) => {
         e.preventDefault();
         await axios.post(`${process.env.BASE_API_URL_HOST}/store/checkout`,
-            { orderdate: dateTime, orderamount: totprice, uid: currentUser?._id, orderitem: cart })
+            { orderdate: dateTime, orderamount: cart_total, uid: currentUser?._id, orderitem: cart })
             .then(res => console.log(res))
             .catch(err => console.log(err))
         dispatch(getorders());
@@ -33,7 +37,7 @@ const Checkout = () => {
         });
         const time = Date.now()
         await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`,
-            { uid: currentUser?._id, date: time, price: totprice, title: 'cart', description: 'cart' })
+            { uid: currentUser?._id, date: time, price: totprice, title: 'Shopping', description: 'Orders' })
             .then(res => console.log(res))
             .catch(err => console.log(err))
         dispatch(getNotification());
@@ -47,10 +51,11 @@ const Checkout = () => {
             navigate('/')
         }
     }, [cart.length])
+
     return (
         <>
             <section className='checkout'>
-                <div className="payment">
+                {/* <div className="payment">
                     <div className="payment-widget">
                         <h3 className='payment-widget-title'>Billing Address</h3>
                         <div className="payment-form">
@@ -133,17 +138,16 @@ const Checkout = () => {
 
                         </div>
                     </div>
-
-                </div>
+                </div> */}
                 <div className="confirm cart-summary">
                     <h4 className="mb-30">Cart Summary</h4>
                     <ul>
-                        <li><strong>Product Qty:</strong> <span className='text-neutral-500'>5</span></li>
-                        <li><strong>Shipping Cost:</strong> <span className='text-neutral-500'>$25.00</span></li>
-                        <li><strong>Discount:</strong> <span className='text-neutral-500'>$5.00</span></li>
-                        <li><strong>Vat:</strong> <span className='text-neutral-500'>$20.00</span></li>
-                        <li><strong>Sub Total:</strong> <span className='text-neutral-500'>$4,540.00</span></li>
-                        <li className="cart-total"><strong>Total Pay:</strong> <span className='text-[#2db7ff]'>$4,540.00</span></li>
+                        <li><strong>Product Qty:</strong> <span className='text-neutral-500'>{cart.length}</span></li>
+                        <li><strong>Shipping Cost:</strong> <span className='text-neutral-500'>{shipping_cost} EGB</span></li>
+                        <li><strong>Discount:</strong> <span className='text-neutral-500'>{discount} EGB</span></li>
+                        <li><strong>Vat:</strong> <span className='text-neutral-500'>{vat} EGB</span></li>
+                        <li><strong>Sub Total:</strong> <span className='text-neutral-500'>{totprice} EGB</span></li>
+                        <li className="cart-total"><strong>Total Pay:</strong> <span className='text-[#2db7ff]'>{cart_total} EGB</span></li>
                     </ul>
                     <div className="text-end mt-6">
                         <button className="theme-btn" onClick={payment}>Confirm Payment <i className="far fa-arrow-right"></i></button>

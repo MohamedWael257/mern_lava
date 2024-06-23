@@ -20,14 +20,14 @@ ChartJS.register(
 
 const ChartBooking = (props) => {
     const { order } = props;
-    const mintwo = order.filter((ord) => ord.bookingamount <= 200).length
-    const maxtwo = order.filter((ord) => ord.bookingamount > 200 && ord.bookingamount < 500).length
-    const maxten = order.filter((ord) => ord.bookingamount > 500 && ord.bookingamount <= 1000).length
-    const maxfifteen = order.filter((ord) => ord.bookingamount > 1000 && ord.bookingamount <= 1500).length
-    const maxtwenty = order.filter((ord) => ord.bookingamount > 1500 && ord.bookingamount <= 2000).length
+    const mintwo = order.filter((ord) => ord.bookingamount <= 110).length
+    const maxtwo = order.filter((ord) => ord.bookingamount > 110 && ord.bookingamount < 120).length
+    const maxten = order.filter((ord) => ord.bookingamount > 120 && ord.bookingamount <= 130).length
+    const maxfifteen = order.filter((ord) => ord.bookingamount > 130 && ord.bookingamount <= 140).length
+    const maxtwenty = order.filter((ord) => ord.bookingamount > 140 && ord.bookingamount <= 150).length
 
     const data = {
-        labels: ["2000order>0", "500>order>200", "1000>order>500", "1500>order>1000", "2000>order>1500",],
+        labels: ["110>order>0", "120>order>110", "130>order>120", "140>order>130", "150>order>140",],
         datasets: [
             {
                 label: "Order earn",

@@ -47,7 +47,8 @@ div.cart {
     margin: 10px 0;
 }
 
-.cart .card-details .title {
+.cart .card-details .title strong {
+    text-align: end;
     /* display: flex; */
     /* justify-content: space-between; */
 }
@@ -58,6 +59,12 @@ div.cart {
 
 .card-details strong {
     display: block;
+}
+
+.cart hr,
+.shopping-cart hr {
+    background-color: #2db7ff;
+    height: 3px;
 }
 
 .count {
