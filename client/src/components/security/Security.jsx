@@ -20,15 +20,16 @@ const Security = () => {
     const { currentUser } = useContext(AuthContext)
     const [currentuser, setCurrentuser] = useState([])
     const [loading, setLoading] = useState(false)
-    const [imagePreview, setImagePreview] = useState(currentUser?.photoimage);
-
+    const [imagePreview, setImagePreview] = useState("")
+    const [image, setImage] = useState("");
     useEffect(() => {
         setFullname(currentUser?.fullname)
         setUsername(currentUser?.username)
         setEmail(currentUser?.email)
         setAddress(currentUser?.address)
         setPhoneNumber(currentUser?.phoneNumber)
-        // setImagePreview(currentUser?.photoimage)
+        setImage(currentUser?.photoimage)
+        setImagePreview(currentUser?.photoimage)
         setGender(currentUser?.gender)
     }, [currentUser])
     const onresethandler = async (e) => {
@@ -50,6 +51,7 @@ const Security = () => {
 
     }
     const handleImageChange = async (e) => {
+        setImage(e.target.files[0])
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
@@ -63,11 +65,21 @@ const Security = () => {
     };
     const update_user_data = async (e) => {
         e.preventDefault();
-        const uid = currentUser?._id
-        await axios.post(`${process.env.BASE_API_URL_HOST}/auth/update-user-data`, { uid, email, username, phoneNumber, address, fullname, gender })
+        const formData = new FormData();
+        formData.append("id", currentUser?._id);
+        formData.append("email", email);
+        formData.append("username", username);
+        formData.append("phoneNumber", phoneNumber);
+        formData.append("gender", gender);
+        formData.append("address", address);
+        formData.append("fullname", fullname);
+        formData.append("image", image);
+        await axios.post(`${process.env.BASE_API_URL_HOST}/auth/update-user-data`, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        })
             .then((res) => {
                 // toast.success("check your Email inbox")
-                toast.success(res.data.status)
+                toast.success(res.data.message)
                 setLoading(false)
                 setActiveedit(false)
             })

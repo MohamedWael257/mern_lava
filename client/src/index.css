@@ -77,8 +77,10 @@ li {
   background:
     /* linear-gradient(rgba(45, 183, 255, 0.5),
       rgba(45, 183, 255, 0.5)), url("./assets/chat-background.jpg"); */
-    linear-gradient(rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)), url("./assets/chat-background.jpg");
+    /* linear-gradient(rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)), url("./assets/chat-background.jpg"); */
+    linear-gradient(rgba(68, 64, 60, 0.2),
+      rgba(68, 64, 60, 0.2)), url("./assets/chat-background.jpg");
   background-repeat: repeat;
   /* background-position: top center;
     background-size: cover;

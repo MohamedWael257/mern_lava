@@ -30,8 +30,8 @@ const Addservice = () => {
         const newstate = formkind(id, { ...initialservice }, serviceEdite)
         return newstate
     })
-    const [image, setImage] = useState(curentproduct?.ImageUrl);
-    const [imagePreview, setImagePreview] = useState(curentproduct?.ImageUrl);
+    const [image, setImage] = useState(curentservice?.ImageUrl);
+    const [imagePreview, setImagePreview] = useState(curentservice?.ImageUrl);
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setImage(e.target.files[0])

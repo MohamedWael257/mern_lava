@@ -11,7 +11,6 @@ import Adminhomeorders from "./adminhome/Adminhomeorders";
 import Adminhomebooking from "./adminhome/Adminhomebooking.jsx";
 import { FiMenu } from "react-icons/fi";
 import { AuthContext } from "../../context/AuthContext.jsx";
-import Dashboard from "./dashboard/Dashboard.jsx";
 
 
 const Admin = () => {
@@ -26,7 +25,6 @@ const Admin = () => {
 
                 <div className={`content ${activebar && 'active'}`}>
                     <Routes>
-                        {/* <Route path="dashboard" element={<Dashboard />} /> */}
                         <Route path="all-users" element={<Allusers />} />
                         <Route path="all-products" element={<Allproducts />} />
                         <Route path="add-product/:id" element={<Addproduct />} />

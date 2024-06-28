@@ -98,17 +98,19 @@ router.get('/getAdmin', getAdmin);
 router.post('/deleteUser', deleteUser);
 router.get('/logout', logout);
 router.post('/update-user-data',
-    // [
-    //     body("uid").notEmpty().withMessage("_id is not Valid"),
-    //     body("email")
-    //         .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
-    //         .withMessage("email is not Valid"),
-    //     body("phoneNumber").notEmpty().withMessage("phoneNumber is not Valid"),
-    //     body("username").notEmpty().withMessage("username is not Valid"),
-    //     body("FullName").notEmpty().withMessage("FullName is not Valid"),
-    //     body("address").notEmpty().withMessage("address is not Valid"),
-    //     body("gender").notEmpty().withMessage("gender is not Valid"),
-    // ],
+    upload_avatar.single("image"),
+    [
+        body("id").notEmpty().withMessage("_id is not Valid"),
+        body("email")
+            .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
+            .withMessage("email is not Valid"),
+        body("phoneNumber").notEmpty().withMessage("phoneNumber is not Valid"),
+        body("image").notEmpty().withMessage("Image is not Valid"),
+        body("username").notEmpty().withMessage("username is not Valid"),
+        body("fullName").notEmpty().withMessage("FullName is not Valid"),
+        body("address").notEmpty().withMessage("address is not Valid"),
+        body("gender").notEmpty().withMessage("gender is not Valid"),
+    ],
     update_user_data
 );
 

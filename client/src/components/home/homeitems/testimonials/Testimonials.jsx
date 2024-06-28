@@ -31,39 +31,17 @@ const Testimonials = () => {
 
     return (
         <>
-            {pathname == '/testimonials' &&
+            {/* {pathname == '/testimonials' &&
                 <>
                     <HeroCard page={'Testimonials'} />
                     <Work />
                 </>
-            }
+            } */}
             <section className="testimonials">
                 {/* <div className="overlay"> */}
                 <h3>testimonials</h3>
                 <h2>What Client <span>Say's</span></h2>
-                {/* <OwlCarousel className='cards owl-theme' loop autoplay margin={20} responsive={options.responsive} items={4} >
-                <div className="card">
-                    <div className="card-left">
-                        <img className="card-img" src={Image1} alt="" />
-                        <h3 className="card-name">mohamed</h3>
-                        <p>customer</p>
-                    </div>
-                    <div className="card-right">
-                        <p className="card-desc">
-                            There are many variations of passages available but the majority have
-                            suffered to the alteration in some injected.
-                        </p>
-                        <div className='stars'>
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                        </div>
-                    </div>
-                </div>
-            </OwlCarousel> */}
-                <div className="cards">
+                <OwlCarousel className='cardss owl-theme' loop autoplay margin={20} responsive={options.responsive} items={4} >
                     <div className="card">
                         <div className="card-left">
                             <img className="card-img" src={Image1} alt="" />
@@ -144,7 +122,89 @@ const Testimonials = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </OwlCarousel>
+                {/* <div className="cards">
+                    <div className="card">
+                        <div className="card-left">
+                            <img className="card-img" src={Image1} alt="" />
+                            <h3 className="card-name">mohamed</h3>
+                            <p>customer</p>
+                        </div>
+                        <div className="card-right">
+                            <p className="card-desc">
+                                There are many variations of passages available but the majority have
+                                suffered to the alteration in some injected.
+                            </p>
+                            <div className='stars'>
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-left">
+                            <img className="card-img" src={Image1} alt="" />
+                            <h3 className="card-name">mohamed</h3>
+                            <p>customer</p>
+                        </div>
+                        <div className="card-right">
+                            <p className="card-desc">
+                                There are many variations of passages available but the majority have
+                                suffered to the alteration in some injected.
+                            </p>
+                            <div className='stars'>
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-left">
+                            <img className="card-img" src={Image1} alt="" />
+                            <h3 className="card-name">mohamed</h3>
+                            <p>customer</p>
+                        </div>
+                        <div className="card-right">
+                            <p className="card-desc">
+                                There are many variations of passages available but the majority have
+                                suffered to the alteration in some injected.
+                            </p>
+                            <div className='stars'>
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-left">
+                            <img className="card-img" src={Image1} alt="" />
+                            <h3 className="card-name">mohamed</h3>
+                            <p>customer</p>
+                        </div>
+                        <div className="card-right">
+                            <p className="card-desc">
+                                There are many variations of passages available but the majority have
+                                suffered to the alteration in some injected.
+                            </p>
+                            <div className='stars'>
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
                 {/* </div> */}
             </section>
         </>

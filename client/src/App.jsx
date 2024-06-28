@@ -96,7 +96,7 @@ const App = () => {
               currentUser?.email === "admin@gmail.com" &&
               <Route path='/admin/*' element={<Admin />} />
             }
-            <Route path='/resetpassword/:id/:token' element={<Resetpassword />} />
+            <Route path='/reset-password/:id/:token' element={<Resetpassword />} />
             <Route path='/forgetpassword' element={<Forgetpassword />} />
             <Route path='/otp/:email' element={<Otp />} />
             <Route path='/*' element={< NotFound />} />

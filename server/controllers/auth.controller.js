@@ -3,13 +3,13 @@ import User from "../models/user.model.js";
 import Chats from "../models/chats.model.js";
 import Orders from '../models/orders.model.js';
 import Booking from '../models/booking.model.js';
-import jwt from 'jsonwebtoken';
 import keys from "../config/keys.js";
 import { validationResult } from "express-validator";
 const { FAILD, FAILD_CODE, SUCCESS, SUCCESS_CODE } = keys.codes
 const { secret, tokenLife } = keys.jwt;
 const { clientURL, apiURL } = keys.app
 import { sendMail } from "../services/nodemailer.js"
+import jwt from "../utils/jwt.js";
 
 export const register = async (req, res) => {
     const { username, email, phoneNumber, password } = req.body;
@@ -77,12 +77,7 @@ export const login = async (req, res) => {
             });
         }
         if (await bcrypt.compare(password, user.password)) {
-            // generateTokenAndSetCookie(user._id, res);
-
-            const token = jwt.sign({ email: user.email }, secret, {
-                expiresIn: tokenLife,
-            });
-
+            const token = await jwt.generateTokenAndSetCookie(user.email, res);
             // if (user.__v === 0) {
             //     const key = Math.floor(Math.random() * 1000000 + 1)
             //     // // const url = `${apiURL}/api/auth/jwt.verify/${token}`
@@ -155,7 +150,7 @@ export const verify = async (req, res) => {
     // Step 1 -  jwt.verify the token from the URL
     let payload = null;
     try {
-        payload = jwt.verify(token, secret);
+        payload = await jwt.verify_token(token);
         // res.json(payload)
     }
     catch (err) {
@@ -201,12 +196,7 @@ export const userData = async (req, res) => {
         });
     }
     try {
-        const user = jwt.verify(token, secret, (err, res) => {
-            if (err) {
-                return "token expired";
-            }
-            return res;
-        });
+        const user = await jwt.verify_token(token)
         console.log(user);
         if (user == "token expired") {
             return res.send({ status: "error", data: "token expired" });
@@ -256,12 +246,7 @@ export const forgot_password = async (req, res) => {
                 message: "Email is not exist !",
             });
         }
-        // const buffer = crypto.randomBytes(48);
-        // const token = buffer.toString('hex');
-        // const secret = secret + oldUser.password;
-        const token = jwt.sign({ email: oldUser.email }, secret, {
-            expiresIn: tokenLife
-        });
+        const token = await jwt.generateTokenAndSetCookie(oldUser.email, res);
         const data = { id: oldUser._id, token: token }
         await sendMail(email, 'reset', clientURL, data)
         return res.json(
@@ -289,10 +274,7 @@ export const reset_password_id_token_get = async (req, res) => {
         const data = { id: id, token: token }
         await sendMail(oldUser.email, 'reset', clientURL, data)
         return res.send({ status: "Check your email message" });
-        // const verify = jwt.jwt.verify(token, secret);
-        // res.render("index", { email: jwt.verify.email, status: "Not Verified" });
     } catch (error) {
-        // console.log(error);
         return res.send({ status: error.message });
     }
 };
@@ -305,13 +287,7 @@ export const reset_password_id_token_post = async (req, res) => {
         if (!oldUser) {
             return res.json({ status: "User Not Exists!!" });
         }
-        // const secrett = secret + oldUser.password;
-        const verify = jwt.verify(token, secret, (err, res) => {
-            if (err) {
-                return "token expired";
-            }
-            return res;
-        });;
+        const verify = await jwt.verify_token(token)
         if (verify == "token expired") {
             return res.send({ status: "error", data: "token expired" });
         }
@@ -327,9 +303,7 @@ export const reset_password_id_token_post = async (req, res) => {
             }
         );
         await sendMail(oldUser.email, 'reset-confirmation')
-        // res.render("index", { status: "verified" });
         return res.send({ status: "Reset password successfully" });
-        // res.render("index", { email: jwt.verify.email, status: "verified" });
     }
     catch (error) {
         // console.log(error);
@@ -363,23 +337,18 @@ export const getAdmin = async (req, res) => {
 export const deleteUser = async (req, res) => {
     const { userid } = req.body;
     try {
-        User.deleteOne({ _id: userid }, function (err, res) {
-            console.log(err);
+        await User.deleteOne({ _id: userid })
+        await Chats.deleteMany({ senderId: userid })
+        await Chats.deleteMany({ receiverId: userid })
+        await Orders.deleteMany({ uid: userid })
+        await Booking.deleteMany({ uid: userid })
+        return res.json({
+            status: SUCCESS,
+            status_Code: SUCCESS_CODE,
+            message: "User Deleted Succeessfully !",
         });
-        Chats.deleteMany({ senderId: userid }, function (err, res) {
-            console.log(err);
-        });
-        Chats.deleteMany({ receiverId: userid }, function (err, res) {
-            console.log(err);
-        });
-        Orders.deleteMany({ uid: userid }, function (err, res) {
-            console.log(err);
-        });
-        Booking.deleteMany({ uid: userid }, function (err, res) {
-            console.log(err);
-        });
-        return res.send({ status: "Ok", data: "Deleted" });
-    } catch (error) {
+    }
+    catch (error) {
         console.log(error);
         return res.send(error.message)
     }
@@ -395,7 +364,8 @@ export const logout = (req, res) => {
     }
 };
 export const update_user_data = async (req, res) => {
-    const { uid, email, username, phoneNumber, address, fullname, gender } = req.body
+    const { id, email, username, phoneNumber, address, fullname, gender, image } = req.body
+
     // const Errors = validationResult(req);
     //  // Body Validation Before Searching in the database to increase performance
     // if (!Errors.isEmpty()) {
@@ -406,37 +376,68 @@ export const update_user_data = async (req, res) => {
     //         data: Errors.array().map((arr) => arr.path),
     //     });
     // }
+
     try {
-        const oldUser = await User.findOne({ _id: uid });
+        const oldUser = await User.findOne({ _id: id });
         if (!oldUser) {
             return res.json({ error: "User is not Exists" });
         }
         // User.updateMany({email}, function (err, res) {
         //     console.log(err);
         // });
-        await oldUser.updateOne(
-            { email, username, phoneNumber, address, fullname, gender },
-            {
-                $set: {
-                    username,
-                    phoneNumber,
-                    address,
-                    fullname,
-                    gender,
-                },
-            }
-        )
-        return res.json({
-            status: SUCCESS,
-            status_Code: SUCCESS_CODE,
-            message: "User Updated !",
-        });
+        if (image) {
+            await User.updateOne(
+                { _id: id },
+                // { id, email, username, phoneNumber, address, fullname, gender },
+                {
+                    $set: {
+                        email,
+                        username,
+                        phoneNumber,
+                        address,
+                        fullname,
+                        gender,
+                        photoimage: `${image}`,
+
+                    },
+                })
+            return res.json({
+                status: SUCCESS,
+                status_Code: SUCCESS_CODE,
+                message: "User Updated !",
+            });
+        }
+        else {
+            await User.updateOne(
+                { _id: id },
+                // { id, email, username, phoneNumber, address, fullname, gender },
+                {
+                    $set: {
+                        email,
+                        username,
+                        phoneNumber,
+                        address,
+                        fullname,
+                        gender,
+                        photoimage: `${apiURL}/uploads/avatar/${req.file.filename}`,
+
+                    },
+                }
+            )
+            return res.json({
+                status: SUCCESS,
+                status_Code: SUCCESS_CODE,
+                message: "User Updated !",
+            });
+        }
+
+
     }
     catch (error) {
         return res.json({
             status: FAILD,
             status_Code: FAILD_CODE,
-            message: "User not founded",
+            message: error.message,
         });;
     }
 

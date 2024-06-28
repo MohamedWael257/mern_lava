@@ -10,8 +10,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    /* padding: 2rem 4rem; */
-    padding-top: 4rem;
+    padding: 2rem 4rem;
+    /* padding-top: 4rem; */
     /* overflow: hidden; */
 }
 
@@ -45,15 +45,16 @@
 .testimonials .cards {
     margin-top: 3rem;
     padding: 0 6rem;
-    display: grid;
-    grid-template-columns: repeat(4, 310px);
+    /* display: grid; */
+    /* grid-template-columns: repeat(4, 310px); */
     /* display: flex;
     flex-wrap: wrap;
     justify-content: space-between; */
 
 }
 
-.testimonials .cards .card {
+.testimonials .card {
+    width: 310px;
     margin: 10px;
     /* width: 540px; */
     background-color: #fff;
@@ -64,28 +65,28 @@
     /* display: flex; */
 }
 
-.testimonials .cards .card .card-left {
+.testimonials .card .card-left {
     margin-right: 15px;
     width: 140px;
     /* border-right: 1px solid #05bbfe; */
 }
 
-.testimonials .cards .card .card-left .card-img {
+.testimonials .card .card-left .card-img {
     width: 80px;
     height: 80px;
     border-radius: 32px;
     /* display: none; */
     border-radius: 50%;
     position: absolute;
-    top: -40px;
-    left: 150px;
+    top: 0px;
+    left: 200px;
     /* top: 0px; */
     /* left: 180px; */
     outline: 3px solid #2db7ff;
     outline-offset: 6px;
 }
 
-.testimonials .cards .card .card-left .card-name {
+.testimonials .card .card-left .card-name {
     text-transform: capitalize;
     font-size: 1.2rem;
     font-weight: 600;
@@ -93,41 +94,41 @@
     color: #263787;
 }
 
-.testimonials .cards .card .card-left p {
+.testimonials .card .card-left p {
     color: #2db7ff;
     margin-bottom: 25px;
 }
 
-.testimonials .cards .card .card-right .stars {
+.testimonials .card .card-right .stars {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     /* justify-content: space-evenly; */
 }
 
-.testimonials .cards .card .card-right .stars>* {
+.testimonials .card .card-right .stars>* {
     color: #2db7ff;
     font-size: 1.5rem;
     margin-right: 5px;
 }
 
-/* .testimonials .cards .card .card-left p {} */
+/* .testimonials .card .card-left p {} */
 
-.testimonials .cards .card .card-right {
+.testimonials .card .card-right {
     width: 200px;
     color: #263787;
 }
 
-.testimonials .cards .card .card-right .card-desc {
+.testimonials .card .card-right .card-desc {
     font-size: 1rem;
 }
 
-/* .testimonials .cards .card .card-right .card-icon {
+/* .testimonials .card .card-right .card-icon {
     font-size: 4rem;
     font-weight: 700;
 } */
 
-/* .testimonials .cards .card .card-right .card-title {} */
+/* .testimonials .card .card-right .card-title {} */
 
 .testimonials button {
     padding: 10px 25px;

@@ -12,12 +12,12 @@ import { toast } from 'react-toastify'
 import HeroCard from '../ui/herocard/HeroCard'
 const Contact = () => {
     const { currentUser } = useContext(AuthContext)
-    const [firstname, setFirstname] = useState('false')
-    const [lastname, setLastname] = useState('false')
-    const [email, setEmail] = useState('false')
-    const [phone, setPhone] = useState('false')
-    const [message, setMessage] = useState('false')
-    const [loading, setLoading] = useState(false)
+    const [firstname, setFirstname] = useState('')
+    const [lastname, setLastname] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [message, setMessage] = useState('')
+    const [loading, setLoading] = useState('')
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

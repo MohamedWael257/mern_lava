@@ -44,13 +44,15 @@ const Profilenav = ({ setActiveside }) => {
     }
     const deleteaccount = async () => {
         setLoading(true)
-        await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: currentUser?.uid })
+        await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: currentUser?._id })
             .then((res) => {
-                toast.success("Delete Account Succeessfully")
+                toast.success(res.data.message)
                 setLoading(false)
+                cookies.remove("TOKEN");
+                window.location.href = "../login";
             })
             .catch(err => {
-                toast.error(err)
+                toast.error(err.message)
                 setLoading(false)
             })
     }
