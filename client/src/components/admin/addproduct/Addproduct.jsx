@@ -156,7 +156,7 @@ const Addproduct = () => {
                     <input name="brand" placeholder="product brand" type="text" value={curentproduct?.brand} onChange={(e) => inputChange(e)} />
                     <br />
                     <label>Product Price : </label>
-                    <input name="price" placeholder="product price" type="text" value={curentproduct?.price} onChange={(e) => inputChange(e)} />
+                    <input name="price" placeholder="product price" type="number" value={curentproduct?.price} onChange={(e) => inputChange(e)} />
                     <br />
                     <label>Product Category : </label>
                     <input name="category" placeholder="product category" type="text" value={curentproduct?.category} onChange={(e) => inputChange(e)} />

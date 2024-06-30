@@ -138,7 +138,7 @@ const Addservice = () => {
                     )}
                     <br />
                     <label>Service Price : </label>
-                    <input name="serviceprice" placeholder="Service price" type="text" value={curentservice?.serviceprice} onChange={(e) => inputChange(e)} />
+                    <input name="serviceprice" placeholder="Service price" type="number" value={curentservice?.serviceprice} onChange={(e) => inputChange(e)} />
                     <br />
                     <label>Service duration : </label>
                     <input name="serviceduration" placeholder="Service duration" type="text" value={curentservice?.serviceduration} onChange={(e) => inputChange(e)} />
