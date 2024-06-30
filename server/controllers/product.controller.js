@@ -6,6 +6,8 @@ import Seen from "../models/seen.model.js";
 import Rate from "../models/rate.model.js"
 const { FAILD, FAILD_CODE, SUCCESS, SUCCESS_CODE } = keys.codes
 const { apiURL } = keys.app
+import fs from 'fs'
+
 export const productsData = async (req, res) => {
 
     try {
@@ -133,9 +135,16 @@ export const edit_product = async (req, res) => {
     try {
         // const { id } = req.params
         // const imageName = req.file.filename;
-        const oldProduct = await Products.findOne({ _id: id });
-        if (!oldProduct) {
+
+        const finduser = await Products.findOne({ _id: id });
+        if (!finduser) {
             return res.json({ error: "Product is not Exists" });
+        }
+        const { ImageUrl } = finduser;
+
+        if (ImageUrl.length > 0 && !ImageUrl.includes("uploads/product.jpg")) {
+            const Link = ImageUrl.split("http://localhost:5000/")[1];
+            await fs.unlinkSync(`server/${Link}`);
         }
         if (image) {
             await Products.updateOne(
@@ -198,11 +207,18 @@ export const delete_product = async (req, res) => {
         });
     }
     try {
+        const finduser = await Products.findOne({ _id: id })
+        const { ImageUrl } = finduser;
+
+        if (ImageUrl.length > 0 && !ImageUrl.includes("uploads/avatar.jpg")) {
+            const Link = ImageUrl.split("http://localhost:5000/")[1];
+            await fs.unlinkSync(`server/${Link}`);
+        }
         await Products.deleteOne({ _id: id })
         // await newProduct.save();
-        return res.status(201).json({ message: 'Product deleted successfully' });
+        return res.json({ message: 'Product deleted successfully' });
     } catch (error) {
-        return res.status(500).json({ message: 'Failed to delete product' });
+        return res.json({ message: error.message });
     }
 };
 
@@ -243,6 +259,7 @@ export const add_service = async (req, res) => {
     }
 };
 export const edit_service = async (req, res) => {
+    const { id, title, description, serviceprice, serviceduration, image } = req.body;
     const Errors = validationResult(req);
     // Body Validation Before Searching in the database to increase performance
     if (!Errors.isEmpty()) {
@@ -254,10 +271,15 @@ export const edit_service = async (req, res) => {
         });
     }
     try {
-        const { id, title, description, serviceprice, serviceduration, image } = req.body;
-        const oldService = await Services.findOne({ _id: id });
-        if (!oldService) {
+        const findservice = await Services.findOne({ _id: id });
+        if (!findservice) {
             return res.json({ error: "Service is not Exists" });
+        }
+        const { ImageUrl } = findservice;
+
+        if (ImageUrl.length > 0 && !ImageUrl.includes("uploads/service.jpg")) {
+            const Link = ImageUrl.split("http://localhost:5000/")[1];
+            await fs.unlinkSync(`server/${Link}`);
         }
         if (image) {
             await Services.updateOne(
@@ -319,6 +341,13 @@ export const delete_service = async (req, res) => {
         });
     }
     try {
+        const findservice = await Services.findOne({ _id: id });
+        const { ImageUrl } = findservice;
+
+        if (ImageUrl.length > 0 && !ImageUrl.includes("uploads/service.jpg")) {
+            const Link = ImageUrl.split("http://localhost:5000/")[1];
+            await fs.unlinkSync(`server/${Link}`);
+        }
         await Services.deleteOne({ _id: id })
         // await newProduct.save();
         return res.status(201).json({ message: 'Product deleted successfully' });

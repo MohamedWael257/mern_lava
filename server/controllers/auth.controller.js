@@ -10,7 +10,7 @@ const { secret, tokenLife } = keys.jwt;
 const { clientURL, apiURL } = keys.app
 import { sendMail } from "../services/nodemailer.js"
 import jwt from "../utils/jwt.js";
-
+import fs from "fs"
 export const register = async (req, res) => {
     const { username, email, phoneNumber, password } = req.body;
     const imageName = req.file.filename;
@@ -359,6 +359,12 @@ export const update_user_data = async (req, res) => {
         const oldUser = await User.findOne({ _id: id });
         if (!oldUser) {
             return res.json({ error: "User is not Exists" });
+        }
+        const { ImageUrl } = oldUser;
+
+        if (ImageUrl.length > 0 && !ImageUrl.includes("uploads/service.jpg")) {
+            const Link = ImageUrl.split("http://localhost:5000/")[1];
+            await fs.unlinkSync(`server/${Link}`);
         }
         // User.updateMany({email}, function (err, res) {
         //     console.log(err);

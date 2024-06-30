@@ -27,12 +27,18 @@ const Allproducts = () => {
     const deleteproduct = async (id) => {
         try {
             await axios.get(`${process.env.BASE_API_URL_HOST}/products/delete-product/${id}`)
-                .then(res => console.log(res.data))
-                .catch(err => console.log(err))
-            dispatch(getProducts())
-            toast.success("Product Deleted successful", {
-                position: "top-right",
-            })
+                .then(res => {
+                    console.log(res.data)
+                    dispatch(getProducts())
+                    toast.success(res.data.message, {
+                        position: "top-right",
+                    })
+                })
+                .catch(err => {
+                    toast.error(err.message, {
+                        position: "top-right",
+                    })
+                })
 
         }
         catch (error) {
