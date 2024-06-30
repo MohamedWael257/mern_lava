@@ -7,10 +7,14 @@
 }
 
 .table {
-    width: 800px;
+    margin-top: 10px;
+    width: 1000px;
 
 }
 
+.table th {
+    padding: 10px;
+}
 
 .search input {
     padding: 10px;
@@ -26,8 +30,8 @@
 } */
 
 .imgg {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 15px;
     margin: 0 auto;
 }

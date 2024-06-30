@@ -170,15 +170,10 @@ const Bookingdetails = () => {
                                         </>
                                     }
                                     {typebrand && typemodel && platenumber && platenumber.length === 3 && typecolor &&
-                                        <div className='bg-slate-400 w-[400px] flex justify-between items-center px-2 my-6 rounded-xl'>
-                                            {/* <span >{totprice} EGB</span> */}
-                                            <button className='confirm rounded-xl text-2xl py-3 px-6 text-white bg-[#007bff]' onClick={confirmservices_details}>Next</button>
-                                        </div>
+                                        <button className=' rounded-xl text-2xl py-3 px-6 text-white bg-[#007bff]' onClick={confirmbooking}>Next</button>
                                     }
                                 </div>
                             }
-
-
                         </div>
                         {/* <Recommendation /> */}
                     </>

@@ -103,12 +103,16 @@ const Recommendation = () => {
             },
             1024: {
                 items: 4 // Number of items to display on large screens
+            },
+
+            1200: {
+                items: 5 // Number of items to display on large screens
             }
         }
     };
     return (
         <>
-            <div className='recommendationn portfolio-area pt-16 pb-16 storingg'>
+            <div className=' w-full overflow-hidden portfolio-area pt-16 pb-16 '>
                 {/* <h1>Max Number of Duplicates: {maxFrequency}</h1> */}
                 {/* <div className='products'> */}
 
@@ -119,7 +123,7 @@ const Recommendation = () => {
                     <div className="heading-divider"></div>
                 </div>
                 {products && products.length > 0 &&
-                    <OwlCarousel className='owl-theme' loop autoplay margin={20} responsive={options.responsive} items={4} >
+                    <OwlCarousel className='owl-theme' loop autoplay margin={20} responsive={options.responsive} items={5} >
                         {
                             products.map((ele, index) => (
                                 <div className="product-card" key={index}>

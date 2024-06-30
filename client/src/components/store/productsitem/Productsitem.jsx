@@ -33,7 +33,7 @@ function Productsitem({ product, category }) {
     const productData = async (ele) => {
         const product_ID = ele.id
         await axios.post(`${process.env.BASE_API_URL_HOST}/products/get-product/${product_ID}`, { uid: currentUser?._id })
-            .then(res => toast.success("sucess"))
+            .then(res => { console.log("sucess"); dispatch(getProducts()) })
             .catch(err => toast.error(err.message))
         navigate(`/productdetails/${ele.id}/${category}`)
     }

@@ -19,7 +19,7 @@ router.post('/send-testimonial',
     ],
     send_testimonial
 );
-router.post('/testimonialData', testimonialData);
+router.get('/testimonialData', testimonialData);
 router.post('/clear-testimonial',
     [
         body("selectedid").notEmpty().withMessage("Selected_id is not Valid"),

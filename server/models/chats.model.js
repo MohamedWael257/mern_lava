@@ -16,6 +16,10 @@ const ChatsSchema = new mongoose.Schema({
     timestamp: {
         type: Date,
         required: true
+    },
+    ImageUrl: {
+        type: String,
+        default: ""
     }
 });
 

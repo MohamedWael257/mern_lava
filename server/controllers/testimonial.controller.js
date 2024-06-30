@@ -2,6 +2,8 @@ import User from "../models/user.model.js";
 import Testimonial from '../models/testimonial.model.js'
 import { sendMail } from "../services/nodemailer.js"
 import { validationResult } from "express-validator";
+import keys from "../config/keys.js";
+const { FAILD, FAILD_CODE, SUCCESS, SUCCESS_CODE } = keys.codes
 export const send_testimonial = async (req, res) => {
     const { uid, firstname, lastname, email, phone, message, date, photoimage } = req.body;
     const Errors = validationResult(req);
@@ -15,12 +17,12 @@ export const send_testimonial = async (req, res) => {
         });
     }
     try {
-        const oldUser = User.find({ email })
+        const oldUser = User.find({ uid })
         if (!oldUser) {
             return res.json({ error: "User Exists" });
         }
         await Testimonial.create({
-            _id: uid,
+            uid,
             firstname,
             lastname,
             email,
@@ -30,11 +32,11 @@ export const send_testimonial = async (req, res) => {
             photoimage
             // photoimage:oldUser.phone,
         });
-        await sendMail(oldUser.email, 'contact')
+        // await sendMail(oldUser.email, 'contact')
         return res.send({ status: "Sending successful" });
     }
     catch (error) {
-        return res.send({ status: "Error Sending" });
+        return res.send({ status: error.message });
     }
 }
 export const testimonialData = async (req, res) => {

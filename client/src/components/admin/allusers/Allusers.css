@@ -1,9 +1,11 @@
+.comments,
 .users {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
 }
 
+.comments .comment,
 .users .user {
     background-color: #b8def1;
     height: 200px;
@@ -14,7 +16,11 @@
 
 }
 
+.comments .comment {
+    height: 280px;
+}
 
+.comments .comment .photoimage,
 .users .user .photoimage {
     width: 60px;
     height: 60px;
@@ -24,14 +30,17 @@
     margin: 0 auto 10px auto;
 }
 
+.comments .comment .username,
 .users .user .username {
     margin-bottom: 10px;
 }
 
+.comments .comment .phone,
 .users .user .phone {
     margin-bottom: 10px;
 }
 
+.comments .comment .email,
 .users .user .email {
     margin-bottom: 10px;
 

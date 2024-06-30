@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, cartitem, clearcart, decrease, removefromcart, totalprice, totalquantity } from '../../redux/slice/cartslice'
 import { PiHeartBreakFill } from "react-icons/pi";
 import Recommendation from '../home/homeitems/recommendation/Recommendation'
+import HeroCard from '../ui/herocard/HeroCard'
 
 const Cart = () => {
     const dispatch = useDispatch()
@@ -20,6 +21,7 @@ const Cart = () => {
 
     return (
         <>
+            {cart.length > 0 && <HeroCard page={'Cart'} />}
             <section className={`shopping ${cart.length === 0 && "block"}`}>
                 {cart.length > 0 ?
                     <>
@@ -74,7 +76,7 @@ const Cart = () => {
                                 <i><FaCheck /></i>
                                 <div>
                                     <p>Your first order qualifies for FREE Delivery.
-                                        Select this option at checkout.<a href="">Details</a></p>
+                                        Select this option at checkout.<Link to="/">Details</Link></p>
                                     <div>
                                         <div className="price">
                                             <span>Sub({totquantity} items):</span>
@@ -100,10 +102,10 @@ const Cart = () => {
                     </>
                 }
             </section>
-            {/* {
+            {
                 cart.length > 0 &&
                 <Recommendation />
-            } */}
+            }
 
 
         </>

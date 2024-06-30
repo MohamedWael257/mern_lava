@@ -60,6 +60,90 @@ const Bookingconfirm = () => {
     return (
 
         <section className='checkout'>
+            <div className="payment">
+                <div className="payment-widget">
+                    <h3 className='payment-widget-title'>Billing Address</h3>
+                    <div className="payment-form">
+                        <div className="form-group">
+                            <label>First Name</label>
+                            <input type="text" className="form-control" placeholder="Your First Name" />
+                        </div>
+                        <div className="form-group">
+                            <label>Last Name</label>
+                            <input type="text" className="form-control" placeholder="Your Last Name" />
+                        </div>
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input type="email" className="form-control" placeholder="Your Email" />
+                        </div>
+                        <div className="form-group">
+                            <label>Phone</label>
+                            <input type="text" className="form-control" placeholder="Your Phone" />
+                        </div>
+                        <div className="form-group">
+                            <label>Address</label>
+                            <input type="text" className="form-control" placeholder="Your Address" />
+                        </div>
+                    </div>
+                </div>
+                <div className="payment-widget">
+                    <h3 className='payment-widget-title'>Payment Info</h3>
+                    <div className="payment-form">
+                        <div className="form-group">
+                            <label>Card Holder Name</label>
+                            <input type="text" className="form-control" placeholder="Name On Card" />
+                        </div>
+                        <div className="form-group">
+                            <label>Card Number</label>
+                            <input type="text" className="form-control" placeholder="Your Card Number" />
+                        </div>
+                        <div className="form-group">
+                            <label>Expire Date</label>
+                            <input type="text" className="form-control" placeholder="Expire" />
+                        </div>
+                        <div className="form-group">
+                            <label>CCV</label>
+                            <input type="text" className="form-control" placeholder="CVV" />
+                        </div>
+                    </div>
+                </div>
+                <div className="payment-widget">
+                    <h3 className='payment-widget-title'>Shipping Address</h3>
+                    <div className="payment-form">
+                        <div className="form-group">
+                            <label>First Name</label>
+                            <input type="text" className="form-control" placeholder="Your First Name" />
+                        </div>
+                        <div className="form-group">
+                            <label>Last Name</label>
+                            <input type="text" className="form-control" placeholder="Your Last Name" />
+                        </div>
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input type="email" className="form-control" placeholder="Your Email" />
+                        </div>
+                        <div className="form-group">
+                            <label>Phone</label>
+                            <input type="text" className="form-control" placeholder="Your Phone" />
+                        </div>
+                        <div className="form-group">
+                            <label>Address 1</label>
+                            <input type="text" className="form-control" placeholder="Your Address" />
+                        </div>
+                        <div className="form-group">
+                            <label>Address 2</label>
+                            <input type="text" className="form-control" placeholder="Your Address" />
+                        </div>
+                        <div className="col-lg-12">
+                            <div className="form-group">
+                                <label>Additional Info</label>
+                                <textarea className="form-control" cols="30" rows="5" placeholder="Additional Info"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             <div className="confirm cart-summary">
                 <h4 className="mb-30">Booking Summary</h4>
                 {booking && booking.length > 0 &&

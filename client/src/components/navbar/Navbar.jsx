@@ -103,8 +103,7 @@ const Navbar = () => {
                                         <NavLink className={activelink} to="/booking">online booking</NavLink>
                                         <NavLink className={activelink} to="/store">store</NavLink>
                                         <NavLink className={activelink} to='/cart'>cart</NavLink>
-                                        <NavLink className={activelink} to="/contact">contact</NavLink>
-                                        {/* <div className="dropdown" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
+                                        <div className="dropdown" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
                                             <button className='dropdown-btn' onClick={() => setActive(!active)}>
                                                 <span>pages</span>
                                                 <span className='translate-y-1 inline-block'>
@@ -115,7 +114,7 @@ const Navbar = () => {
                                             <div className={`${active ? 'dropdown-menu active' : 'dropdown-menu'}`}>
                                                 <NavLink className={activelink} to="/about">about</NavLink>
                                                 <NavLink className={activelink} to="/blog">blog</NavLink>
-                                                <NavLink className={activelink} to="/testimonials">testimonials</NavLink>
+                                                {/* <NavLink className={activelink} to="/testimonials">testimonials</NavLink> */}
                                                 <NavLink className={activelink} to="/services">services</NavLink>
                                                 <NavLink className={activelink} to="/news">news</NavLink>
                                                 <NavLink className={activelink} to="/team">team</NavLink>
@@ -123,7 +122,7 @@ const Navbar = () => {
                                                 <NavLink className={activelink} to="/404">404</NavLink>
                                                 <NavLink className={activelink} to="/contact">contact</NavLink>
                                             </div>
-                                        </div> */}
+                                        </div>
                                     </nav>
 
                                     <div className="ml-2 account">

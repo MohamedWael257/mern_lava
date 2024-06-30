@@ -23,17 +23,17 @@ const Contact = () => {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
     const Submitevent = async (e) => {
-        const photoimage = currentUser?.photoimage ? currentUser?.photoimage : ""
+        const photoimage = currentUser?.photoimage
         e.preventDefault()
         setLoading(true)
-        await axios.post(`${process.env.BASE_API_URL_HOST}/testimonial/send-testimonial`, { uid: currentUser?._id, firstname, lastname, email, phone, message, date: dateTime, photoimage: photoimage })
+        await axios.post(`${process.env.BASE_API_URL_HOST}/testimonial/send-testimonial`, { uid: currentUser?._id, firstname, lastname, email, phone, message, date: dateTime, photoimage })
             .then(res => {
                 toast.success(res.data.status)
                 // console.log(res)
                 setLoading(false)
             })
             .catch(err => {
-                toast.error('Error Sending')
+                toast.error(err.message)
                 // console.log(err)
                 setLoading(false)
             })
@@ -67,7 +67,7 @@ const Contact = () => {
                                         </Col>
                                     </Row>
                                     <Col size={12} className="px-1">
-                                        <textarea rows="6" placeholder="Message"></textarea>
+                                        <textarea rows="6" placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
                                         <button type="submit" onClick={Submitevent} className='block mx-auto'>
                                             {loading ? 'Sending...' : 'Send'}
                                         </button>

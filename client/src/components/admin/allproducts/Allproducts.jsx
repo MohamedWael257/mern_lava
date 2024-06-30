@@ -70,6 +70,9 @@ const Allproducts = () => {
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
+                        <th>N_of_Watches</th>
+                        <th>N_of_buy</th>
+                        <th>Rate</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -84,6 +87,10 @@ const Allproducts = () => {
                                 <td>{pro.title}</td>
                                 <td>{pro.category}</td>
                                 <td>{pro.price} EGB</td>
+                                <td>{pro.rating.N_of_Watches} views</td>
+                                <td>{pro.rating.N_of_Buy} times</td>
+                                <td>{pro.rating.rate}</td>
+
                                 <td>
                                     <Link to={`/admin/add-product/${pro.id}`}>
                                         <FaEdit className={styles.catbtn} size={25} color="green" />

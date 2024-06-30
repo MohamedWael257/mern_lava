@@ -2,20 +2,39 @@ import Chats from "../models/chats.model.js";
 // const User = require('../models/user.model')
 import installTimestamp from 'install-timestamp';
 const ts = installTimestamp();
+import keys from "../config/keys.js"
+const { apiURL } = keys.app
+
 export const add_chat = async (req, res) => {
-    const { senderId, receiverId, message, timestamp } = req.body;
+    const { senderId, receiverId, message, timestamp, image } = req.body;
+    // console.log(image);
     try {
-        await Chats.create({
-            senderId,
-            receiverId,
-            message,
-            // imageUrl,
-            timestamp: timestamp
-        });
-        return res.send({ status: "Payment successful" });
+        if (image) {
+            await Chats.create({
+                senderId,
+                receiverId,
+                message,
+                // ImageUrl: `${apiURL}/uploads/chats/${req.file.filename}`,
+                timestamp
+            });
+            // console.log(image);
+            return res.send({ status: "Send Chat successful" });
+
+        }
+        else {
+            await Chats.create({
+                senderId,
+                receiverId,
+                message,
+                ImageUrl: `${apiURL}/uploads/chats/${req.file.filename}`,
+                timestamp
+            });
+            return res.send({ status: "Send Chat successful" });
+
+        }
     }
     catch (error) {
-        return res.send({ status: "Error Payment" });
+        return res.send({ status: error.message });
     }
 }
 export const chatsData = async (req, res) => {

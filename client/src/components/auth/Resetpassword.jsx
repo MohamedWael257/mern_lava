@@ -18,10 +18,7 @@ const Resetpassword = () => {
             await axios.post(`${process.env.BASE_API_URL_HOST}/auth/reset-password/${id}/${token}`, { password })
                 .then((res) => {
                     toast.success(res.data.status)
-                    // console.log(res.data)
-                    // setData(res.data)
                     navigate('/')
-                    // navigate(`/Resetpassword/${id}/${token}`)
                 })
                 .catch((error) => {
                     console.log(error);

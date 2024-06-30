@@ -80,44 +80,21 @@ export const login = async (req, res) => {
             const token = await jwt.generateTokenAndSetCookie(user.email, res);
             // if (user.__v === 0) {
             //     const key = Math.floor(Math.random() * 1000000 + 1)
-            //     // // const url = `${apiURL}/api/auth/jwt.verify/${token}`
-            //     const url = `${clientURL}/otp?key=${key}&token=${token}`
-            //     //     const transporter = nodemailer.createTransport({
-            //     //         service: 'gmail',
-            //     //         host: host,
-            //     //         port: port,
-            //     //         secure: false,
-            //     //         // pool: true,
-            //     //         auth: {
-            //     //             // adarsh438tcsckandivali
-            //     //             user: mail,
-            //     //             pass: pass,
-            //     //         },
-            //     //     });
-            //     //     const mailOptions = {
-            //     //         to: email,
-            //     //         subject: 'jwt.verify Account',
-            //     //         html: `Click <a href = '${url}'>here</a> to confirm your email. with your key ${key}`
-            //     //         // html: `Click <a href = '${url}'>here</a> to confirm your email. with your key `
-            //     //     };
-            //     //     transporter.sendMail(mailOptions, function (error, info) {
-            //     //         if (error) {
-            //     //            return res.json(error);
-            //     //         }
-            //     //         else {
-            //     //            return res.json(`Email sent: ${email}` + info.response);
-            //     //         }
-            //     //     });
-            //     //     // res.redirect(`${url}`)
             //     const data = { key: key, token: token }
             //     await sendMail(email, 'verify', clientURL, data)
-            //     return res.json({ message: "verfy your email first before login" });
+            //     return res.json({
+            //         status: FAILD,
+            //         status_Code: FAILD_CODE,
+            //         data: null,
+            //         message: "verfy your email first before login"
+            //     });
             // }
             // else {
             return res.json({
                 status: SUCCESS,
                 status_Code: SUCCESS_CODE,
                 data: token,
+                message: "Signin successfully"
             });
             // }
 
@@ -126,6 +103,7 @@ export const login = async (req, res) => {
             status: FAILD,
             status_Code: FAILD_CODE,
             message: "Password is wrong ! ",
+            data: null
         });
     } catch (err) {
         // Error in serching handelar

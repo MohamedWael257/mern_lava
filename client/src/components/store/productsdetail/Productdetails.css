@@ -53,30 +53,122 @@
     padding: 10px;
 }
 
-.product-details .title {
-    font-size: 1.3rem;
-    margin: 0 0 10px 0;
+.product-details .text {
+    /* margin-bottom: 10px; */
 }
 
-.product-details .price {
+.product-details .text .title {
+    font-size: 28px;
+    color: #263787;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.product-details .text .rating {
+    margin-bottom: 10px;
+}
+
+.product-details .text .views {
+    color: #000;
+    font-weight: 300;
+
+}
+
+.product-details .text .price:nth-child(1) {
     font-size: 1.5rem;
-    /* color: #477cff; */
+    color: #263787;
+    text-decoration: line-through;
+    margin: 0 10px 10px 0;
+}
+
+.product-details .text .price:nth-child(2) {
+    font-size: 1.5rem;
+    color: #2DB7FF;
     margin: 0 0 10px 0;
+}
+
+.product-details .text .description {
+    font-size: 20px;
+    font-weight: 200;
+    margin: 0 0 10px 0;
+}
+
+.product-details .text .stock,
+.product-details .text .category,
+.product-details .text .quantity {
+    display: flex;
+    margin: 0 0 10px 0;
+    color: #263787;
 
 }
 
-.product-details .description {
-    font-size: 20px;
+.product-details .text .stock>:nth-child(1),
+.product-details .text .quantity>:nth-child(1),
+.product-details .text .category>:nth-child(1) {
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.product-details .text .quantity>:nth-child(1) {
+    transform: translateY(10px);
+}
+
+.product-details .text .stock>:nth-child(2),
+.product-details .text .category>:nth-child(2) {
+    font-weight: 400;
+}
+
+.product-details .text .quantity .increment,
+.product-details .text .quantity .decrement {
+    background: #2DB7FF;
+    color: white;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.product-details .text .quantity .increment::after {
+    content: '+';
+    position: absolute;
+    top: -8px;
+    left: 5px;
+}
+
+.product-details .text .quantity .decrement::after {
+    content: '-';
+    position: absolute;
+    top: -8px;
+    left: 8px;
 }
 
 .product-details .addingbtn {
-    background-color: #477cff;
+    background-color: #2DB7FF;
     color: white;
-    width: 350px;
+    width: 200px;
     /* margin: 20px 20px 20px 0px; */
     padding: 10px 20px;
     border-radius: 16px;
-    font-size: 1.4rem;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.product-details .text .share p {
+    transform: translateY(8px);
+}
+
+.product-details .text .share a {
+    width: 38px;
+    height: 38px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid #2DB7FF;
+    color: #2DB7FF;
+    margin-left: 5px;
+}
+
+.product-details .addingbtn:hover {
+    background-color: #263787;
 }
 
 @media screen and (max-width: 1700px) {

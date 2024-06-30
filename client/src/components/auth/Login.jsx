@@ -28,7 +28,7 @@ const Login = () => {
             await axios.post(`${process.env.BASE_API_URL_HOST}/auth/login`, { email, password })
                 .then(res => {
                     if (res.data.status == "Success") {
-                        toast.success("Signin successfully");
+                        toast.success(res.data.message);
                         cookies.set("TOKEN", res.data.data, {
                             path: "/",
                             // maxAge: 15 * 24 * 60 * 1000,

@@ -75,19 +75,19 @@ const Profilenav = ({ setActiveside }) => {
                         <ul className='list'>
                             <li>
                                 <NavLink className={activelink} to='/profile/security'>
-                                    {/* <MdOutlinePersonOutline size={35} className='inline-block mr-2' /> */}
+                                    <MdOutlinePersonOutline size={35} className='inline-block mr-2' />
                                     Personal Info
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activelink} to='/profile/orders'>
-                                    {/* <MdOutlineLibraryBooks size={35} className='inline-block mr-2' /> */}
+                                    <MdOutlineLibraryBooks size={35} className='inline-block mr-2' />
                                     My Orders
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activelink} to='/profile/booking'>
-                                    {/* <MdOutlineLibraryBooks size={35} className='inline-block mr-2' /> */}
+                                    <MdOutlineLibraryBooks size={35} className='inline-block mr-2' />
                                     My Booking
                                 </NavLink>
                             </li>
@@ -98,19 +98,19 @@ const Profilenav = ({ setActiveside }) => {
                             </li> */}
                             <li>
                                 <NavLink className={activelink} to='/profile/notification'>
-                                    {/* <MdNotificationsActive size={35} className='inline-block mr-2' /> */}
+                                    <MdNotificationsActive size={35} className='inline-block mr-2' />
                                     notification
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activeside} to='/profile/chat'>
-                                    {/* <MdOutlineChat size={35} className='inline-block mr-2' /> */}
+                                    <MdOutlineChat size={35} className='inline-block mr-2' />
                                     chat
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink className={activelink} to='/profile/wishlists'>
-                                    {/* <SiWish size={35} className='inline-block mr-2' /> */}
+                                    <SiWish size={35} className='inline-block mr-2' />
                                     Wishlists
                                 </NavLink>
                             </li>
@@ -122,14 +122,14 @@ const Profilenav = ({ setActiveside }) => {
                             </li> */}
                             <li>
                                 <button onClick={logouthandler}>
-                                    {/* <MdOutlineLogout size={35} className='inline-block mr-2' /> */}
+                                    <MdOutlineLogout size={35} className='inline-block mr-2' />
                                     Logout
                                 </button>
                             </li>
                             <li>
                                 <button onClick={deleteaccount}>
-                                    {/* <MdOutlineDeleteOutline size={35} className='inline-block mr-2' /> */}
-                                    delete accout
+                                    <MdOutlineDeleteOutline size={35} className='inline-block mr-2' />
+                                    Delete Account
                                 </button>
                             </li>
                         </ul>

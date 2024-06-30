@@ -9,6 +9,7 @@ import { cartitem, clearcart, totalprice } from '../../redux/slice/cartslice'
 import { getorders } from '../../redux/slice/orderslice';
 import axios from 'axios';
 import { getNotification } from '../../redux/slice/notificationslice';
+import { getProducts } from '../../redux/slice/productsslice';
 // import { getNotification } from '../../redux/slice/notificationslice';
 const Checkout = () => {
     const cart = useSelector(cartitem);
@@ -32,6 +33,7 @@ const Checkout = () => {
             .catch(err => console.log(err))
         dispatch(getorders());
         dispatch(clearcart());
+        dispatch(getProducts())
         toast.success("Payment successful", {
             position: "top-right",
         });
@@ -55,7 +57,7 @@ const Checkout = () => {
     return (
         <>
             <section className='checkout'>
-                {/* <div className="payment">
+                <div className="payment">
                     <div className="payment-widget">
                         <h3 className='payment-widget-title'>Billing Address</h3>
                         <div className="payment-form">
@@ -138,7 +140,7 @@ const Checkout = () => {
 
                         </div>
                     </div>
-                </div> */}
+                </div>
                 <div className="confirm cart-summary">
                     <h4 className="mb-30">Cart Summary</h4>
                     <ul>

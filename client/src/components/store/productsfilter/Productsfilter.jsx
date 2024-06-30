@@ -73,10 +73,10 @@ function Productsfilter() {
                         Clear filter
                     </button>
                 </div>
-                <section className="aproducts">
-                    <div className='mb-4'>
+                <section className="aproducts mt-9">
+                    {/* <div className='mb-4'>
                         <p>Showing 1-20 of {selectproducts.length} Results</p>
-                    </div>
+                    </div> */}
                     <Productsitem product={currentproduct} category={category} />
                 </section>
             </section>

@@ -33,7 +33,7 @@ export const update_rate = async (req, res) => {
                 { _id: product_ID },
                 {
                     $set: {
-                        "rating.rate": NewRate,
+                        "rating.rate": Math.round(NewRate),
                         "rating.rate_Count": NewRatingCount,
                     },
                 }
@@ -56,7 +56,7 @@ export const update_rate = async (req, res) => {
                 { _id: product_ID },
                 {
                     $set: {
-                        "rating.rate": NewRate,
+                        "rating.rate": Math.round(NewRate),
                     },
                 }
             );
