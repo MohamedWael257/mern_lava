@@ -20,14 +20,14 @@ const ServicesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // rating: {
-    //     rate: { type: Number, require: true, default: 0 },
-    //     rate_Count: { type: Number, require: true, default: 0 },
-    //     count: { type: Number, require: true, default: 0 },
-    //     N_of_Watches: { type: Number, require: true, default: 0 },
-    //     N_of_Buy: { type: Number, require: true, default: 0 },
-    //     N_of_Likes: { type: Number, require: true, default: 0 },
-    // },
+    rating: {
+        rate: { type: Number, require: true, default: 0 },
+        rate_Count: { type: Number, require: true, default: 0 },
+        count: { type: Number, require: true, default: 0 },
+        N_of_Watches: { type: Number, require: true, default: 0 },
+        N_of_Book: { type: Number, require: true, default: 0 },
+        N_of_Likes: { type: Number, require: true, default: 0 },
+    },
 });
 
 const Services = mongoose.model('services', ServicesSchema);

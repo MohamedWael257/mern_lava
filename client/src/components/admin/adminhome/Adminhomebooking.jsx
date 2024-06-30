@@ -39,7 +39,7 @@ const Adminhomebooking = () => {
                     </div>
                 </div>
                 <div className={`${styles.box} ${styles.card3}`}>
-                    <p>Orders</p>
+                    <p>Booking</p>
                     <div className={styles.content}>
                         <p>{booking.length}</p>
                         {ordersIcon}

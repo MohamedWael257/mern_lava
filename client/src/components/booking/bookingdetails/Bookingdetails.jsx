@@ -170,7 +170,7 @@ const Bookingdetails = () => {
                                         </>
                                     }
                                     {typebrand && typemodel && platenumber && platenumber.length === 3 && typecolor &&
-                                        <button className=' rounded-xl text-2xl py-3 px-6 text-white bg-[#007bff]' onClick={confirmbooking}>Next</button>
+                                        <button className=' rounded-xl text-2xl py-3 px-6 text-white bg-[#007bff]' onClick={confirmservices_details}>Next</button>
                                     }
                                 </div>
                             }

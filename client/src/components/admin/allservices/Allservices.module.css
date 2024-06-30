@@ -7,10 +7,14 @@
 }
 
 .table {
-    width: 800px;
+    margin-top: 10px;
+    width: 1000px;
 
 }
 
+.table th {
+    padding: 10px;
+}
 
 .search input {
     padding: 10px;
@@ -21,6 +25,9 @@
     border-radius: 15px;
 }
 
+/* table {
+    margin-top: 10px;
+} */
 
 .imgg {
     width: 120px;
@@ -31,8 +38,10 @@
 
 .catbtn {
     display: inline-block;
+    /* padding: 5px 0px; */
     margin: 10px auto;
     background-color: transparent;
+    /* border-bottom: 1px solid black; */
     text-align: left;
     border-radius: 0;
     color: black;

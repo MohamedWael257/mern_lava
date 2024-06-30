@@ -37,6 +37,8 @@ const serviceslice = createSlice({
                     serviceprice: action.payload[key].serviceprice,
                     serviceduration: action.payload[key].serviceduration,
                     ImageUrl: action.payload[key].ImageUrl,
+                    rating: action.payload[key].rating,
+
                 })
             }
 

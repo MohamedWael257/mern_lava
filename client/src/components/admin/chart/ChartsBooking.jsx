@@ -30,7 +30,7 @@ const ChartBooking = (props) => {
         labels: ["110>order>0", "120>order>110", "130>order>120", "140>order>130", "150>order>140",],
         datasets: [
             {
-                label: "Order earn",
+                label: "Booking earn",
                 data: [mintwo, maxtwo, maxten, maxfifteen, maxtwenty],
                 backgroundColor: ["orangered", "#ff7722", "#1f93ff", "#9d0191", "#ff7722"],
             },

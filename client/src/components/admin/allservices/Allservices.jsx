@@ -52,6 +52,9 @@ const Allservices = () => {
                         <th>Name</th>
                         <th>Duration</th>
                         <th>Price</th>
+                        {/* <th>N_of_Watches</th> */}
+                        <th>N_of_book</th>
+                        {/* <th>Rate</th> */}
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -66,6 +69,9 @@ const Allservices = () => {
                                 <td>{pro.title}</td>
                                 <td>{pro.serviceduration}</td>
                                 <td>{pro.serviceprice} EGB</td>
+                                {/* <td>{pro.rating.N_of_Watches} views</td> */}
+                                <td>{pro.rating.N_of_Book} times</td>
+                                {/* <td>{pro.rating.rate}</td> */}
                                 <td>
                                     <Link to={`/admin/add-service/${pro.id}`}>
                                         <FaEdit className={styles.catbtn} size={25} color="green" />

@@ -4,7 +4,7 @@ import installTimestamp from 'install-timestamp';
 const ts = installTimestamp();
 import keys from "../config/keys.js"
 const { apiURL } = keys.app
-
+import fs from 'fs'
 export const add_chat = async (req, res) => {
     const { senderId, receiverId, message, timestamp, image } = req.body;
     // console.log(image);
@@ -50,6 +50,15 @@ export const chatsData = async (req, res) => {
 export const clear_chat = async (req, res) => {
     const { userid, selectedid } = req.body;
     try {
+        const findchat = await Chats.find({ 'senderId': { $in: [`${userid}`, `${selectedid}`] }, 'receiverId': { $in: [`${userid}`, `${selectedid}`] } });
+        for (const key in findchat) {
+            const ImageUrl = findchat[key].ImageUrl;
+            if (ImageUrl && !ImageUrl.includes("uploads/chat.jpg")) {
+                const Link = ImageUrl.split("http://localhost:5000/")[1];
+                console.log(Link);
+                await fs.unlinkSync(`server/${Link}`);
+            }
+        }
         await Chats.deleteMany({ 'senderId': { $in: [`${userid}`, `${selectedid}`] }, 'receiverId': { $in: [`${userid}`, `${selectedid}`] } });
 
         // Chats.deleteMany({ senderId: { $in: [userid, selectedid] } }, function (err, res) {

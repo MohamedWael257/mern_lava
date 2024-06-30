@@ -58,11 +58,15 @@ const Input = ({ selectedUser, currentUser, activetype, setActivetype }) => {
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             sendMessage();
+            window.scrollTo(0, 0);
+
         }
     };
 
     const handleSendClick = () => {
         sendMessage();
+        window.scrollTo(0, 0);
+
         // setActivetype(false)
     };
     return (

@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
         const ext = file.mimetype.split("/")[1];
-        const fileame = `User-${Date.now()}-${Math.round(
+        const fileame = `Chat-${Date.now()}-${Math.round(
             Math.random() * 1e9
         )}.${ext}`;
         callback(null, fileame);
