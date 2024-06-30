@@ -7,8 +7,11 @@ import { AuthContext } from '../../../context/AuthContext'
 import { FaUsersGear } from "react-icons/fa6"
 import { FaChartBar, FaProductHunt, FaComments } from "react-icons/fa";
 import { MdAddChart, MdOutlineCleaningServices } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { clear } from "../../../redux/slice/filterslice";
 
 const Adminnav = () => {
+    const dispatch = useDispatch()
     const { currentUser } = useContext(AuthContext)
     const userName = currentUser?.email
     const activelink = ({ isActive }) => (isActive ? `active` : `links`)
@@ -44,7 +47,7 @@ const Adminnav = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/all-products" className={activelink}>
+                        <NavLink onClick={() => dispatch(clear())} to="/admin/all-products" className={activelink}>
                             <FaProductHunt size={35} className='inline-block mr-2' />
                             All Products
                         </NavLink>
@@ -62,7 +65,7 @@ const Adminnav = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/all-services" className={activelink}>
+                        <NavLink onClick={() => dispatch(clear())} to="/admin/all-services" className={activelink}>
                             <MdOutlineCleaningServices size={35} className='inline-block mr-2' />
                             All Services
                         </NavLink>
