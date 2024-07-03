@@ -35,7 +35,7 @@ function Productsfilter() {
         // setPrice(maxRange)
         filterbycategory("All")
         setPrice(maxRange / 2)
-
+        setPrice(0)
     }
     // console.log(selectproducts);
     return (

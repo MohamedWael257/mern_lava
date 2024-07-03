@@ -4,43 +4,43 @@
             "id": "1",
             "img": "../src/assets/Team-Image2.png",
             "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "track": "FrontEnd Devoloper"
         },
         {
             "id": "2",
             "img": "../src/assets/Team-Image2.png",
-            "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "name": "Hady Rageh",
+            "track": "Flutter Devoloper"
         },
         {
             "id": "3",
             "img": "../src/assets/Team-Image2.png",
-            "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "name": "Hesham Seliem",
+            "track": "Flutter Devoloper"
         },
         {
             "id": "4",
             "img": "../src/assets/Team-Image2.png",
-            "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "name": "Abdelrahman Awad",
+            "track": "DevOps Devoloper"
         },
         {
             "id": "5",
             "img": "../src/assets/Team-Image2.png",
-            "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "name": "Hend Ayman",
+            "track": "UI/UX Devoloper"
         },
         {
             "id": "6",
             "img": "../src/assets/Team-Image2.png",
-            "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "name": "Amina EL-Kholy",
+            "track": "BackEnd Devoloper"
         },
         {
             "id": "7",
             "img": "../src/assets/Team-Image2.png",
-            "name": "Mohamed Wael",
-            "track": "Full Stack Devoloper"
+            "name": "Menna Allah Yaser",
+            "track": "BackEnd Devoloper"
         }
     ]
 }

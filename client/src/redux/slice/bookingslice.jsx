@@ -36,11 +36,13 @@ const bookingslice = createSlice({
             }
         },
         confirmbookingdetails(state, action) {
-            const { selected, hour } = action.payload;
+            const { selected, hour, address } = action.payload;
             state.date = selected + ' : ' + hour;
             state.bookingitem.map(ele => {
                 ele.time = selected + ' : ' + hour
+                ele.address = address
             })
+
         },
         clearcart(state, action) {
             state.bookingitem = [];

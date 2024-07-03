@@ -17,6 +17,7 @@ const Bookingdetails = () => {
     const products = useSelector(productsdata)
     const cars = [...new Set(products?.filter((car) => car.category == "Cars"))];
     const [bodystyle, setBodystyle] = useState(null)
+    const [bodytype, setBodytype] = useState('')
     const [typebrand, setTypebrand] = useState('')
     const [typemodel, setTypemodel] = useState('')
     const [model, setModel] = useState([])
@@ -88,11 +89,12 @@ const Bookingdetails = () => {
     };
     let hoursAm = ['08:00', '09:00', '10:00', '11:00']
     let hoursPm = ['12:00', '01:00', '02:00', '03:00',]
+    const [address, setAddress] = useState(null);
     const confirmbooking = () => {
-        dispatch(confirmbookingdetails({ selected: selected, hour: hour }))
+        dispatch(confirmbookingdetails({ selected: selected, hour: hour, address: address }))
         navigate('/Bookingconfirm')
     }
-    console.log(hour);
+
     return (
         <>
             {/* <ToastContainer /> */}
@@ -119,6 +121,11 @@ const Bookingdetails = () => {
                             <div className="body-style">
                                 <h2 className='text-[#007bff]'>Body Style</h2>
                                 <div className="styles">
+                                    {/* <img className={`bg-white p-3 rounded-xl cursor-pointer ${bodytype == 'sedan' ? "active" : ""}`} src={image1} onClick={() => { selectBodyStyle("sedan"); setBodytype("sedan") }} alt="detail" />
+                                    <img className={`bg-white p-3 rounded-xl cursor-pointer ${bodytype == 'suv' ? "active" : ""}`} src={image2} onClick={() => { selectBodyStyle("suv"); setBodytype("suv") }} alt="detail" />
+                                    <img className={`bg-white p-3 rounded-xl cursor-pointer ${bodytype == 'van' ? "active" : ""}`} src={image3} onClick={() => { selectBodyStyle("van"); setBodytype("van") }} alt="detail" />
+                                    <img className={`bg-white p-3 rounded-xl cursor-pointer ${bodytype == 'pickup' ? "active" : ""}`} src={image4} onClick={() => { selectBodyStyle("pickup"); setBodytype("pickup") }} alt="detail" />
+                                    <img className={`bg-white p-3 rounded-xl cursor-pointer ${bodytype == 'sport' ? "active" : ""}`} src={image1} onClick={() => { selectBodyStyle("sport"); setBodytype("sport") }} alt="detail" /> */}
                                     <img className='bg-white p-3 rounded-xl cursor-pointer' src={image1} onClick={() => selectBodyStyle("sport")} alt="detail" />
                                     <img className='bg-white p-3 rounded-xl cursor-pointer' src={image2} onClick={() => selectBodyStyle("sport")} alt="detail" />
                                     <img className='bg-white p-3 rounded-xl cursor-pointer' src={image3} onClick={() => selectBodyStyle("sport")} alt="detail" />
@@ -210,7 +217,10 @@ const Bookingdetails = () => {
 
                             }
                         </div>
-                        {selected && hour &&
+                        <div className="address">
+                            <input type="text" className='bg-transparent border-2 border-black p-3 rounded-xl text-xl' placeholder='Enter the Address' value={address} onChange={(e) => setAddress(e.target.value)} />
+                        </div>
+                        {selected && hour && address &&
                             <>
                                 <p className='my-4'>{selected + ' : ' + hour}</p>
                                 {/* <p>{selectedDate}</p> */}

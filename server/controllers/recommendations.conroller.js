@@ -28,3 +28,38 @@ export const recommend = async (req, res) => {
     // res.json('result');
 }
 
+export const recommendantion = async (req, res) => {
+
+    const { id } = req.params;
+    try {
+        const user = await User.find({ _id: id });
+        if (!user) {
+            return res.json({ error: 'User not found' });
+        }
+
+        const allUsers = await User.find({ _id: { $ne: id } });
+        const allProducts = await Products.find();
+        const userInteractions = new Set(user.interactions);
+
+        const recommendations = {};
+
+        allUsers.forEach(otherUser => {
+            otherUser.interactions.forEach(itemId => {
+                if (!userInteractions.has(itemId)) {
+                    if (!recommendations[itemId]) {
+                        recommendations[itemId] = 0;
+                    }
+                    recommendations[itemId]++;
+                }
+            });
+        });
+
+        // const sortedRecommendations = Object.keys(recommendations).sort((a, b) => recommendations[b] - recommendations[a]);
+        // const recommendedItems = sortedRecommendations.map(itemId => allProducts.find(item => item._id.toString() === itemId));
+
+        // res.json(recommendedItems);
+        res.json(userInteractions);
+    } catch (error) {
+        res.json({ error: error.message });
+    }
+}
