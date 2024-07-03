@@ -8,9 +8,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { cartitem, clearcart, totalprice } from '../../redux/slice/cartslice'
 import { getorders } from '../../redux/slice/orderslice';
 import axios from 'axios';
-import { getNotification } from '../../redux/slice/notificationslice';
 import { getProducts } from '../../redux/slice/productsslice';
-// import { getNotification } from '../../redux/slice/notificationslice';
 const Checkout = () => {
     const cart = useSelector(cartitem);
     const totprice = useSelector(totalprice);
@@ -42,7 +40,6 @@ const Checkout = () => {
             { uid: currentUser?._id, date: time, price: totprice, title: 'Shopping', description: 'Orders' })
             .then(res => console.log(res))
             .catch(err => console.log(err))
-        dispatch(getNotification());
         toast.info("Check Your Notification", {
             position: "bottom-right",
         });

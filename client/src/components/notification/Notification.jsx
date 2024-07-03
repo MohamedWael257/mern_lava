@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Notification.css'
 import { AuthContext } from '../../context/AuthContext'
-import { getNotification } from '../../redux/slice/notificationslice'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import axios from 'axios'
@@ -67,22 +66,22 @@ const Notification = () => {
                 {sortedNotification && sortedNotification.length > 0 ?
                     sortedNotification.map((notification) => {
                         return (
-                            <div class="notifications__item">
-                                <div class="notifications__item__avatar">
+                            <div className="notifications__item" key={notification._id}>
+                                <div className="notifications__item__avatar">
                                     <img src={currentUser?.photoimage} />
                                 </div>
 
-                                <div class="notifications__item__content">
-                                    <span class="notifications__item__title">{notification.title}</span>
-                                    <span class="notifications__item__message">{notification.description}</span>
+                                <div className="notifications__item__content">
+                                    <span className="notifications__item__title">{notification.title}</span>
+                                    <span className="notifications__item__message">{notification.description}</span>
                                 </div>
 
                                 <div>
-                                    <div class="notifications__item__option archive js-option">
+                                    <div className="notifications__item__option archive js-option">
                                         <span>{notification.price} EGB</span>
                                     </div>
-                                    {/* <div onClick={() => deleteNotification(notification.uid)} class="notifications__item__option delete js-option"> */}
-                                    <div class="notifications__item__option delete js-option">
+                                    {/* <div onClick={() => deleteNotification(notification.uid)} className="notifications__item__option delete js-option"> */}
+                                    <div className="notifications__item__option delete js-option">
                                         <span>{
                                             notification.date &&
                                             formatRelativeTime(Date.now() - notification.date)

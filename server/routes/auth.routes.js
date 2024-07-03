@@ -3,6 +3,7 @@ import { register, login, userData, forgot_password, getAllUsers, deleteUser, lo
 import { body, param } from "express-validator";
 const router = express.Router();
 import upload_avatar from "../multer/avatar.multer.js"
+import Team from '../models/team.model.js'
 // router.get("*", async (req, res) => {
 //     try {
 //         const clientURL = req.headers.host
@@ -113,5 +114,13 @@ router.post('/update-user-data',
     ],
     update_user_data
 );
-
+router.get('/team-member', async (req, res) => {
+    try {
+        const Team_Members = await Team.find({});
+        return res.status(200).json(Team_Members);
+    }
+    catch (error) {
+        return res.status(500).json({ message: 'Failed to retrieve products' });
+    }
+})
 export default router

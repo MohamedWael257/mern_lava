@@ -1,14 +1,19 @@
 import React, { memo, useEffect, useState } from 'react'
 import './Team.css'
-import data from '../../../public/data.json'
 import HeroCard from '../ui/herocard/HeroCard'
+import axios from 'axios'
 const Team = () => {
     const [members, setMembers] = useState([])
     useEffect(() => {
-        if (data) {
-            setMembers(data.team_member)
+        const getnotifications = async () => {
+            await axios.get(`${process.env.BASE_API_URL_HOST}/auth/team-member`)
+                .then(res => {
+                    setMembers(res.data)
+                })
+                .catch(err => console.log(err))
         }
-    }, [data])
+        getnotifications();
+    }, [members])
     return (
         <>
             <HeroCard page={'Team'} />
@@ -23,7 +28,7 @@ const Team = () => {
                         members && members.map(member => {
                             return (
                                 <div className='member' key={member.id}>
-                                    <img src={member.img} className="member-img" alt="" />
+                                    <img src={member.ImageUrl} className="member-img" alt="" />
                                     <h3 className="member-name">{member.name}</h3>
                                     <p className="member-track">{member.track}</p>
                                 </div>

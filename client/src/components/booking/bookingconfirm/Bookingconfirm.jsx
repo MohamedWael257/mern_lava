@@ -6,7 +6,6 @@ import './Bookingconfirm.css'
 import { AuthContext } from '../../../context/AuthContext'
 import { toast } from 'react-toastify'
 import axios from 'axios'
-import { getNotification } from '../../../redux/slice/notificationslice'
 const Bookingconfirm = () => {
     const booking = useSelector(bookingitem)
     const totprice = useSelector(totalprice)
@@ -49,7 +48,6 @@ const Bookingconfirm = () => {
             { uid: currentUser?._id, date: time, price: totprice, title: 'Online Booking', description: "Booking" })
             .then(res => console.log(res))
             .catch(err => console.log(err))
-        dispatch(getNotification());
         toast.info("Check Your Notification", {
             position: "bottom-right",
         });

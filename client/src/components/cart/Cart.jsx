@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from 'react'
 import "./Cart.css"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import data from '../../../public/data.json'
 import { FaCheck } from 'react-icons/fa'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify'
