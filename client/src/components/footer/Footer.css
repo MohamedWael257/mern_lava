@@ -219,7 +219,7 @@ button:not(:disabled) {
 .footer-social {
     display: flex;
     gap: 15px;
-    justify-content: end
+    justify-content: flex-end;
 }
 
 .footer-social li a i {
@@ -241,7 +241,7 @@ button:not(:disabled) {
 .footer-contact li {
     position: relative;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     color: #f5faff;
     font-size: 16px;
@@ -293,9 +293,7 @@ button:not(:disabled) {
         margin-bottom: 50px
     }
 
-    .footer-widget {
-        /* width: 720px; */
-    }
+
 }
 
 @media (max-width: 992px) {

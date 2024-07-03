@@ -97,9 +97,6 @@
 
 }
 
-input[type=range] {
-    -webkit-appearance: none;
-}
 
 input[type=range]::-webkit-slider-runnable-track {
     width: 300px;
@@ -142,9 +139,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     text-align: center;
 }
 
-.storing .aproducts {
-    /* background-color: tan; */
-}
+
 
 .storing .filter .clearbtn {
     padding: 10px 20px;
