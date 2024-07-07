@@ -187,17 +187,6 @@ button.btn {
     text-decoration: underline;
 }
 
-#otp {
-    /* position: relative;
-    top: 40px;
-    right: 15px;
-    background: rgb(22, 41, 56, 0.3);
-    width: 100%;
-    height: 70px;
-    border-radius: 8px;
-    text-align: center; */
-}
-
 #otpmessage {
     font-size: 15px;
     /* position: relative; */

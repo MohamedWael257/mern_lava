@@ -3,7 +3,7 @@ import CurrentUser from './sidebaritems/CurrentUser'
 import Search from './sidebaritems/Search'
 import Users from './sidebaritems/Users'
 
-const Sidebar = ({ users, selectedUser, setSelectedUser, onUserClick }) => {
+const Sidebar = ({ users, selectedUser, onUserClick }) => {
 
     const [searchKeyword, setSearchKeyword] = useState("");
 

@@ -36,7 +36,7 @@ const Allproducts = () => {
                 })
                 .catch(err => {
                     toast.error(err.message, {
-                        position: "top-right",
+                        position: "top-left",
                     })
                 })
 

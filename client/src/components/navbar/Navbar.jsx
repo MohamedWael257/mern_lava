@@ -129,7 +129,7 @@ const Navbar = () => {
                                         {
                                             currentUser &&
                                             <>
-                                                <Link to="/profile">
+                                                <Link to="/profile/security">
                                                     <span className='translate-y-1'>{currentUser?.username}</span>
                                                     <img src={currentUser?.photoimage} className='ml-2 w-8 h-8 rounded-full' alt="" />
                                                 </Link>

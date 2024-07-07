@@ -97,7 +97,7 @@ router.get('/getAllUsers', getAllUsers);
 router.get('/getAllUsers-no-admin', getAllUsers_no_admin);
 router.get('/getAdmin', getAdmin);
 router.post('/deleteUser', deleteUser);
-router.get('/logout', logout);
+router.post('/logout', logout);
 router.post('/update-user-data',
     upload_avatar.single("image"),
     [

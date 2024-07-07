@@ -37,22 +37,25 @@ const Bookingconfirm = () => {
         await axios.post(`${process.env.BASE_API_URL_HOST}/booking/booking`, {
             bookingamount: totprice, bookingdate: serverTimestamp, uid: uid, bookingitem: booking
         })
-            .then(res => toast.success(res.data.message, {
-                position: "top-right",
-            }))
+            .then(res => {
+                toast.success(res.data.message, {
+                    position: "top-right",
+                });
+                dispatch(getbooking());
+                dispatch(clearcart());
+            })
             .catch(err => toast.error(err.message))
-        dispatch(getbooking());
-        dispatch(clearcart());
         const time = Date.now()
-        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`,
-            { uid: currentUser?._id, date: time, price: totprice, title: 'Online Booking', description: "Booking" })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-        toast.info("Check Your Notification", {
-            position: "bottom-right",
-        });
-        navigate("/")
-        // navigate('/orders')
+        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`, {
+            uid: currentUser?._id, date: time, price: totprice, title: 'Online Booking', description: "Booking"
+        })
+            .then(res => {
+                toast.info("Check Your Notification", {
+                    position: "bottom-right",
+                });
+                navigate("/")
+            })
+            .catch(err => toast.error(err.message))
 
     }
     return (

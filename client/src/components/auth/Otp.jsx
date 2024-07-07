@@ -15,8 +15,8 @@ const Otp = () => {
         e.preventDefault()
         if (keyvalue === key) {
             await axios.get(`${process.env.BASE_API_URL_HOST}/auth/verify/${token}`)
-                .then(res => console.log(res.data))
-                .catch(err => console.log(err))
+                .then(res => toast.success(res.data))
+                .catch(err => toast.error(err.message))
         }
         else {
             toast.error('error key')

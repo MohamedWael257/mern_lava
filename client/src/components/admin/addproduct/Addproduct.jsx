@@ -12,8 +12,6 @@ import { v4 as uuid } from "uuid"
 const Addproduct = () => {
     const { id } = useParams();
     const product = useSelector(productsdata);
-    // const [uploading, setUploading] = useState(false);
-    // const [ImageUrl, setImageUrl] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const productEdite = product.find((pro) => pro.id === id);
@@ -30,18 +28,12 @@ const Addproduct = () => {
         category: "",
         brand: ""
     }
-    const [curentproduct, setCurentprodcut] = useState(() => {
+    const [curentproduct, setCurentproduct] = useState(() => {
         const newstate = formkind(id, { ...initialproduct }, productEdite)
         return newstate
     })
     const [image, setImage] = useState(curentproduct?.ImageUrl);
     const [imagePreview, setImagePreview] = useState(curentproduct?.ImageUrl);
-    // useEffect(() => {
-    //     if (curentproduct) {
-    //         setImagePreview(curentproduct?.ImageUrl);
-    //         setImage(curentproduct?.ImageUrl);
-    //     }
-    // }, [])
     const handleImageChange = (e) => {
         setImage(e.target.files[0])
         const file = e.target.files[0];
@@ -58,11 +50,10 @@ const Addproduct = () => {
     };
     const inputChange = (e) => {
         const { name, value } = e.target;
-        setCurentprodcut({ ...curentproduct, [name]: value });
+        setCurentproduct({ ...curentproduct, [name]: value });
     }
     const addproduct = async (e) => {
         e.preventDefault();
-        // console.log(image);
         const formData = new FormData();
         formData.append("image", image);
         formData.append("name", curentproduct.title);
@@ -98,7 +89,6 @@ const Addproduct = () => {
         formData.append("brand", curentproduct.brand);
         formData.append("category", curentproduct.category);
         formData.append("price", curentproduct.price);
-        // console.log(image);
         if (curentproduct.title && curentproduct.description && curentproduct.brand && curentproduct.category && curentproduct.price && image) {
             await axios.post(`${process.env.BASE_API_URL_HOST}/products/edit-product`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },

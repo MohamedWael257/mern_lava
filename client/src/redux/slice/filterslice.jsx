@@ -16,6 +16,16 @@ const filterslice = createSlice({
             }
             state.filteredproduct = temp
         },
+        filterByRole(state, action) {
+            const { user, role } = action.payload;
+            let temp = [];
+            if (role === "All") {
+                temp = user;
+            } else {
+                temp = user.filter((pro) => pro.role === role)
+            }
+            state.filteredproduct = temp
+        },
         // filterBySearch(state, action) {
         //     const { product, search } = action.payload;
         //     let temp = []
@@ -46,6 +56,6 @@ const filterslice = createSlice({
         },
     }
 });
-export const { filterByCategory, filterBySearch, filerByPrice, clear } = filterslice.actions;
+export const { filterByCategory, filterByRole, filterBySearch, filerByPrice, clear } = filterslice.actions;
 export const filterproduct = (state) => state.filter.filteredproduct;
 export default filterslice;

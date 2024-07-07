@@ -37,8 +37,6 @@ const Chat = () => {
                     })
                     .catch(err => console.log(err))
             }
-
-
         }
         getusers();
     }, [])
@@ -72,7 +70,8 @@ const Chat = () => {
                             </div>
                         }
                         <div className='bg-slate-300 flex-1'>
-                            <MainContent selectedUser={selectedUser}
+                            <MainContent
+                                selectedUser={selectedUser}
                                 setSelectedUser={setSelectedUser}
                                 activetype={activetype}
                                 setActivetype={setActivetype}
@@ -82,7 +81,8 @@ const Chat = () => {
                     </>
                     :
                     <div className='bg-slate-300 flex-1'>
-                        <MainContent selectedUser={admin}
+                        <MainContent
+                            selectedUser={admin}
                             activetype={activetype}
                             setActivetype={setActivetype}
                         />

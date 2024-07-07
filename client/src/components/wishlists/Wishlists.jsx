@@ -41,7 +41,7 @@ const Wishlists = () => {
             {
                 wishlist.length === 0 ?
                     <div className="nocart bg-dark p-5 text-center ng-star-inserted">
-                        <h1><PiHeartBreakFill className='text-warning text-center inline-block  text-[#477cff]' size={80} /></h1>
+                        <h1><PiHeartBreakFill className='text-warning text-center inline-block  text-[#2db7ff]' size={80} /></h1>
                         <h5 className="text-black">Wishlist  is empty !</h5>
                         <p className="text-black">push some products into your Wishlist</p>
                         {/* <Button href="/home" id='home' >Back To Home</Button> */}

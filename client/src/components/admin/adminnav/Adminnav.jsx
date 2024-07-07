@@ -29,7 +29,7 @@ const Adminnav = () => {
                         </NavLink>
                     </li> */}
                     <li>
-                        <NavLink to="/admin/all-users" className={activelink}>
+                        <NavLink onClick={() => dispatch(clear())} to="/admin/all-users" className={activelink}>
                             <FaUsersGear size={35} className='inline-block mr-2' />
                             All Users
                         </NavLink>

@@ -98,7 +98,7 @@ const Notification = () => {
                         {/* <h5 className="text-black">Notification is empty !</h5> */}
                         {/* <Link className='text-[#477cff] text-2xl' to="/" >Back To Home</Link> */}
                         <div className="nocart bg-dark p-5 text-center ng-star-inserted">
-                            <h1><PiHeartBreakFill className='text-warning text-center inline-block  text-[#477cff]' size={80} /></h1>
+                            <h1><PiHeartBreakFill className='text-warning text-center inline-block  text-[#2db7ff]' size={80} /></h1>
                             <h5 className="text-black">Notification is empty !</h5>
                             <p className="text-black">Go Shopping and booking</p>
                             <Link className='text-[#477cff] text-2xl' to="/" >Back To Store</Link>

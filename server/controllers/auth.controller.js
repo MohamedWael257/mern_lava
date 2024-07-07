@@ -332,13 +332,21 @@ export const deleteUser = async (req, res) => {
     }
 };
 
-export const logout = (req, res) => {
+export const logout = async (req, res) => {
+    const { uid } = req.body
     try {
+        const user = await User.find({ id: uid });
+        if (!user) {
+            return res.json({
+                status: FAILD,
+                status_Code: FAILD_CODE,
+                message: "Email is not exist !",
+            });
+        }
         // return res.cookie("jwt", "", { maxAge: 0 });
-        return res.status(200).json({ message: "Logged out successfully" });
+        return res.json({ message: "Logged out successfully" });
     } catch (error) {
-        console.log("Error in logout controller", error.message);
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.json({ message: "Error in logout controller" });
     }
 };
 export const update_user_data = async (req, res) => {

@@ -43,3 +43,52 @@
         })}
     </tbody>
 </table>
+const applyCoupon = () => {
+    // toast.info(e)
+    setActivecoupon(true)
+    if (coupon === 'mohamed') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - 5000)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else if (coupon === 'hady') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - discount)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else if (coupon === 'hesham') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - discount)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else if (coupon === 'abdo') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - discount)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else if (coupon === 'hend') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - discount)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else if (coupon === 'amina') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - discount)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else if (coupon === 'menna') {
+        setDiscount(discount + 5000)
+        setCart_total(cart_total - discount)
+        toast.success('Correct Coupon Code. you will have more discount')
+
+    }
+    else {
+        toast.error('Wrong Coupon Code Try Again !')
+    }
+}

@@ -24,7 +24,6 @@ const Input = ({ selectedUser, currentUser, activetype, setActivetype }) => {
             setImagePreview(null);
         }
     };
-    console.log('image', image);
     const sendMessage = async (e) => {
         // e.preventDefault();
         setUploading(true)

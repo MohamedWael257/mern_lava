@@ -37,9 +37,14 @@ const Profilenav = ({ setActiveside }) => {
     }, [getbooking])
 
     const logouthandler = async () => {
-        cookies.remove("TOKEN");
-        toast.success("logout succeessful...")
-        window.location.href = "../login";
+        await axios.post(`${process.env.BASE_API_URL_HOST}/auth/logout`, { uid: currentUser?._id })
+            .then(res => {
+                toast.success(res.data.message)
+                cookies.remove("TOKEN");
+                window.location.href = "../login";
+            })
+            .catch(err => toast.error(err.message))
+
 
     }
     const deleteaccount = async () => {

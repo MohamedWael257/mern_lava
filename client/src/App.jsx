@@ -78,7 +78,7 @@ const App = () => {
             <Route path='/bookingdetails/:id' element={currentUser ? <Bookingdetails /> : <LoginPage />} />
             <Route path='/bookingconfirm' element={currentUser ? <Bookingconfirm /> : <LoginPage />} />
             <Route path='/profile/*' element={currentUser ? <ProfilePage /> : <LoginPage />} />
-            <Route path='/checkout' element={currentUser ? <CheckoutPage /> : <LoginPage />} />
+            <Route path='/checkout/:discount/:carttotal/:vat' element={currentUser ? <CheckoutPage /> : <LoginPage />} />
             <Route path='/chat' element={currentUser ? <ChatPage /> : <LoginPage />} />
             <Route path='/security' element={currentUser ? <SecurityPage /> : <LoginPage />} />
             <Route path='/about' element={currentUser ? <About /> : <LoginPage />} />

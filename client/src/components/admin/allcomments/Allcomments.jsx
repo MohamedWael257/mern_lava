@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../../context/AuthContext';
 import axios from 'axios';
-import '../allusers/Allusers.css'
+import './Allcomments.css'
 import { FaUserCircle } from 'react-icons/fa';
 const Allcomments = () => {
     const { currentUser } = useContext(AuthContext)

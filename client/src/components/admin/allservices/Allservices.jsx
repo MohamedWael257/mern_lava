@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Allservices.module.css"
-import { filterproduct, filterBySearch, filterByCategory } from "../../../redux/slice/filterslice"
+import styles from "../allproducts/Allproducts.module.css"
+import { filterproduct, filterBySearch } from "../../../redux/slice/filterslice"
 import { useSelector, useDispatch } from "react-redux";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -17,19 +17,21 @@ const Allservices = () => {
     useEffect(() => {
         dispatch(filterBySearch({ product: selectservices, search: searchValue }))
     }, [dispatch, searchValue, selectservices])
-    const filterbycategory = (cat) => {
-        dispatch(filterByCategory({ product: selectservices, category: cat }));
-    }
-    const deleteproduct = async (id) => {
+    const deleteservice = async (id) => {
         try {
             await axios.get(`${process.env.BASE_API_URL_HOST}/products/delete-service/${id}`)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
-            dispatch(getservices())
-
-            toast.success("Product Deleted successful", {
-                position: "top-right",
-            })
+                .then(res => {
+                    console.log(res.data)
+                    dispatch(getservices())
+                    toast.success(res.data.message, {
+                        position: "top-right",
+                    })
+                })
+                .catch(err => {
+                    toast.error(err.message, {
+                        position: "top-left",
+                    })
+                })
 
         }
         catch (error) {
@@ -76,7 +78,7 @@ const Allservices = () => {
                                     <Link to={`/admin/add-service/${pro.id}`}>
                                         <FaEdit className={styles.catbtn} size={25} color="green" />
                                     </Link>
-                                    <FaTrashAlt className={styles.catbtn} size={25} cursor="pointer" color="red" onClick={() => deleteproduct(pro.id)} />
+                                    <FaTrashAlt className={styles.catbtn} size={25} cursor="pointer" color="red" onClick={() => deleteservice(pro.id)} />
                                 </td>
                             </tr>
                         )

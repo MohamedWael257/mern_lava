@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react'
 import './Checkout.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
@@ -20,36 +20,40 @@ const Checkout = () => {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
     var shipping_cost = cart.length * 35
-    var discount = totprice * cart.length * 0.05
-    var vat = cart.length * 20
-    var cart_total = totprice + shipping_cost + vat - discount
+    var { discount, carttotal, vat } = useParams();
+    const [cart_total, setCart_total] = useState(+carttotal + shipping_cost)
     const payment = async (e) => {
         e.preventDefault();
-        await axios.post(`${process.env.BASE_API_URL_HOST}/store/checkout`,
-            { orderdate: dateTime, orderamount: cart_total, uid: currentUser?._id, orderitem: cart })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-        dispatch(getorders());
-        dispatch(clearcart());
-        dispatch(getProducts())
-        toast.success("Payment successful", {
-            position: "top-right",
-        });
+        await axios.post(`${process.env.BASE_API_URL_HOST}/store/checkout`, {
+            orderdate: dateTime, orderamount: cart_total, uid: currentUser?._id, orderitem: cart
+        })
+            .then(res => {
+                toast.success("Payment successful", {
+                    position: "top-right",
+                });
+                dispatch(getorders());
+                dispatch(clearcart());
+                dispatch(getProducts())
+            })
+            .catch(err => toast.error(err.message))
+
         const time = Date.now()
-        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`,
-            { uid: currentUser?._id, date: time, price: totprice, title: 'Shopping', description: 'Orders' })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-        toast.info("Check Your Notification", {
-            position: "bottom-right",
-        });
-        navigate("/")
+        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`, {
+            uid: currentUser?._id, date: time, price: totprice, title: 'Shopping', description: 'Orders'
+        })
+            .then(res => {
+                toast.info("Check Your Notification", {
+                    position: "bottom-right",
+                });
+                navigate("/")
+            })
+            .catch(err => toast.error(err.message))
     }
     useEffect(() => {
         if (cart.length === 0) {
             navigate('/')
         }
-    }, [cart.length])
+    }, [cart])
 
     return (
         <>

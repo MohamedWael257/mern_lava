@@ -1,10 +1,10 @@
 import Booking from '../models/booking.model.js';
 import User from '../models/user.model.js';
+import Services from '../models/services.model.js'
 import { sendMail } from "../services/nodemailer.js"
 import { validationResult } from 'express-validator';
 import keys from '../config/keys.js';
 const { FAILD, FAILD_CODE, SUCCESS, SUCCESS_CODE } = keys.codes
-
 export const booking = async (req, res) => {
     const { bookingamount, bookingdate, uid, bookingitem } = req.body;
     const Errors = validationResult(req);
@@ -24,6 +24,19 @@ export const booking = async (req, res) => {
             bookingitem,
         });
         await booking.save();
+        let array_id = new Array();
+        await bookingitem.map(booking => array_id.push(booking.id))
+        for (const key in array_id) {
+            const service = await Services.findOne({ _id: array_id[key] });
+            const Servicebooks = service.rating.N_of_Book
+            const servicenewbooks = Servicebooks + 1
+            await Services.updateOne(
+                { _id: array_id[key] },
+                {
+                    $set: { "rating.N_of_Book": servicenewbooks, }
+                }
+            );
+        }
         const findUser = await User.findOne({ _id: uid })
         await sendMail(findUser.email, 'booking-confirmation', null, {
             _id: booking._id,

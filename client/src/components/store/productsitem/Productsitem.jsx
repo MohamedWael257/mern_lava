@@ -37,6 +37,15 @@ function Productsitem({ product, category }) {
             .catch(err => toast.error(err.message))
         navigate(`/productdetails/${ele.id}/${category}`)
     }
+    // const [products, setProducts] = useState(product)
+    // const [pagination, setPagination] = useState(1)
+    // useEffect(() => {
+    //     if (pagination >= 1) {
+    //         const start = (20 * pagination) - 20
+    //         const end = pagination * 20
+    //         setProducts(product.slice(start, end))
+    //     }
+    // }, [pagination])
     return (
         <>
             <div className='products'>
@@ -64,6 +73,18 @@ function Productsitem({ product, category }) {
                     })
                 }
             </div>
+            {/* {
+                product.length >= 20 &&
+                <div className="pagination">
+                    <button onClick={() => setPagination(pagination - 1)}><FaArrowLeft /></button>
+                    <button onClick={() => setPagination(1)}>1</button>
+                    <button onClick={() => setPagination(2)}>2</button>
+                    <button onClick={() => setPagination(3)}>3</button>
+                    <button onClick={() => setPagination(4)}>4</button>
+                    <button onClick={() => setPagination(5)}>5</button>
+                    <button onClick={() => setPagination(pagination + 1)}><FaArrowRight /></button>
+                </div>
+            } */}
         </>
     )
 }

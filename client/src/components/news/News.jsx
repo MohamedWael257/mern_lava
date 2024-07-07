@@ -5,6 +5,9 @@ const News = memo(() => {
     return (
         <>
             <HeroCard page={"News"} />
+            <section className="news">
+                News
+            </section>
         </>
     )
 })

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Addservice.module.css"
+import styles from "../addproduct/Addproduct.module.css"
 // import Card from "../../ui/Card"
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -57,7 +57,7 @@ const Addservice = () => {
         formData.append("description", curentservice.description);
         formData.append("serviceprice", curentservice.serviceprice);
         formData.append("serviceduration", curentservice.serviceduration);
-        if (curentservice?.title && curentservice?.description && curentservice?.serviceprice && curentservice?.serviceduration) {
+        if (curentservice?.title && curentservice?.description && curentservice?.serviceprice && curentservice?.serviceduration && image) {
             console.log(image);
             await axios.post(`${process.env.BASE_API_URL_HOST}/products/add-service`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
@@ -84,7 +84,7 @@ const Addservice = () => {
         formData.append("description", curentservice.description);
         formData.append("serviceprice", curentservice.serviceprice);
         formData.append("serviceduration", curentservice.serviceduration);
-        if (curentservice.title && curentservice.description && curentservice.serviceprice && curentservice.serviceduration) {
+        if (curentservice.title && curentservice.description && curentservice.serviceprice && curentservice.serviceduration && image) {
             await axios.post(`${process.env.BASE_API_URL_HOST}/products/edit-service`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             })

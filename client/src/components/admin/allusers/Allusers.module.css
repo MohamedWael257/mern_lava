@@ -8,11 +8,16 @@
 
 .table {
     margin-top: 10px;
-    width: 1000px;
+    width: 1050px;
+    /* background-color: white; */
+    /* border: 3px solid #e1e1e1; */
 
 }
 
-.table th {
+.table th,
+.table td {
+    /* border: none; */
+    /* border-bottom: 2px solid #e1e1e1; */
     padding: 10px;
 }
 
@@ -30,10 +35,25 @@
 } */
 
 .imgg {
-    width: 120px;
-    height: 120px;
+    width: 50px;
+    height: 50px;
     border-radius: 15px;
     margin: 0 auto;
+}
+
+.login {
+    background: #477cff;
+    color: white;
+    padding: 3px 15px;
+    border-radius: 10px;
+    text-transform: capitalize;
+}
+
+.active {
+    background-color: #d1e9d3;
+    color: rgb(111, 152, 110);
+    padding: 3px 15px;
+    border-radius: 10px;
 }
 
 .catbtn {
@@ -45,5 +65,9 @@
     text-align: left;
     border-radius: 0;
     color: black;
-    font-size: 22px;
+    font-size: 18px;
+}
+
+.category:focus {
+    border: 2px solid #477cff;
 }
