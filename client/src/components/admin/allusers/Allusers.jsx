@@ -1,32 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../../context/AuthContext';
 import axios from 'axios';
 import styles from "./Allusers.module.css"
-
 import { FaUserCircle } from 'react-icons/fa';
+import { getUsers, usersdata } from '../../../redux/slice/userslice';
 import { filterByRole, filterproduct } from '../../../redux/slice/filterslice';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaEdit } from "react-icons/fa"
 import { FiTrash } from "react-icons/fi";
 import { MdMobileScreenShare } from "react-icons/md";
 import { toast } from 'react-toastify';
-
+import Loader from '../../loader/Loader'
 const Allusers = () => {
     const { currentUser } = useContext(AuthContext)
-    const [users, setUsers] = useState([]);
+    const users = useSelector(usersdata);
     const dispatch = useDispatch()
-    useEffect(() => {
-        const getusers = async () => {
-            if (currentUser?.email === 'admin@gmail.com') {
-                await axios.get(`${process.env.BASE_API_URL_HOST}/auth/getAllUsers-no-admin`)
-                    .then(res => {
-                        setUsers(res.data.data)
-                    })
-                    .catch(err => console.log(err))
-            }
-        }
-        getusers();
-    }, [users])
+    const [loading, setLoading] = useState(false)
     const filteredusers = useSelector(filterproduct)
     const currentusers = filteredusers.length === 0 ? users : filteredusers;
     const filterbyrole = (role) => {
@@ -38,20 +27,23 @@ const Allusers = () => {
         ...new Set(users.map((user) => user.role)),
     ];
     const deleteaccount = async (uid) => {
+        setLoading(true)
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: uid })
             .then((res) => {
                 toast.success(res.data.message)
+                setLoading(false)
+                dispatch(getUsers())
             })
             .catch(err => {
                 toast.error(err.message)
+                setLoading(false)
+
             })
     }
     return (
         <>
-            {/* <h2 className='text-4xl text-center my-8 font-semibold text-[#263787]'>All Users</h2>
-            <section className="users">
-                } */}
-            <div className={styles.container}>
+            {loading && <Loader />}
+            <section className={styles.container}>
                 <h2>All Users</h2>
                 {/* <h2>Roles</h2> */}
                 <select aria-label="Default select example" className={styles.category}
@@ -92,11 +84,16 @@ const Allusers = () => {
                                     <td>{user.phoneNumber}</td>
                                     <td>{user.email}</td>
                                     <td><p className={styles.active}>Active</p></td>
-                                    <td >
-                                        <button className='mt-2 mr-2'><MdMobileScreenShare size={25} color='green' /></button>
-                                        <button className='mt-2 mr-2'><FaEdit size={25} color='#0b3dbc' /></button>
-                                        <button onClick={() => deleteaccount(user._id)} className='mt-2 mr-2'><FiTrash size={25} color='red' /></button>
-                                    </td>
+                                    {user.role === "ROLE MEMBER" ?
+                                        <td >
+                                            <button className='mt-2 mr-2'><MdMobileScreenShare size={25} color='green' /></button>
+                                            <button className='mt-2 mr-2'><FaEdit size={25} color='#0b3dbc' /></button>
+                                            <button onClick={() => deleteaccount(user._id)} className='mt-2 mr-2'><FiTrash size={25} color='red' /></button>
+
+                                        </td>
+                                        : <td></td>
+                                    }
+                                    {/* <button onClick={() => deleteaccount(user._id)} className='mt-2 mr-2'><FiTrash size={25} color='red' /></button> */}
                                     <td >
                                         <button className={styles.login}>login</button>
                                     </td>
@@ -105,8 +102,7 @@ const Allusers = () => {
                         })}
                     </tbody>
                 </table>
-            </div>
-            {/* </section> */}
+            </section>
         </>
     )
 }

@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import HeroCard from '../ui/herocard/HeroCard'
 import Logo from "../../assets/img/logo/03.png"
+import { AuthContext } from '../../context/AuthContext'
 
 const Resetpassword = () => {
-
+    const { currentUser } = useContext(AuthContext)
     const { id, token } = useParams()
     const [password, setPassword] = useState('')
     const [confpassword, setConfpassword] = useState('')
@@ -31,7 +32,9 @@ const Resetpassword = () => {
     }
     return (
         <>
-            <HeroCard page={'Reset Password'} />
+            {currentUser &&
+                <HeroCard page={'Reset Password'} />
+            }
             <div className="body">
                 <div className="wrapper">
                     <form className="form-box">

@@ -6,6 +6,9 @@
     /* gap: 25px; */
 }
 
+.choose-us .choose-content {
+    padding: 20px;
+}
 
 .choose-img {
     background-image: url(../../../../assets/img/choose/01.jpg);
@@ -14,7 +17,9 @@
     background-size: cover;
     height: 100%;
     /* margin-right: -200px; */
-    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%)
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    position: relative;
+    left: 150px;
 }
 
 .choose-item {

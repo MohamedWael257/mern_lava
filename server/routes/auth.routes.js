@@ -61,7 +61,7 @@ router.post("/userData",
     ],
     userData
 );
-router.get("/verify/:token",
+router.get("/verify/:key/:token",
     [
         param("token").notEmpty().withMessage("Token is not Valid")
     ],

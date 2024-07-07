@@ -68,6 +68,10 @@
     font-size: 18px;
 }
 
+.category {
+    border-radius: 8px;
+}
+
 .category:focus {
     border: 2px solid #477cff;
 }

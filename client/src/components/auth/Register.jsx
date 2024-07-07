@@ -13,7 +13,6 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 const Register = () => {
     const cookies = new Cookies();
-
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");

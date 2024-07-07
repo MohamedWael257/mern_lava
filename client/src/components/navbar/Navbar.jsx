@@ -97,7 +97,7 @@ const Navbar = () => {
                                 <div className={`${sidenav ? "nav-menu active" : "nav-menu"}`}>
                                     <nav>
                                         <Adminlink>
-                                            <NavLink className={activelink} to='/admin/all-users' >Admin</NavLink>
+                                            <NavLink className={activelink} to='/admin' >Admin</NavLink>
                                         </Adminlink>
                                         <NavLink className={activelink} to="/">home</NavLink>
                                         <NavLink className={activelink} to="/booking">online booking</NavLink>
@@ -114,10 +114,10 @@ const Navbar = () => {
                                             <div className={`${active ? 'dropdown-menu active' : 'dropdown-menu'}`}>
                                                 <NavLink className={activelink} to="/about">about</NavLink>
                                                 <NavLink className={activelink} to="/blog">blog</NavLink>
-                                                {/* <NavLink className={activelink} to="/testimonials">testimonials</NavLink> */}
+                                                <NavLink className={activelink} to="/testimonials">testimonials</NavLink>
                                                 <NavLink className={activelink} to="/services">services</NavLink>
                                                 <NavLink className={activelink} to="/news">news</NavLink>
-                                                <NavLink className={activelink} to="/team">team</NavLink>
+                                                <NavLink className={activelink} to="/team">our team</NavLink>
                                                 <NavLink className={activelink} to="/faq">FAQ</NavLink>
                                                 <NavLink className={activelink} to="/404">404</NavLink>
                                                 <NavLink className={activelink} to="/contact">contact</NavLink>

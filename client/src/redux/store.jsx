@@ -5,7 +5,9 @@ import orderslice from './slice/orderslice';
 import bookingslice from './slice/bookingslice';
 import serviceslice from './slice/serviceslice';
 import productsslice from './slice/productsslice';
+import userslice from './slice/userslice';
 const rootreducer = combineReducers({
+    users: userslice.reducer,
     cart: cartslice.reducer,
     products: productsslice.reducer,
     service: serviceslice.reducer,

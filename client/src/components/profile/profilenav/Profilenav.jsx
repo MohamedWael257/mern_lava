@@ -51,10 +51,16 @@ const Profilenav = ({ setActiveside }) => {
         setLoading(true)
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: currentUser?._id })
             .then((res) => {
-                toast.success(res.data.message)
-                setLoading(false)
-                cookies.remove("TOKEN");
-                window.location.href = "../login";
+                if (res.data.status == "Success") {
+                    toast.success(res.data.message)
+                    cookies.remove("TOKEN");
+                    window.location.href = "../login";
+                    setLoading(false)
+                }
+                else {
+                    toast.error(res.data.message)
+                    setLoading(false)
+                }
             })
             .catch(err => {
                 toast.error(err.message)

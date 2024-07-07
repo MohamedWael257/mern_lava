@@ -41,6 +41,10 @@
 
 }
 
+.forget-password .wrapper {
+    width: 500px;
+}
+
 .body .wrapper .form-box {
     width: 100%;
     padding: 40px;

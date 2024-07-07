@@ -13,13 +13,14 @@ import { clear } from "../../../redux/slice/filterslice";
 const Adminnav = () => {
     const dispatch = useDispatch()
     const { currentUser } = useContext(AuthContext)
-    const userName = currentUser?.email
     const activelink = ({ isActive }) => (isActive ? `active` : `links`)
     return (
         <div className='nav'>
             <div className='user'>
-                <FaUserCircle className='icon inline-block mb-2' size={60} color="#fff" />
-                <h4>{userName}</h4>
+                {/* <FaUserCircle className='icon inline-block mb-2' size={60} color="#fff" /> */}
+                {/* <h4>{currentUser?.email}</h4> */}
+                <img className="icon inline-block mb-2 w-20 h-20" src={currentUser?.photoimage} alt="" />
+                <h4>{currentUser?.username}</h4>
             </div>
             <div className='listcontainer'>
                 <ul className='list'>

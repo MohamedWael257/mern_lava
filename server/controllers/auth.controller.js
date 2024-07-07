@@ -13,6 +13,7 @@ import jwt from "../utils/jwt.js";
 import fs from "fs"
 export const register = async (req, res) => {
     const { username, email, phoneNumber, password } = req.body;
+    // const { username, email, phoneNumber, password ,role} = req.body;
     const imageName = req.file.filename;
 
     const Errors = validationResult(req);
@@ -39,7 +40,8 @@ export const register = async (req, res) => {
             email,
             phoneNumber,
             password: encryptedPassword,
-            photoimage: `${apiURL}/uploads/avatar/${imageName}`
+            photoimage: `${apiURL}/uploads/avatar/${imageName}`,
+            // role:role.toUpperCase()
         });
         await sendMail(email, 'signup', null, { username: username })
         return res.json({
@@ -115,7 +117,7 @@ export const login = async (req, res) => {
     }
 }
 export const verify = async (req, res) => {
-    const { token } = req.params
+    const { token, key } = req.params
     // Check we have an id
     if (!token) {
         return res.json({
@@ -148,16 +150,20 @@ export const verify = async (req, res) => {
         // res.json(user)
         user.__v = 1;
         await user.save();
-        return res.redirect(`${clientURL}/login?token=${token}`)
+        const keyencrypted = await bcrypt.hash(key, 10)
+        await sendMail(user.email, 'verify', clientURL, { token: token, key: key })
+        return res.redirect(`${clientURL}/login?key=${keyencrypted}&token=${token}`)
+
         // return res.send({
-        //     message: "Account Verified"
+        // message: "Account Verified"
         // });
     }
     catch (err) {
         return res.send({
             status: FAILD,
             status_Code: FAILD_CODE,
-            message: "Sorry Something went wrong please try again later !"
+            message: err.message
+            // message: "Sorry Something went wrong please try again later !"
         });
     }
 }
@@ -288,18 +294,39 @@ export const reset_password_id_token_post = async (req, res) => {
         return res.send({ status: error.message });
     }
 };
+// export const getAllUsers = async (req, res) => {
+//     try {
+//         const allUser = await User.find({});
+//         return res.send({ status: "ok", data: allUser });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+// export const getAllUsers_no_admin = async (req, res) => {
+//     try {
+//         const allUser = await User.find({ "email": { $nin: ["admin@gmail.com"] } });
+//         return res.send(allUser);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 export const getAllUsers = async (req, res) => {
     try {
-        const allUser = await User.find({});
-        return res.send({ status: "ok", data: allUser });
+        const allUser = await User.find({ "email": { $nin: ["admin@gmail.com"] } });
+        // const allUser = await User.find({});
+        return res.send(allUser);
     } catch (error) {
         console.log(error);
     }
 };
 export const getAllUsers_no_admin = async (req, res) => {
     try {
-        const allUser = await User.find({ "email": { $nin: ["admin@gmail.com"] } });
-        return res.send({ status: "ok", data: allUser });
+        const allUser = await User.find({ "role": { $nin: ["ROLE ADMIN"] } });
+        return res.json({
+            status: SUCCESS,
+            status_Code: SUCCESS_CODE,
+            data: allUser,
+        });
     } catch (error) {
         console.log(error);
     }
@@ -312,6 +339,7 @@ export const getAdmin = async (req, res) => {
         console.log(error);
     }
 };
+
 export const deleteUser = async (req, res) => {
     const { userid } = req.body;
     try {
@@ -344,9 +372,17 @@ export const logout = async (req, res) => {
             });
         }
         // return res.cookie("jwt", "", { maxAge: 0 });
-        return res.json({ message: "Logged out successfully" });
+        return res.json({
+            status: SUCCESS,
+            status_Code: SUCCESS_CODE,
+            message: "Logged out successfully"
+        });
     } catch (error) {
-        return res.json({ message: "Error in logout controller" });
+        return res.json({
+            status: FAILD,
+            status_Code: FAILD_CODE,
+            message: "Error in logout controller"
+        });
     }
 };
 export const update_user_data = async (req, res) => {

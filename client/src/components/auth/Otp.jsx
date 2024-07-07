@@ -1,11 +1,13 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify';
 import HeroCard from '../ui/herocard/HeroCard'
 import { useParams } from 'react-router-dom';
 import Logo from "../../assets/img/logo/03.png"
+import { AuthContext } from '../../context/AuthContext';
 
 const Otp = () => {
+    const { currentUser } = useContext(AuthContext)
     const { email } = useParams();
     const [keyvalue, setKeyvalue] = useState('')
     const params = new URLSearchParams(window.location.search);
@@ -24,7 +26,9 @@ const Otp = () => {
     }
     return (
         <>
-            <HeroCard page={'OTP Vertification'} />
+            {currentUser &&
+                <HeroCard page={'OTP Vertification'} />
+            }
             <div className="body">
                 <div className="wrapper">
                     <form className="form-box otp">

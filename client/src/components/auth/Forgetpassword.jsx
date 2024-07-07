@@ -5,8 +5,10 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import HeroCard from '../ui/herocard/HeroCard'
 import Logo from "../../assets/img/logo/03.png"
+import { IoKeyOutline } from "react-icons/io5";
 
 const Forgetpassword = () => {
+    const { currentUser } = useContext(AuthContext)
     const [email, setEmail] = useState(null)
     const Forgetpassword = async () => {
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/forgot-password`, { email })
@@ -20,12 +22,14 @@ const Forgetpassword = () => {
     }
     return (
         <>
-            <HeroCard page={"Forget password"} />
-            <div className='body'>
-                <div className="wrapper">
+            {currentUser &&
+                <HeroCard page={"Forget password"} />
+            }
+            <div className='body forget-password'>
+                <div className="wrapper w-[500px]">
                     <div className="form-box otp">
                         <img className='w-[200px] mx-auto my-4' src={Logo} alt="" />
-                        <h2 className='mb-6 text-center'>Forgetpassword</h2>
+                        <h2 className='mb-6 text-center'>Reset your carwash account password</h2>
                         <form >
                             <div className="input-box">
                                 <span className="erroremail error text-danger"></span>
@@ -37,7 +41,8 @@ const Forgetpassword = () => {
                             </div>
 
 
-                            <button className='btn' onClick={Forgetpassword}>Send</button>
+                            <button className='btn' onClick={Forgetpassword}><IoKeyOutline className='inline-block' size={30} /> Send Reset
+                                Link</button>
                         </form>
                     </div>
                 </div>

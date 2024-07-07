@@ -31,15 +31,19 @@ import { AuthContext } from './context/AuthContext'
 import { useDispatch } from 'react-redux'
 import { getorders } from './redux/slice/orderslice'
 // import { getNotification } from './redux/slice/notificationslice'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { getbooking } from './redux/slice/bookingslice'
 import { getservices } from './redux/slice/serviceslice'
 import Resetpassword from './components/auth/Resetpassword'
 import Forgetpassword from './components/auth/Forgetpassword'
 import Otp from './components/auth/Otp'
 import Blog from './components/home/homeitems/blog/Blog';
-import Testimonials from './components/home/homeitems/testimonials/Testimonials';
+// import Testimonials from './components/home/homeitems/testimonials/Testimonials';
 import { getProducts, pricerange } from './redux/slice/productsslice';
+import { getUsers } from './redux/slice/userslice';
+import Testimonials from './components/testimonials/Testimonials';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -47,18 +51,22 @@ const App = () => {
     dispatch(getorders());
     dispatch(getbooking());
     dispatch(getservices())
-
+    dispatch(getUsers())
     dispatch(getProducts())
   }, [dispatch])
   const { currentUser, loading } = useContext(AuthContext);
   const { pathname } = useLocation();
-  // useEffect(() => {
-  //   if (currentUser && currentUser?.emailVerified !== true) {
-  //     signOut(auth)
-  //     sendEmailVerification(auth.currentUser);
-  //     toast.info("you must Verified your email")
-  //   }
-  // }, [currentUser])
+  const cookies = new Cookies()
+  useEffect(() => {
+    if (currentUser && currentUser?.__v === 0) {
+      // axios.post(`${process.env.BASE_API_URL_HOST}/auth/logout`, { uid: currentUser?._id })
+      // .then(res => {
+      // cookies.remove("TOKEN")
+      toast.info("you must Verified your email")
+      // window.location.href = '../login'
+      // })
+    }
+  }, [currentUser])
 
   return (
     <>
@@ -95,7 +103,8 @@ const App = () => {
               <Route path='/admin/*' element={<Admin />} />
             }
             <Route path='/reset-password/:id/:token' element={<Resetpassword />} />
-            <Route path='/forgetpassword' element={<Forgetpassword />} />
+            <Route path='/forgetpassword' element={currentUser ? <HomePage /> : <Forgetpassword />} />
+            {/* <Route path='/forgetpassword' element={<Forgetpassword />} /> */}
             <Route path='/otp/:email' element={<Otp />} />
             <Route path='/*' element={< NotFound />} />
           </Routes>
