@@ -13,9 +13,7 @@ import jwt from "../utils/jwt.js";
 import fs from "fs"
 export const register = async (req, res) => {
     const { username, email, phoneNumber, password, role } = req.body;
-    // const { username, email, phoneNumber, password ,role} = req.body;
     const imageName = req.file.filename;
-
     const Errors = validationResult(req);
     if (!Errors.isEmpty()) {
         return res.json({
@@ -79,8 +77,8 @@ export const login = async (req, res) => {
             });
         }
         if (await bcrypt.compare(password, user.password)) {
-            const token = await jwt.generateTokenAndSetCookie(user.email, res);
             // if (user.__v === 0) {
+            const token = await jwt.generateTokenAndSetCookie(user.email, res);
             //     const key = Math.floor(Math.random() * 1000000 + 1)
             //     const data = { key: key, token: token }
             //     await sendMail(email, 'verify', clientURL, data)
@@ -118,59 +116,56 @@ export const login = async (req, res) => {
 }
 export const verify = async (req, res) => {
     const { token, key } = req.params
-    // Check we have an id
-    if (!token) {
+    const Errors = validationResult(req);
+    if (!Errors.isEmpty()) {
         return res.json({
             status: FAILD,
             status_Code: FAILD_CODE,
-            message: "Missing Token"
+            message: "Can't login please Try again later",
+            data: Errors.array().map((arr) => arr.msg),
         });
     }
-
-    // Step 1 -  jwt.verify the token from the URL
-    let payload = null;
     try {
-        payload = await jwt.verify_token(token);
-        // res.json(payload)
-    }
-    catch (err) {
-        return res.send(err);
-    }
-    try {
-        // Step 2 - Find user with matching ID
-        const user = await User.findOne({ email: payload.email }).exec();
-        if (!user) {
+        if (!token) {
+            return res.json({
+                status: FAILD,
+                status_Code: FAILD_CODE,
+                message: "Missing Token"
+            });
+        }
+        const payload = await jwt.verify_token(token);
+        const Check_User = await User.findOne({ email: payload.email }).exec();
+        if (!Check_User) {
             return res.json({
                 status: FAILD,
                 status_Code: FAILD_CODE,
                 message: "User does not exists"
             });
         }
-        //     // Step 3 - Update user verification status to true
-        // res.json(user)
-        user.__v = 1;
-        await user.save();
-        const keyencrypted = await bcrypt.hash(key, 10)
-        await sendMail(user.email, 'verify', clientURL, { token: token, key: key })
-        return res.redirect(`${clientURL}/login?key=${keyencrypted}&token=${token}`)
+        // const verfy = await Check_User.updateOne(
+        //     { _id: Check_User.id },
+        //     { $set: { __v: 1 } })
 
-        // return res.send({
-        // message: "Account Verified"
-        // });
-    }
-    catch (err) {
+        // await verfy.save();
+        Check_User.__v = 1;
+        await Check_User.save();
+        const keyencrypted = await bcrypt.hash(key, 10)
+        await sendMail(Check_User.email, 'verify', clientURL, { token: token, key: key })
+        return res.redirect(`${clientURL}/login?key=${keyencrypted}&token=${token}`)
+    } catch (err) {
         return res.send({
             status: FAILD,
             status_Code: FAILD_CODE,
             message: err.message
             // message: "Sorry Something went wrong please try again later !"
         });
+
     }
+
 }
 export const userData = async (req, res) => {
     const { token } = req.body;
     const Errors = validationResult(req);
-    // Body Validation Before Searching in the database to increase performance
     if (!Errors.isEmpty()) {
         return res.json({
             status: FAILD,
@@ -233,13 +228,11 @@ export const forgot_password = async (req, res) => {
         const token = await jwt.generateTokenAndSetCookie(oldUser.email, res);
         const data = { id: oldUser._id, token: token }
         await sendMail(email, 'reset', clientURL, data)
-        return res.json(
-            {
-                status: SUCCESS,
-                status_Code: SUCCESS_CODE,
-                message: "Check your Email messages",
-            }
-        )
+        return res.json({
+            status: SUCCESS,
+            status_Code: SUCCESS_CODE,
+            message: "Check your Email messages",
+        })
     } catch (error) {
         return res.json({
             status: FAILD,
@@ -322,6 +315,18 @@ export const getAllUsers = async (req, res) => {
 export const getAllUsers_no_admin = async (req, res) => {
     try {
         const allUser = await User.find({ "role": { $nin: ["ROLE ADMIN"] } });
+        return res.json({
+            status: SUCCESS,
+            status_Code: SUCCESS_CODE,
+            data: allUser,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+export const getAllUsers_admin = async (req, res) => {
+    try {
+        const allUser = await User.find({ "role": { $in: ["ROLE ADMIN"] } });
         return res.json({
             status: SUCCESS,
             status_Code: SUCCESS_CODE,

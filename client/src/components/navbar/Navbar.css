@@ -444,7 +444,7 @@ header .header-top-social a:hover {
 .main-navigation .dropdown .dropdown-menu.active {
     visibility: visible;
     opacity: 1;
-    height: 400px;
+    height: 420px;
 }
 
 @media(max-width:1200px) {

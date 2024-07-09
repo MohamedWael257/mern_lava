@@ -27,7 +27,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ___dirname = path.resolve();
 
-// make a conection to data base
+// make a conection to DataBase
 import { ConnectToMongoDB } from "./db/ConnectToMongoDB.js";
 
 // middleware
@@ -52,7 +52,6 @@ app.use("/api/notification", notificationRoutes);
 app.use("/api/recommendations", recommendationsRoutes);
 app.use("/api/rate", rateRoutes);
 app.use("/api/wishList", wishListRoutes);
-
 app.use(express.static(path.join(___dirname, '/client/dist')));
 app.get("*", (req, res) => {
     res.sendFile(path.join(___dirname, 'client', 'dist', 'index.html'));

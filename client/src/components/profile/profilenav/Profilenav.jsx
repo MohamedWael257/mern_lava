@@ -38,12 +38,19 @@ const Profilenav = ({ setActiveside }) => {
 
     const logouthandler = async () => {
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/logout`, { uid: currentUser?._id })
-            .then(res => {
-                toast.success(res.data.message)
-                cookies.remove("TOKEN");
-                window.location.href = "../login";
+            .then((res) => {
+                if (res.data.status == "Success") {
+                    toast.success(res.data.message)
+                    cookies.remove("TOKEN");
+                    window.location.href = "../login";
+                    setLoading(false)
+                }
+                else {
+                    toast.error(res.data.message)
+                    setLoading(false)
+                }
             })
-            .catch(err => toast.error(err.message))
+        // .catch(err => toast.error(err.message))
 
 
     }

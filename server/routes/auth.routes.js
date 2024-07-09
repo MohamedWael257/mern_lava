@@ -1,5 +1,5 @@
 import express from "express";
-import { register, login, userData, forgot_password, getAllUsers, deleteUser, logout, getAllUsers_no_admin, getAdmin, update_user_data, verify, reset_password_id_token_get, reset_password_id_token_post } from "../controllers/auth.controller.js";
+import { register, login, userData, forgot_password, getAllUsers, deleteUser, logout, getAllUsers_no_admin, getAdmin, update_user_data, verify, reset_password_id_token_get, reset_password_id_token_post, getAllUsers_admin } from "../controllers/auth.controller.js";
 import { body, param } from "express-validator";
 const router = express.Router();
 import upload_avatar from "../multer/avatar.multer.js"
@@ -18,17 +18,7 @@ import Team from '../models/team.model.js'
 //     }
 
 // });
-// router.post("/upload-image", upload_avatar.single("image"), async (req, res) => {
-//     console.log(req.body);
-//     const imageName = req.file.filename;
 
-//     try {
-//         await Images.create({ image: imageName });
-//         res.json({ status: "ok" });
-//     } catch (error) {
-//         res.json({ status: error });
-//     }
-// });
 router.post("/register",
     upload_avatar.single("image"),
     [
@@ -40,6 +30,8 @@ router.post("/register",
         body("password")
             .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g)
             .withMessage("Password is not Valid"),
+        body("role").notEmpty().withMessage("Role is Required"),
+
     ],
     register
 );
@@ -63,7 +55,9 @@ router.post("/userData",
 );
 router.get("/verify/:key/:token",
     [
-        param("token").notEmpty().withMessage("Token is not Valid")
+        param("token").notEmpty().withMessage("Token is not Valid"),
+        param("key").notEmpty().withMessage("Key is not Valid")
+
     ],
     verify
 );
@@ -95,23 +89,24 @@ router.post("/reset-password/:id/:token",
 );
 router.get('/getAllUsers', getAllUsers);
 router.get('/getAllUsers-no-admin', getAllUsers_no_admin);
+router.get('/getAllUsers-admin', getAllUsers_admin);
 router.get('/getAdmin', getAdmin);
 router.post('/deleteUser', deleteUser);
 router.post('/logout', logout);
 router.post('/update-user-data',
     upload_avatar.single("image"),
-    [
-        body("id").notEmpty().withMessage("_id is not Valid"),
-        body("email")
-            .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
-            .withMessage("email is not Valid"),
-        body("phoneNumber").notEmpty().withMessage("phoneNumber is not Valid"),
-        body("image").notEmpty().withMessage("Image is not Valid"),
-        body("username").notEmpty().withMessage("username is not Valid"),
-        body("fullName").notEmpty().withMessage("FullName is not Valid"),
-        body("address").notEmpty().withMessage("address is not Valid"),
-        body("gender").notEmpty().withMessage("gender is not Valid"),
-    ],
+    // [
+    //     body("id").notEmpty().withMessage("_id is not Valid"),
+    //     body("email")
+    //         .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
+    //         .withMessage("email is not Valid"),
+    //     body("phoneNumber").notEmpty().withMessage("phoneNumber is not Valid"),
+    //     body("image").notEmpty().withMessage("Image is not Valid"),
+    //     body("username").notEmpty().withMessage("username is not Valid"),
+    //     body("fullName").notEmpty().withMessage("FullName is not Valid"),
+    //     body("address").notEmpty().withMessage("address is not Valid"),
+    //     body("gender").notEmpty().withMessage("gender is not Valid"),
+    // ],
     update_user_data
 );
 router.get('/team-member', async (req, res) => {
