@@ -12,7 +12,7 @@ import { sendMail } from "../services/nodemailer.js"
 import jwt from "../utils/jwt.js";
 import fs from "fs"
 export const register = async (req, res) => {
-    const { username, email, phoneNumber, password } = req.body;
+    const { username, email, phoneNumber, password, role } = req.body;
     // const { username, email, phoneNumber, password ,role} = req.body;
     const imageName = req.file.filename;
 
@@ -41,7 +41,7 @@ export const register = async (req, res) => {
             phoneNumber,
             password: encryptedPassword,
             photoimage: `${apiURL}/uploads/avatar/${imageName}`,
-            // role:role.toUpperCase()
+            role
         });
         await sendMail(email, 'signup', null, { username: username })
         return res.json({

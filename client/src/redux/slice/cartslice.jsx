@@ -3,7 +3,10 @@ import { toast } from "react-toastify";
 const initialState = {
     cartitem: [],
     totalquantity: 0,
-    totalprice: 0
+    totalprice: 0,
+    // vat:cartitem.length * 20,
+    // discount:totalprice * cartitem.length * 0.05,
+    // carttotal:totalprice + vat - discount,
 }
 const cartslice = createSlice({
     name: "cart",

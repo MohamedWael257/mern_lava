@@ -28,11 +28,11 @@ const Cart = () => {
         setVat(cart.length * 20)
         setDiscount(totprice * cart.length * 0.05)
         setCart_total(totprice + vat - discount)
-    }, [totprice, cart.length, discount])
+    }, [totprice, cart.length])
     // var cart_total = totprice + vat - discount
     const applyCoupon = () => {
         // toast.info(e)
-        setActivecoupon(true)
+        // setActivecoupon(true)
         // if (cart_total > 100000) {
 
         //     if (coupon === 'lava') {
@@ -50,6 +50,7 @@ const Cart = () => {
             setDiscount(discount + 50)
             setCart_total(cart_total - 50)
             toast.success('Correct Coupon Code. you will have more discount')
+            setActivecoupon(true)
 
         }
         else {

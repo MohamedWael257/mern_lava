@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
-
+import keys from '../config/keys.js'
+const { apiURL } = keys.app
 const ProductsSchema = new mongoose.Schema(
     {
         name: { type: String, require: true },
         description: { type: String, require: true },
         price: { type: Number, require: true },
         brand: { type: String, require: true },
-        ImageUrl: { type: String, require: true, default: "Uploads/Product.jpg" },
+        ImageUrl: { type: String, require: true, default: `${apiURL}/uploads/Product.jpg` },
         category: { type: String, require: true },
         itemquantity: { type: Number, default: 1 },
         favourit: { type: Boolean, default: false },

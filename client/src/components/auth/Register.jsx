@@ -11,12 +11,15 @@ import Cookies from 'universal-cookie';
 import Logo from "../../assets/img/logo/03.png"
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
+import { RiAdminFill } from "react-icons/ri";
+
 const Register = () => {
     const cookies = new Cookies();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
     const [photoimage, setPhotoimage] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -46,6 +49,7 @@ const Register = () => {
         formData.append("email", email);
         formData.append("phoneNumber", phoneNumber);
         formData.append("password", password);
+        formData.append("role", role);
         if (!username || !email || !phoneNumber || !password) {
             setLoading(false)
             toast.error("Please fill the form")
@@ -157,9 +161,11 @@ const Register = () => {
                                     onChange={handleImageChange}
                                 // onChange={(e) => setImage(e.target.files[0])}
                                 />
-                                <button type="submit" id="register_btn" className="btn">
-                                    Register
-                                    {/* {loading?'Register....':'Register'} */}
+                                <button type="submit" id="register_btn" className="btn" onClick={() => setRole('ROLE ADMIN')}>
+                                    Regsiter As Admin
+                                </button>
+                                <button type="submit" id="register_btn" className="btn" onClick={() => setRole('ROLE MEMBER')}>
+                                    Regsiter As Member
                                 </button>
                                 <div className="login-register">
                                     <p>Already have an acoount ?

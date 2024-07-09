@@ -27,18 +27,19 @@ const Allusers = () => {
         ...new Set(users.map((user) => user.role)),
     ];
     const deleteaccount = async (uid) => {
-        setLoading(true)
-        await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: uid })
-            .then((res) => {
-                toast.success(res.data.message)
-                setLoading(false)
-                dispatch(getUsers())
-            })
-            .catch(err => {
-                toast.error(err.message)
-                setLoading(false)
+        // setLoading(true)
+        // await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: uid })
+        //     .then((res) => {
+        //         toast.success(res.data.message)
+        //         setLoading(false)
+        //         dispatch(getUsers())
+        //     })
+        //     .catch(err => {
+        //         toast.error(err.message)
+        //         setLoading(false)
 
-            })
+        //     })
+        toast.info(uid)
     }
     return (
         <>
@@ -88,7 +89,7 @@ const Allusers = () => {
                                         <td >
                                             <button className='mt-2 mr-2'><MdMobileScreenShare size={25} color='green' /></button>
                                             <button className='mt-2 mr-2'><FaEdit size={25} color='#0b3dbc' /></button>
-                                            <button onClick={() => deleteaccount(user._id)} className='mt-2 mr-2'><FiTrash size={25} color='red' /></button>
+                                            <button onClick={() => deleteaccount(user.id)} className='mt-2 mr-2'><FiTrash size={25} color='red' /></button>
 
                                         </td>
                                         : <td></td>
